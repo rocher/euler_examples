@@ -1,0 +1,13 @@
+name = "euler_examples"
+description = "Shiny new project"
+version = "0.1.0-dev"
+
+authors = ["Francesc Rocher"]
+maintainers = ["Francesc Rocher <francesc.rocher@gmail.com>"]
+maintainers-logins = ["rocher"]
+
+executables = ["euler_examples"]
+[[depends-on]]
+euler_tools = "~0.1.0-dev"
+[[pins]]
+euler_tools = { path='../euler_tools' }
