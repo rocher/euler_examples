@@ -32,6 +32,7 @@ project Euler_Examples is
       ,"p0016_power_digit_sum.adb"
       ,"p0017_number_letter_counts.adb"
       ,"p0018_maximum_path_sum_i.adb"
+      ,"p0019_counting_sundays.adb"
    );
 
    package Compiler is
