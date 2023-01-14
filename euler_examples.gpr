@@ -41,8 +41,8 @@ project Euler_Examples is
          Euler_Examples_Config.Ada_Compiler_Switches &
          (
               "-gnatW8"   --  Wide character encoding method
-            , "-gnatX"    --  Language extensions permitted
             , "-gnat2022" --  Ada 2022 mode
+            , "-gnatX"    --  Language extensions permitted
          );
    end Compiler;
 
