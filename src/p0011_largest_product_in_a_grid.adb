@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=11
 --
@@ -34,8 +41,11 @@
 --  The product of these numbers is 26 × 63 × 78 × 14 = 1788696. What is the
 --  greatest product of four adjacent numbers in the same direction (up,
 --  down, left, right, or diagonally) in the 20×20 grid?
+--
+-------------------------------------------------------------------------------
 
-with Ada.Text_IO;
+with Ada.Text_IO;    use Ada.Text_IO;
+with Ada.Assertions; use Ada.Assertions;
 
 procedure P0011_Largest_Product_In_A_Grid is
 
@@ -128,6 +138,7 @@ begin
       end loop;
    end loop;
 
-   Ada.Text_IO.Put_Line ("Answer:" & Answer'Image);
+   Put_Line ("Answer:" & Answer'Image);
+   Assert (Answer = 70_600_674, "Incorrect Answer");
 
 end P0011_Largest_Product_In_A_Grid;

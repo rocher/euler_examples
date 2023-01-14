@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=13
 --
@@ -8,6 +15,8 @@
 --
 --  Work out the first ten digits of the sum of the following one-hundred
 --  50-digit numbers.
+--
+-------------------------------------------------------------------------------
 
 with Ada.Text_IO;
 with Ada.Numerics.Big_Numbers.Big_Integers;
@@ -17,9 +26,7 @@ procedure P0013_Large_Sum is
 
    Answer : Big_Natural := 0;
 
-   Numbers :
-     constant array
-       (1 .. 100) of Big_Natural :=
+   Numbers : constant array (1 .. 100) of Big_Natural :=
      [37_107_287_533_902_102_798_797_998_220_837_590_246_510_135_740_250,
      46_376_937_677_490_009_712_648_124_896_970_078_050_417_018_260_538,
      74_324_986_199_524_741_059_474_233_309_513_058_123_726_617_309_629,
@@ -127,7 +134,5 @@ begin
       Answer := Answer + N;
    end loop;
 
-   Ada.Text_IO.Put_Line
-     ("Answer: " &
-      To_String (Answer) (2 .. 11));
+   Ada.Text_IO.Put_Line ("Answer: " & To_String (Answer) (2 .. 11));
 end P0013_Large_Sum;

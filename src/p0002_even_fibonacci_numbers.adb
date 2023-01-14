@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=2
 --
@@ -13,30 +20,30 @@
 --
 --  By considering the terms in the Fibonacci sequence whose values do not
 --  exceed four million, find the sum of the even-valued terms.
+--
+-------------------------------------------------------------------------------
 
-with Ada.Text_IO;
+with Ada.Text_IO;    use Ada.Text_IO;
+with Ada.Assertions; use Ada.Assertions;
+
+with Euler_Tools; use Euler_Tools;
 
 procedure P0002_Even_Fibonacci_Numbers is
 
-   Term_1  : Natural := 1;
-   Term_2  : Natural := 2;
-   Term_3  : Natural := Term_1 + Term_2;
-   Σ_terms : Natural := 2;
+   Number : Integer_Type := Fibonacci_Start;
+   Answer : Integer_Type := 0;
 
 begin
 
    loop
-      if Term_3 mod 2 = 0 then
-         Σ_terms := @ + Term_3;
+      if Is_Even (Number) then
+         Answer := @ + Number;
       end if;
-
-      Term_1 := Term_2;
-      Term_2 := Term_3;
-      Term_3 := Term_1 + Term_2;
-
-      exit when Term_3 > 4_000_000;
+      Number := Fibonacci_Next;
+      exit when Number > 4_000_000;
    end loop;
 
-   Ada.Text_IO.Put_Line ("Answer" & Σ_terms'Image);
+   Put_Line ("Answer" & Answer'Image);
+   Assert (Answer = 4_613_732, "Incorrect Answer");
 
 end P0002_Even_Fibonacci_Numbers;

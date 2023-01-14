@@ -1,3 +1,11 @@
+-------------------------------------------------------------------------------
+--
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+-------------------------------------------------------------------------------
+
 with "config/euler_examples_config.gpr";
 project Euler_Examples is
 
@@ -21,6 +29,9 @@ project Euler_Examples is
       ,"p0013_large_sum.adb"
       ,"p0014_longest_collatz_sequence.adb"
       ,"p0015_lattice_paths.adb"
+      ,"p0016_power_digit_sum.adb"
+      ,"p0017_number_letter_counts.adb"
+      ,"p0018_maximum_path_sum_i.adb"
    );
 
    package Compiler is

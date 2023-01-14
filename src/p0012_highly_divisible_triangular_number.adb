@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=12
 --
@@ -25,18 +32,17 @@
 --  We can see that 28 is the first triangle number to have over five
 --  divisors. What is the value of the first triangle number to have over
 --  five hundred divisors?
+--
+-------------------------------------------------------------------------------
 
-with Ada.Text_IO;
-with Euler_Tools;
+with Ada.Text_IO; use Ada.Text_IO;
+with Euler_Tools; use Euler_Tools;
 
 procedure P0012_Highly_Divisible_Triangular_Number is
 
-   package Natural_Tools is new Euler_Tools (Natural);
-   use Natural_Tools;
-
    Factors_List : List_Type;
-   Counter      : Natural := 8;
-   Answer       : Natural;
+   Counter      : Integer_Type := 8;
+   Answer       : Integer_Type;
 
 begin
 
@@ -44,12 +50,12 @@ begin
       Answer       := Sum_Sequence (Counter);
       Factors_List := Factors (Answer);
 
-      exit when Natural (Factors_List.Length) > 500;
+      exit when Integer_Type (Factors_List.Length) > 500;
 
       Factors_List.Clear;
       Counter := @ + 1;
    end loop;
 
-   Ada.Text_IO.Put_Line ("Answer:" & Answer'Image);
+   Put_Line ("Answer:" & Answer'Image);
 
 end P0012_Highly_Divisible_Triangular_Number;

@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=8
 --
@@ -10,14 +17,15 @@
 --  product are 9 × 9 × 8 × 9 = 5832. Find the thirteen adjacent digits in
 --  the 1000-digit number that have the greatest product. What is the value
 --  of this product?
+--
+-------------------------------------------------------------------------------
 
-with Ada.Text_IO;
-with Euler_Tools;
+with Ada.Text_IO;    use Ada.Text_IO;
+with Ada.Assertions; use Ada.Assertions;
+
+with Euler_Int1_Tools; use Euler_Int1_Tools;
 
 procedure P0008_Largest_Product_In_A_Series is
-
-   package Natural_Tools is new Euler_Tools (Long_Integer);
-   use Natural_Tools;
 
    Series : constant String :=
      "7316717653133062491922511967442657474235534919493496983520312774506326" &
@@ -36,19 +44,22 @@ procedure P0008_Largest_Product_In_A_Series is
      "7109405077541002256983155200055935729725716362695618826704282524836008" &
      "23257530420752963450";
 
-   Answer  : Long_Integer := 0;
-   Product : Long_Integer;
+   Product : Integer_Type;
+   Answer  : Integer_Type := 0;
 
 begin
 
    for I in Series'First .. Series'Last - 12 loop
+
       Product := 1;
       for C of Series (I .. I + 12) loop
          Product := @ * To_Number (C);
       end loop;
-      Answer := Long_Integer'Max (@, Product);
+      Answer := Integer_Type'Max (@, Product);
+
    end loop;
 
-   Ada.Text_IO.Put_Line ("Answer:" & Answer'Image);
+   Put_Line ("Answer:" & Answer'Image);
+   Assert (Answer = 23_514_624_000, "Incorrect Answer");
 
 end P0008_Largest_Product_In_A_Series;

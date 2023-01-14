@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=14
 --
@@ -24,20 +31,19 @@
 --
 --  NOTE: Once the chain starts the terms are allowed to go above one
 --  million.
+--
+-------------------------------------------------------------------------------
 
 with Ada.Text_IO;
-with Euler_Tools;
+with Euler_Int1_Tools; use Euler_Int1_Tools;
 
 procedure P0014_Longest_Collatz_Sequence is
 
-   package Natural_Tools is new Euler_Tools (Long_Integer);
-   use Natural_Tools;
-
-   Start      : Long_Integer := 999_999;
-   Number     : Long_Integer := 0;
-   Length     : Long_Integer := 0;
-   Max_Length : Long_Integer := 0;
-   Answer     : Long_Integer := 0;
+   Start      : Integer_Type := 999_999;
+   Number     : Integer_Type := 0;
+   Length     : Integer_Type := 0;
+   Max_Length : Integer_Type := 0;
+   Answer     : Integer_Type := 0;
 
 begin
 

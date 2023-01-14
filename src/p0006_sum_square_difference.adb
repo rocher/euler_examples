@@ -1,5 +1,12 @@
+--  ---------------------------------------------------------------------------
 --
---  The following problem is take from Project Euler:
+--  Copyright (c) 2023 Francesc Rocher <francesc.rocher@gnail.com>
+--  SPDX-License-Identifier: CC-BY-NC-SA-4.0
+--  https://creativecommons.org/licenses/by-nc-sa/4.0/
+--
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
 --
 --                 https://projecteuler.net/problem=6
 --
@@ -18,24 +25,26 @@
 --  natural numbers and the square of the sum is 3025 - 385 = 2640. Find the
 --  difference between the sum of the squares of the first one hundred
 --  natural numbers and the square of the sum.
+--
+-------------------------------------------------------------------------------
 
-with Ada.Text_IO;
-with Euler_Tools;
+with Ada.Text_IO;    use Ada.Text_IO;
+with Ada.Assertions; use Ada.Assertions;
+
+with Euler_Int1_Tools; use Euler_Int1_Tools;
 
 procedure P0006_Sum_Square_Difference is
 
-   package Long_Natural_Tools is new Euler_Tools (Long_Integer);
-   use Long_Natural_Tools;
+   Σ_Of_Squares : constant Integer_Type := Sum_Squares (100);
+   Square_Of_Σ  : constant Integer_Type := Sum_Sequence (100)**2;
 
-   Σ_Squares : constant Long_Integer := Sum_Squares (100);
-   Squared_Σ : constant Long_Integer := Sum_Sequence (100)**2;
-
-   Answer : Long_Integer;
+   Answer : Integer_Type;
 
 begin
 
-   Answer := Squared_Σ - Σ_Squares;
+   Answer := Square_Of_Σ - Σ_Of_Squares;
 
-   Ada.Text_IO.Put_Line ("Answer:" & Answer'Image);
+   Put_Line ("Answer:" & Answer'Image);
+   Assert (Answer = 25164150, "Incorrect Answer");
 
 end P0006_Sum_Square_Difference;
