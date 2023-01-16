@@ -88,12 +88,9 @@ begin
 
    declare
       Index  : Natural             := 1;
-      Cursor : Name_Package.Cursor := Names.First;
    begin
-      loop
-         Answer := @ + (Index * To_Number (Cursor.Element));
-         Cursor := Cursor.Next;
-         exit when not Cursor.Has_Element;
+      for Name of Names loop
+         Answer := @ + (Index * To_Number (Name));
          Index := @ + 1;
       end loop;
    end;
