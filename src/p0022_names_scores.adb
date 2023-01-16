@@ -24,6 +24,7 @@
 --  So, COLIN would obtain a score of 938 × 53 = 49714.
 --
 --  What is the total of all the name scores in the file?
+--
 -------------------------------------------------------------------------------
 
 with Text_IO;                            use Text_IO;
@@ -87,11 +88,11 @@ begin
    Sorting.Sort (Names);
 
    declare
-      Index  : Natural             := 1;
+      Index : Natural := 1;
    begin
       for Name of Names loop
          Answer := @ + (Index * To_Number (Name));
-         Index := @ + 1;
+         Index  := @ + 1;
       end loop;
    end;
 
