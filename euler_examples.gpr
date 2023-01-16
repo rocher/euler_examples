@@ -34,6 +34,7 @@ project Euler_Examples is
       ,"p0018_maximum_path_sum_i.adb"
       ,"p0019_counting_sundays.adb"
       ,"p0020_factorial_digit_sum.adb"
+      ,"p0021_amicable_numbers.adb"
    );
 
    package Compiler is
