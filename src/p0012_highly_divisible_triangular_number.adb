@@ -42,7 +42,7 @@ with Euler_Tools; use Euler_Tools;
 
 procedure P0012_Highly_Divisible_Triangular_Number is
 
-   Divisors_List : List_Type;
+   Divisors_List : Set_Type;
    Counter       : Integer_Type := 8;
    Answer        : Integer_Type;
 
