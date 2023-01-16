@@ -36,6 +36,7 @@ project Euler_Examples is
       ,"p0020_factorial_digit_sum.adb"
       ,"p0021_amicable_numbers.adb"
       ,"p0022_names_scores.adb"
+      ,"p0023_non_abundant_sums.adb"
    );
 
    package Compiler is
