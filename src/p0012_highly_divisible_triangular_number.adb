@@ -48,7 +48,7 @@ begin
 
    loop
       Answer        := Sum_Sequence (Counter);
-      Divisors_List := Divisors (Answer);
+      Divisors_List := All_Divisors (Answer);
 
       exit when Integer_Type (Divisors_List.Length) > 500;
 

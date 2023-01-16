@@ -38,8 +38,8 @@ begin
 
    for A in 1 .. 9_998 loop
       for B in A + 1 .. 9_999 loop
-         D_A := Sum (Divisors (A, True));
-         D_B := Sum (Divisors (B, True));
+         D_A := Sum (Proper_Divisors (A));
+         D_B := Sum (Proper_Divisors (B));
          if D_A = B and then D_B = A then
             Answer := @ + A + B;
          end if;
