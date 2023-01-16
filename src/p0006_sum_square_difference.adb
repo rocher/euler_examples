@@ -22,9 +22,10 @@
 --                 (1 + 2 +...+ 10)² = 3025
 --
 --  Hence the difference between the sum of the squares of the first ten
---  natural numbers and the square of the sum is 3025 - 385 = 2640. Find the
---  difference between the sum of the squares of the first one hundred
---  natural numbers and the square of the sum.
+--  natural numbers and the square of the sum is 3025 - 385 = 2640.
+--
+--  Find the difference between the sum of the squares of the first one
+--  hundred natural numbers and the square of the sum.
 --
 -------------------------------------------------------------------------------
 
@@ -45,6 +46,6 @@ begin
    Answer := Square_Of_Σ - Σ_Of_Squares;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 25164150, "Incorrect Answer");
+   Assert (Answer = 25_164_150, "Incorrect Answer");
 
 end P0006_Sum_Square_Difference;
