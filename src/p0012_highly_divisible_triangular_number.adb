@@ -40,19 +40,19 @@ with Euler_Tools; use Euler_Tools;
 
 procedure P0012_Highly_Divisible_Triangular_Number is
 
-   Factors_List : List_Type;
-   Counter      : Integer_Type := 8;
-   Answer       : Integer_Type;
+   Divisors_List : List_Type;
+   Counter       : Integer_Type := 8;
+   Answer        : Integer_Type;
 
 begin
 
    loop
-      Answer       := Sum_Sequence (Counter);
-      Factors_List := Factors (Answer);
+      Answer        := Sum_Sequence (Counter);
+      Divisors_List := Divisors (Answer);
 
-      exit when Integer_Type (Factors_List.Length) > 500;
+      exit when Integer_Type (Divisors_List.Length) > 500;
 
-      Factors_List.Clear;
+      Divisors_List.Clear;
       Counter := @ + 1;
    end loop;
 
