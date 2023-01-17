@@ -31,17 +31,13 @@ with Euler_Tools; use Euler_Tools;
 
 procedure P0021_Amicable_Numbers is
 
-   D_A, D_B : Integer_Type;
-
    Answer : Integer_Type := 0;
 
 begin
 
    for A in 1 .. 9_998 loop
       for B in A + 1 .. 9_999 loop
-         D_A := Sum (Proper_Divisors (A));
-         D_B := Sum (Proper_Divisors (B));
-         if D_A = B and then D_B = A then
+         if Are_Amicable (A, B) then
             Answer := @ + A + B;
          end if;
       end loop;
