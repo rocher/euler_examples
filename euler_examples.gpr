@@ -37,6 +37,7 @@ project Euler_Examples is
       ,"p0021_amicable_numbers.adb"
       ,"p0022_names_scores.adb"
       ,"p0023_non_abundant_sums.adb"
+      ,"p0024_lexicographic_permutations.adb"
    );
 
    package Compiler is
