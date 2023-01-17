@@ -38,6 +38,7 @@ project Euler_Examples is
       ,"p0022_names_scores.adb"
       ,"p0023_non_abundant_sums.adb"
       ,"p0024_lexicographic_permutations.adb"
+      ,"p0025_1000_digit_fibonacci_number.adb"
    );
 
    package Compiler is
