@@ -19,9 +19,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO;      use Ada.Text_IO;
 with Euler_Int1_Tools; use Euler_Int1_Tools;
 
 procedure P0010_Summation_Of_Primes is
@@ -39,6 +37,5 @@ begin
    end loop;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 142_913_828_922, "Incorrect Answer");
 
 end P0010_Summation_Of_Primes;

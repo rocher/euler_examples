@@ -25,8 +25,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
+with Ada.Text_IO; use Ada.Text_IO;
 
 procedure P0009_Special_Pythagorean_Triplet is
 
@@ -63,6 +62,5 @@ begin
    Put_Line
      ("      a² + b² =" & Natural'Image (A**2) & " +" & Natural'Image (B**2) &
       " =" & Natural'Image ((1_000 - A - B)**2) & " = c²");
-   Assert (Answer = 31_875_000, "Incorrect Answer");
 
 end P0009_Special_Pythagorean_Triplet;

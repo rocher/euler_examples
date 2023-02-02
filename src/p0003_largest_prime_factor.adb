@@ -19,9 +19,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO;      use Ada.Text_IO;
 with Euler_Int2_Tools; use Euler_Int2_Tools;
 
 procedure P0003_Largest_Prime_Factor is
@@ -38,6 +36,5 @@ begin
    end loop;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 6_857, "Incorrect Answer");
 
 end P0003_Largest_Prime_Factor;

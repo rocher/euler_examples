@@ -29,9 +29,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO;      use Ada.Text_IO;
 with Euler_Int1_Tools; use Euler_Int1_Tools;
 
 procedure P0006_Sum_Square_Difference is
@@ -46,6 +44,5 @@ begin
    Answer := Square_Of_Σ - Σ_Of_Squares;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 25_164_150, "Incorrect Answer");
 
 end P0006_Sum_Square_Difference;

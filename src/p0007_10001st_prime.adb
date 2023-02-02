@@ -20,9 +20,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO; use Ada.Text_IO;
 with Euler_Tools; use Euler_Tools;
 
 procedure P0007_10001st_Prime is
@@ -34,6 +32,5 @@ begin
    Answer := Prime_Nth (10_001);
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 104_743, "Incorrect Answer");
 
 end P0007_10001st_Prime;

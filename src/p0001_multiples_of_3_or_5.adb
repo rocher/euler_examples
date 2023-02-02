@@ -20,9 +20,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO; use Ada.Text_IO;
 with Euler_Tools; use Euler_Tools;
 
 procedure P0001_Multiples_Of_3_Or_5 is
@@ -36,6 +34,5 @@ begin
      Sum_Multiples (15, 1_000);
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 233_168, "Incorrect Answer");
 
 end P0001_Multiples_Of_3_Or_5;

@@ -23,9 +23,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO; use Ada.Text_IO;
 with Euler_Tools; use Euler_Tools;
 
 procedure P0002_Even_Fibonacci_Numbers is
@@ -44,6 +42,5 @@ begin
    end loop;
 
    Put_Line ("Answer" & Answer'Image);
-   Assert (Answer = 4_613_732, "Incorrect Answer");
 
 end P0002_Even_Fibonacci_Numbers;

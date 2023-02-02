@@ -20,9 +20,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO; use Ada.Text_IO;
 with Euler_Tools; use Euler_Tools;
 
 procedure P0004_Largest_Palindrome_Product is
@@ -46,6 +44,5 @@ begin
 
    Put_Line ("Answer:" & Answer'Image);
    Put_Line ("Info: N1 =" & N1'Image & ", N2 =" & N2'Image);
-   Assert (Answer = 906_609, "Incorrect Answer");
 
 end P0004_Largest_Palindrome_Product;

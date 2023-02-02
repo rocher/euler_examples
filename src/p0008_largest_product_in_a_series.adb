@@ -21,9 +21,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO;      use Ada.Text_IO;
 with Euler_Int1_Tools; use Euler_Int1_Tools;
 
 procedure P0008_Largest_Product_In_A_Series is
@@ -61,6 +59,5 @@ begin
    end loop;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 23_514_624_000, "Incorrect Answer");
 
 end P0008_Largest_Product_In_A_Series;

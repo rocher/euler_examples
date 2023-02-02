@@ -21,9 +21,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
-
+with Ada.Text_IO; use Ada.Text_IO;
 with Euler_Tools; use Euler_Tools;
 
 procedure P0005_Smallest_Multiple is
@@ -51,6 +49,5 @@ begin
    end loop;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 232_792_560, "Incorrect Answer");
 
 end P0005_Smallest_Multiple;

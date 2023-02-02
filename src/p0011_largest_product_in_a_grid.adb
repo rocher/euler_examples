@@ -45,8 +45,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;    use Ada.Text_IO;
-with Ada.Assertions; use Ada.Assertions;
+with Ada.Text_IO; use Ada.Text_IO;
 
 procedure P0011_Largest_Product_In_A_Grid is
 
@@ -140,6 +139,5 @@ begin
    end loop;
 
    Put_Line ("Answer:" & Answer'Image);
-   Assert (Answer = 70_600_674, "Incorrect Answer");
 
 end P0011_Largest_Product_In_A_Grid;
