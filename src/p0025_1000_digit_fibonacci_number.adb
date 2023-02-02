@@ -13,7 +13,7 @@
 --  1000-digit Fibonacci number
 --  ---------------------------
 --
--- The Fibonacci sequence is defined by the recurrence relation:
+--  The Fibonacci sequence is defined by the recurrence relation:
 --
 --                 Fn = Fn−1 + Fn−2, where F1 = 1 and F2 = 1.
 --
@@ -39,9 +39,13 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO; use Ada.Text_IO;
-
+with Ada.Text_IO;
+with Ada.Strings.Fixed;
 with Ada.Numerics.Big_Numbers.Big_Integers;
+
+use Ada.Text_IO;
+use Ada.Strings;
+use Ada.Strings.Fixed;
 use Ada.Numerics.Big_Numbers.Big_Integers;
 
 procedure P0025_1000_Digit_Fibonacci_Number is
@@ -57,9 +61,7 @@ begin
    loop
       Answer := @ + 1;
       Fn     := F1 + F2;
-      Put_Line
-        (Answer'Image & " :" & To_String (Fn)'Length'Image & " =" & Fn'Image);
-      exit when To_String (Fn)'Length >= 1001;
+      exit when Trim (To_String (Fn), Both)'Length >= 1_000;
 
       F2 := F1;
       F1 := Fn;

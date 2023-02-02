@@ -31,8 +31,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO; use Ada.Text_IO;
-
+with Ada.Text_IO;    use Ada.Text_IO;
 with Euler_Calendar; use Euler_Calendar;
 
 procedure P0019_Counting_Sundays is

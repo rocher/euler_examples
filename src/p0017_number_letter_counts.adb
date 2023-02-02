@@ -27,8 +27,7 @@
 -------------------------------------------------------------------------------
 
 with Ada.Text_IO; use Ada.Text_IO;
-
-with Euler_Text; use Euler_Text;
+with Euler_Text;  use Euler_Text;
 
 procedure P0017_Number_Letter_Counts is
 

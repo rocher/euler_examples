@@ -135,4 +135,5 @@ begin
    end loop;
 
    Ada.Text_IO.Put_Line ("Answer: " & To_String (Answer) (2 .. 11));
+
 end P0013_Large_Sum;
