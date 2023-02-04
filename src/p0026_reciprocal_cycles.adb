@@ -35,14 +35,33 @@
 -------------------------------------------------------------------------------
 
 with Ada.Text_IO; use Ada.Text_IO;
+with Euler_Tools; use Euler_Tools;
 
 procedure P0026_Reciprocal_Cycles is
 
-   Answer : Natural := 42;
+   DDiv         : Decimal_Division_Type;
+   Decimals     : Natural;
+   Cycle_Length : Natural;
+   Max_Length   : Natural := 0;
+   Answer       : Natural;
 
 begin
 
-   --  Pending to implement Detailed_Division type and functions in
+   for N in 2 .. 999 loop
+      Decimals := 100;
+      loop
+         DDiv := Decimal_Division (1, N, Decimals);
+         exit when DDiv.Cycle > 0 or else DDiv.Remainders.Last_Element = 0;
+         Decimals := @ + 100;
+      end loop;
+
+      Cycle_Length := Length (DDiv.Decimals) + 1 - DDiv.Cycle;
+      if Cycle_Length > Max_Length then
+         Max_Length := Cycle_Length;
+         Answer     := N;
+      end if;
+   end loop;
+
    Put_Line ("Answer:" & Answer'Image);
 
 end P0026_Reciprocal_Cycles;

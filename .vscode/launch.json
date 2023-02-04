@@ -22,7 +22,7 @@
          "name": "Debug",
          "type": "gdb",
          "request": "launch",
-         "target": "${workspaceRoot}/bin/p0024_lexicographic_permutations",
+         "target": "${workspaceRoot}/bin/p0026_reciprocal_cycles",
          "cwd": "${workspaceRoot}",
          "valuesFormatting": "parseText",
          "preLaunchTask": "ada: Build current project"
