@@ -22,7 +22,7 @@
          "name": "Debug",
          "type": "gdb",
          "request": "launch",
-         "target": "${workspaceRoot}/bin/p0026_reciprocal_cycles",
+         "target": "${workspaceRoot}/bin/p0027_quadratic_primes",
          "cwd": "${workspaceRoot}",
          "valuesFormatting": "parseText",
          "preLaunchTask": "ada: Build current project"
