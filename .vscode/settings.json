@@ -3,5 +3,25 @@
    "ada.defaultCharset": "utf-8",
    "editor.formatOnSave": true,
    "editor.detectIndentation": false,
-   "rewrap.wrappingColumn": 77
+   "rewrap.wrappingColumn": 77,
+   "workbench.colorCustomizations": {
+      "activityBar.activeBackground": "#51533b",
+      "activityBar.background": "#51533b",
+      "activityBar.foreground": "#e7e7e7",
+      "activityBar.inactiveForeground": "#e7e7e799",
+      "activityBarBadge.background": "#1a2425",
+      "activityBarBadge.foreground": "#e7e7e7",
+      "commandCenter.border": "#e7e7e799",
+      "sash.hoverBorder": "#51533b",
+      "statusBar.background": "#343526",
+      "statusBar.foreground": "#e7e7e7",
+      "statusBarItem.hoverBackground": "#51533b",
+      "statusBarItem.remoteBackground": "#343526",
+      "statusBarItem.remoteForeground": "#e7e7e7",
+      "titleBar.activeBackground": "#343526",
+      "titleBar.activeForeground": "#e7e7e7",
+      "titleBar.inactiveBackground": "#34352699",
+      "titleBar.inactiveForeground": "#e7e7e799"
+   },
+   "peacock.color": "#343526"
 }
