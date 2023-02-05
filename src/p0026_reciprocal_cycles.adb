@@ -49,10 +49,11 @@ begin
 
    for N in 2 .. 999 loop
       Decimals := 100;
+      DDiv := Decimal_Division (1, N, Decimals);
       loop
-         DDiv := Decimal_Division (1, N, Decimals);
          exit when DDiv.Cycle > 0 or else DDiv.Remainders.Last_Element = 0;
          Decimals := @ + 100;
+         Decimal_Division_Increase (DDiv, Decimals);
       end loop;
 
       Cycle_Length := Length (DDiv.Decimals) + 1 - DDiv.Cycle;
