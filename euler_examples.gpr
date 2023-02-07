@@ -41,6 +41,7 @@ project Euler_Examples is
       ,"p0025_1000_digit_fibonacci_number.adb"
       ,"p0026_reciprocal_cycles.adb"
       ,"p0027_quadratic_primes.adb"
+      ,"p0028_number_spiral_diagonals.adb"
    );
 
    package Compiler is
