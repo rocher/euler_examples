@@ -43,6 +43,7 @@ project Euler_Examples is
       ,"p0027_quadratic_primes.adb"
       ,"p0028_number_spiral_diagonals.adb"
       ,"p0029_distinct_powers.adb"
+      ,"p0030_digit_fifth_powers.adb"
    );
 
    package Compiler is
