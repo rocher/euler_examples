@@ -42,6 +42,7 @@ project Euler_Examples is
       ,"p0026_reciprocal_cycles.adb"
       ,"p0027_quadratic_primes.adb"
       ,"p0028_number_spiral_diagonals.adb"
+      ,"p0029_distinct_powers.adb"
    );
 
    package Compiler is

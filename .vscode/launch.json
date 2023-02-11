@@ -22,7 +22,7 @@
          "name": "Debug",
          "type": "gdb",
          "request": "launch",
-         "target": "${workspaceRoot}/bin/p0027_quadratic_primes",
+         "target": "${workspaceRoot}/bin/p0029_distinct_powers",
          "cwd": "${workspaceRoot}",
          "valuesFormatting": "parseText",
          "preLaunchTask": "ada: Build current project"
