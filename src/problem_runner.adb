@@ -36,6 +36,15 @@ package body Problem_Runner is
       end if;
 
       Put_Line (Indent & "Answer: " & Problem.Get_Answer);
+
+      declare
+         Notes : constant String := Problem.Get_Notes;
+      begin
+         if Notes'Length > 0 then
+            Put_Line (Indent & "Note: " & Notes);
+         end if;
+      end;
+
    end Main;
 
 end Problem_Runner;

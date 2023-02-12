@@ -35,4 +35,6 @@ package P0001 is
      ("Find the sum of all the multiples of 3 or 5 below 1000.");
 
    overriding function Get_Answer (P : P0001_Type) return String;
+
+   overriding function Get_Notes (P : P0001_Type) return String is ("");
 end P0001;

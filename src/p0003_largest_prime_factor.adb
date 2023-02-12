@@ -4,37 +4,13 @@
 --  SPDX-License-Identifier: CC-BY-NC-SA-4.0
 --  https://creativecommons.org/licenses/by-nc-sa/4.0/
 --
---  ---------------------------------------------------------------------------
---
---  The following problem is taken from Project Euler:
---
---                 https://projecteuler.net/problem=3
---
---  Largest prime factor
---  --------------------
---
---  The prime factors of 13195 are 5, 7, 13 and 29.
-
---  What is the largest prime factor of the number 600851475143?
---
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;      use Ada.Text_IO;
-with Euler_Int2_Tools; use Euler_Int2_Tools;
+with P0003; use P0003;
+with Problem_Runner;
 
 procedure P0003_Largest_Prime_Factor is
-
-   Number : constant Integer_Type := 600_851_475_143;
-
-   Answer : Integer_Type := Square_Root (Number);
-
+   P0003 : P0003_Type;
 begin
-
-   loop
-      exit when Is_Divisor (Number, Answer) and then Is_Prime (Answer);
-      Answer := @ - 1;
-   end loop;
-
-   Put_Line ("Answer:" & Answer'Image);
-
+   Problem_Runner.Main (P0003);
 end P0003_Largest_Prime_Factor;

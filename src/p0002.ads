@@ -38,4 +38,6 @@ package P0002 is
      ("Find the sum of the even-valued Fibonacci terms lesser that 4 million.");
 
    overriding function Get_Answer (P : P0002_Type) return String;
+
+   overriding function Get_Notes (P : P0002_Type) return String is ("");
 end P0002;
