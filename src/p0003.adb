@@ -4,6 +4,19 @@
 --  SPDX-License-Identifier: CC-BY-NC-SA-4.0
 --  https://creativecommons.org/licenses/by-nc-sa/4.0/
 --
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
+--
+--                 https://projecteuler.net/problem=3
+--
+--  Largest prime factor
+--  --------------------
+--
+--  The prime factors of 13195 are 5, 7, 13 and 29.
+
+--  What is the largest prime factor of the number 600851475143?
+--
 -------------------------------------------------------------------------------
 
 with Euler_Int2_Tools; use Euler_Int2_Tools;

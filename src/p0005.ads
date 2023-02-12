@@ -4,6 +4,21 @@
 --  SPDX-License-Identifier: CC-BY-NC-SA-4.0
 --  https://creativecommons.org/licenses/by-nc-sa/4.0/
 --
+--  ---------------------------------------------------------------------------
+--
+--  The following problem is taken from Project Euler:
+--
+--                 https://projecteuler.net/problem=5
+--
+--  Smallest multiple
+--  -----------------
+--
+--  2520 is the smallest number that can be divided by each of the numbers
+--  from 1 to 10 without any remainder.
+--
+--  What is the smallest positive number that is evenly divisible by all of
+--  the numbers from 1 to 20?
+--
 -------------------------------------------------------------------------------
 
 with Problem_Interface; use Problem_Interface;
