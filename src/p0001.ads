@@ -26,13 +26,13 @@ package P0001 is
 
    type P0001_Type is new Problem_Type with null record;
 
-   overriding function Get_Number (S : P0001_Type) return Natural is (0);
+   overriding function Get_Number (P : P0001_Type) return Natural is (1);
 
-   overriding function Get_Title (S : P0001_Type) return String is
+   overriding function Get_Title (P : P0001_Type) return String is
      ("Multiples of 3 or 5");
 
-   overriding function Get_Brief (S : P0001_Type) return String is
+   overriding function Get_Brief (P : P0001_Type) return String is
      ("Find the sum of all the multiples of 3 or 5 below 1000.");
 
-   overriding function Get_Answer (S : P0001_Type) return String;
+   overriding function Get_Answer (P : P0001_Type) return String;
 end P0001;
