@@ -11,3 +11,7 @@ executables = ["euler_examples"]
 euler_tools = "~0.1.0-dev"
 [[pins]]
 euler_tools = { path='../euler_tools' }
+[[depends-on]]
+gnoga = "^2.1.2"
+[[depends-on]]
+ansiada = "^1.0.0"

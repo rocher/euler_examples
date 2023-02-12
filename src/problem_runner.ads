@@ -6,11 +6,10 @@
 --
 -------------------------------------------------------------------------------
 
-with P0001; use P0001;
-with Problem_Runner;
+with Problem_Interface; use Problem_Interface;
 
-procedure P0001_Multiples_Of_3_Or_5 is
-   P0001 : P0001_Type;
-begin
-   Problem_Runner.Main (P0001);
-end P0001_Multiples_Of_3_Or_5;
+package Problem_Runner is
+
+   procedure Main (Problem : Problem_Type'Class);
+
+end Problem_Runner;
