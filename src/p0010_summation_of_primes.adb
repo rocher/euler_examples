@@ -4,38 +4,13 @@
 --  SPDX-License-Identifier: CC-BY-NC-SA-4.0
 --  https://creativecommons.org/licenses/by-nc-sa/4.0/
 --
---  ---------------------------------------------------------------------------
---
---  The following problem is taken from Project Euler:
---
---                 https://projecteuler.net/problem=10
---
---  Summation of primes
---  -------------------
---
---  The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
---
---  Find the sum of all the primes below two million.
---
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO;      use Ada.Text_IO;
-with Euler_Int1_Tools; use Euler_Int1_Tools;
+with P0010; use P0010;
+with Problem_Runner;
 
 procedure P0010_Summation_Of_Primes is
-
-   Answer : Integer_Type := 0;
-   Prime  : Integer_Type := Prime_First;
-
+   P0010 : P0010_Type;
 begin
-
-   loop
-      Answer := @ + Prime;
-      Prime  := Prime_Next;
-
-      exit when Prime > 2_000_000;
-   end loop;
-
-   Put_Line ("Answer:" & Answer'Image);
-
+   Problem_Runner.Main (P0010);
 end P0010_Summation_Of_Primes;

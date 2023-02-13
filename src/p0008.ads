@@ -21,11 +21,22 @@
 --
 -------------------------------------------------------------------------------
 
-with P0008; use P0008;
-with Problem_Runner;
+with Problem_Interface; use Problem_Interface;
 
-procedure P0008_Largest_Product_In_A_Series is
-   P0008 : P0008_Type;
-begin
-   Problem_Runner.Main (P0008);
-end P0008_Largest_Product_In_A_Series;
+package P0008 is
+
+   type P0008_Type is new Problem_Type with null record;
+
+   overriding function Get_Number (P : P0008_Type) return Natural is (8);
+
+   overriding function Get_Title (P : P0008_Type) return String is
+     ("Largest product in a series");
+
+   overriding function Get_Brief (P : P0008_Type) return String is
+     ("Find the thirteen adjacent digits in the 1000-digit number that " &
+      "have the greatest product. What is the value of this product?");
+
+   overriding function Get_Answer (P : P0008_Type) return String;
+
+   overriding function Get_Notes (P : P0008_Type) return String is ("");
+end P0008;

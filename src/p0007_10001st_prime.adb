@@ -4,33 +4,13 @@
 --  SPDX-License-Identifier: CC-BY-NC-SA-4.0
 --  https://creativecommons.org/licenses/by-nc-sa/4.0/
 --
---  ---------------------------------------------------------------------------
---
---  The following problem is taken from Project Euler:
---
---                 https://projecteuler.net/problem=7
---
---  10001st prime
---  -------------
---
---  By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can
---  see that the 6th prime is 13.
---
---  What is the 10001st prime number?
---
 -------------------------------------------------------------------------------
 
-with Ada.Text_IO; use Ada.Text_IO;
-with Euler_Tools; use Euler_Tools;
+with P0007; use P0007;
+with Problem_Runner;
 
-procedure P0007_10001st_Prime is
-
-   Answer : Integer_Type;
-
+procedure P0007_10001st_prime is
+   P0007 : P0007_Type;
 begin
-
-   Answer := Prime_Nth (10_001);
-
-   Put_Line ("Answer:" & Answer'Image);
-
-end P0007_10001st_Prime;
+   Problem_Runner.Main (P0007);
+end P0007_10001st_prime;
