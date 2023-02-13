@@ -6,14 +6,40 @@
 --
 -------------------------------------------------------------------------------
 
+with Ada.Strings.Unbounded;
 with AnsiAda; use AnsiAda;
 with Text_IO; use Text_IO;
 
 package body Problem_Runner is
 
+   Indent    : constant String  := "   ";
+   Par_Width : constant Natural := 80;
+   Use_Ansi  : constant Boolean := False;
+
+   function Fill_Paragraph (Text : String) return String is
+      use Ada.Strings.Unbounded;
+      Head, Tail : Unbounded_String;
+      Cut        : Natural;
+   begin
+      if Text'Length > Par_Width then
+         Head := Null_Unbounded_String;
+         Tail := To_Unbounded_String (Text);
+         loop
+            Cut := Par_Width;
+            loop
+               exit when Tail.Element (Cut) = ' ';
+               Cut := Cut - 1;
+            end loop;
+            Head := Head & Tail.Unbounded_Slice (1, Cut - 1) & ASCII.LF;
+            Tail := Indent & Tail.Unbounded_Slice (Cut + 1, Tail.Length);
+            exit when Tail.Length <= Par_Width;
+         end loop;
+         return To_String (Head & Tail);
+      end if;
+      return Text;
+   end Fill_Paragraph;
+
    procedure Main (Problem : Problem_Type'Class) is
-      Indent   : constant String  := "   ";
-      Use_Ansi : constant Boolean := False;
    begin
       if Use_Ansi then
          Put_Line
@@ -30,9 +56,9 @@ package body Problem_Runner is
 
       Put (Indent);
       if Use_Ansi then
-         Put_Line (Style_Wrap (Problem.Get_Brief, Underline));
+         Put_Line (Style_Wrap (Fill_Paragraph (Problem.Get_Brief), Underline));
       else
-         Put_Line (Problem.Get_Brief);
+         Put_Line (Fill_Paragraph (Problem.Get_Brief));
       end if;
 
       Put_Line (Indent & "Answer: " & Problem.Get_Answer);
