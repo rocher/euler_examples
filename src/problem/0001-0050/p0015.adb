@@ -23,11 +23,16 @@
 --
 -------------------------------------------------------------------------------
 
-with P0015; use P0015;
-with Problem_Runner;
+with Euler_Int3_Tools; use Euler_Int3_Tools;
 
-procedure P0015_Lattice_Paths is
-   P0015 : P0015_Type;
-begin
-   Problem_Runner.Main (P0015);
-end P0015_Lattice_Paths;
+package body P0015 is
+
+   overriding function Get_Answer (P : P0015_Type) return String is
+      Answer : Integer_Type;
+   begin
+      Answer := Combination (40, 20);
+
+      return To_String (Answer);
+   end Get_Answer;
+
+end P0015;
