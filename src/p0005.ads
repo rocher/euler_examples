@@ -33,7 +33,8 @@ package P0005 is
      ("Smallest multiple");
 
    overriding function Get_Brief (P : P0005_Type) return String is
-     ("Find the smallest positive number evenly divisible by 1..20.");
+     ("What is the smallest positive number that is evenly divisible by " &
+      "all of the numbers from 1 to 20?");
 
    overriding function Get_Answer (P : P0005_Type) return String;
 

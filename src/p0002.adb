@@ -27,7 +27,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0002 is
 
-   function Get_Answer (P : P0002_Type) return String is
+   overriding function Get_Answer (P : P0002_Type) return String is
       Number : Integer_Type := Fibonacci_Start;
       Answer : Integer_Type := 0;
    begin

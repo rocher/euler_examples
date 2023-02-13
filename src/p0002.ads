@@ -35,7 +35,8 @@ package P0002 is
      ("Even Fibonacci numbers");
 
    overriding function Get_Brief (P : P0002_Type) return String is
-     ("Find the sum of the even-valued Fibonacci terms lesser that 4 million.");
+     ("By considering the terms in the Fibonacci sequence whose values do " &
+      "not exceed four million, find the sum of the even-valued terms.");
 
    overriding function Get_Answer (P : P0002_Type) return String;
 
