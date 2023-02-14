@@ -20,21 +20,18 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Euler_Tools; use Euler_Tools;
 
-package P0001 is
+package body P0001_Multiples_Of_3_Or_5 is
 
-   type P0001_Type is new Problem_Type with null record;
+   overriding function Get_Answer (P : P0001_Type) return String is
+      Answer : Integer_Type;
+   begin
+      Answer :=
+        Sum_Multiples (3, 1_000) + Sum_Multiples (5, 1_000) -
+        Sum_Multiples (15, 1_000);
 
-   overriding function Get_Number (P : P0001_Type) return Natural is (1);
+      return To_String (Answer);
+   end Get_Answer;
 
-   overriding function Get_Title (P : P0001_Type) return String is
-     ("Multiples of 3 or 5");
-
-   overriding function Get_Brief (P : P0001_Type) return String is
-     ("Find the sum of all the multiples of 3 or 5 below 1000.");
-
-   overriding function Get_Answer (P : P0001_Type) return String;
-
-   overriding function Get_Notes (P : P0001_Type) return String is ("");
-end P0001;
+end P0001_Multiples_Of_3_Or_5;

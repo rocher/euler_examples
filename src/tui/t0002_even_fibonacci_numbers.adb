@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0002; use P0002;
+with P0002_Even_Fibonacci_Numbers;
 with TUI_Runner;
 
 procedure T0002_Even_Fibonacci_Numbers is
-   P0002 : P0002_Type;
+   P0002 : P0002_Even_Fibonacci_Numbers.P0002_Type;
 begin
    TUI_Runner.Main (P0002);
 end T0002_Even_Fibonacci_Numbers;

@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0001; use P0001;
+with P0001_Multiples_Of_3_Or_5;
 with TUI_Runner;
 
 procedure T0001_Multiples_Of_3_Or_5 is
-   P0001 : P0001_Type;
+   P0001 : P0001_Multiples_Of_3_Or_5.P0001_Type;
 begin
    TUI_Runner.Main (P0001);
 end T0001_Multiples_Of_3_Or_5;

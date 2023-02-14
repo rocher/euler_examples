@@ -23,22 +23,24 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Euler_Tools; use Euler_Tools;
 
-package P0002 is
+package body P0002_Even_Fibonacci_Numbers is
 
-   type P0002_Type is new Problem_Type with null record;
+   overriding function Get_Answer (P : P0002_Type) return String is
+      Number : Integer_Type := Fibonacci_Start;
+      Answer : Integer_Type := 0;
+   begin
 
-   overriding function Get_Number (P : P0002_Type) return Natural is (2);
+      loop
+         if Is_Even (Number) then
+            Answer := @ + Number;
+         end if;
+         Number := Fibonacci_Next;
+         exit when Number > 4_000_000;
+      end loop;
 
-   overriding function Get_Title (P : P0002_Type) return String is
-     ("Even Fibonacci numbers");
+      return To_String (Answer);
+   end Get_Answer;
 
-   overriding function Get_Brief (P : P0002_Type) return String is
-     ("By considering the terms in the Fibonacci sequence whose values do " &
-      "not exceed four million, find the sum of the even-valued terms.");
-
-   overriding function Get_Answer (P : P0002_Type) return String;
-
-   overriding function Get_Notes (P : P0002_Type) return String is ("");
-end P0002;
+end P0002_Even_Fibonacci_Numbers;
