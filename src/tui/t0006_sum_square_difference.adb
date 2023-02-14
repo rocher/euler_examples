@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0006; use P0006;
+with P0006_Sum_Square_Difference;
 with TUI_Runner;
 
 procedure T0006_Sum_Square_Difference is
-   P0006 : P0006_Type;
+   P0006 : P0006_Sum_Square_Difference.P0006_Type;
 begin
    TUI_Runner.Main (P0006);
 end T0006_Sum_Square_Difference;

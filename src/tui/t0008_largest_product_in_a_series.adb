@@ -21,11 +21,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0008; use P0008;
+with P0008_Largest_Product_In_A_Series;
 with TUI_Runner;
 
 procedure T0008_Largest_Product_In_A_Series is
-   P0008 : P0008_Type;
+   P0008 : P0008_Largest_Product_In_A_Series.P0008_Type;
 begin
    TUI_Runner.Main (P0008);
 end T0008_Largest_Product_In_A_Series;

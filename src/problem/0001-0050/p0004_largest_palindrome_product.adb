@@ -20,22 +20,32 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Euler_Tools; use Euler_Tools;
 
-package P0004 is
+package body P0004_Largest_Palindrome_Product is
 
-   type P0004_Type is new Problem_Type with null record;
+   N1 : Integer_Type := 999;
+   N2 : Integer_Type := 999;
 
-   overriding function Get_Number (P : P0004_Type) return Natural is (4);
+   overriding function Get_Answer (P : P0004_Type) return String is
+      Answer : Integer_Type := 0;
+   begin
 
-   overriding function Get_Title (P : P0004_Type) return String is
-     ("Largest palindrome product");
+      loop
+         Answer := N1 * N2;
+         exit when Is_Palindrome (Answer);
 
-   overriding function Get_Brief (P : P0004_Type) return String is
-     ("Find the largest palindrome made from the product of two " &
-      "3-digit numbers.");
+         N1 := N1 - 1;
+         if N1 = 900 then  --  ! Intuition: N1 > 900, N2 > 900
+            N2 := N2 - 1;
+            N1 := N2;
+         end if;
+      end loop;
 
-   overriding function Get_Answer (P : P0004_Type) return String;
+      return To_String (Answer);
+   end Get_Answer;
 
-   overriding function Get_Notes (P : P0004_Type) return String;
-end P0004;
+   overriding function Get_Notes (P : P0004_Type) return String is
+     ("The two 3-digit numbers are" & N1'Image & " and" & N2'Image);
+
+end P0004_Largest_Palindrome_Product;

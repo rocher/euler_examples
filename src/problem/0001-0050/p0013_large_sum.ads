@@ -20,7 +20,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0013 is
+package P0013_Large_Sum is
 
    type P0013_Type is new Problem_Type with null record;
 
@@ -37,4 +37,4 @@ package P0013 is
 
    overriding function Get_Notes (P : P0013_Type) return String is
      ("List of numbers attached in the problem description.");
-end P0013;
+end P0013_Large_Sum;

@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0003; use P0003;
+with P0003_Largest_Prime_Factor;
 with TUI_Runner;
 
 procedure T0003_Largest_Prime_Factor is
-   P0003 : P0003_Type;
+   P0003 : P0003_Largest_Prime_Factor.P0003_Type;
 begin
    TUI_Runner.Main (P0003);
 end T0003_Largest_Prime_Factor;

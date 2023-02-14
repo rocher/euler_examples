@@ -27,7 +27,7 @@
 
 with Euler_Tools; use Euler_Tools;
 
-package body P0009 is
+package body P0009_Special_Pythagorean_Triplet is
 
    A, B : Natural;
 
@@ -60,4 +60,4 @@ package body P0009 is
      ("Pythagorean triplet: a =" & A'Image & ", b =" & B'Image & ", c =" &
       Natural'Image (1_000 - A - B));
 
-end P0009;
+end P0009_Special_Pythagorean_Triplet;

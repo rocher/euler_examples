@@ -35,42 +35,22 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int1_Tools; use Euler_Int1_Tools;
+with Problem_Interface; use Problem_Interface;
 
-package body P0014 is
+package P0014_Longest_Collatz_Sequence is
 
-   Max_Length : Integer_Type := 0;
+   type P0014_Type is new Problem_Type with null record;
 
-   overriding function Get_Answer (P : P0014_Type) return String is
-      Start  : Integer_Type := 999_999;
-      Number : Integer_Type := 0;
-      Length : Integer_Type := 0;
-      Answer : Integer_Type := 0;
-   begin
+   overriding function Get_Number (P : P0014_Type) return Natural is (14);
 
-      loop
-         Number := Collatz_First (Start);
-         Length := 1;
+   overriding function Get_Title (P : P0014_Type) return String is
+     ("Longest Collatz sequence");
 
-         loop
-            Number := Collatz_Next;
-            Length := @ + 1;
-            exit when Number = 1;
-         end loop;
+   overriding function Get_Brief (P : P0014_Type) return String is
+     ("Which starting number, under one million, produces the longest " &
+      "[Collatz] chain?");
 
-         if Length > Max_Length then
-            Max_Length := Length;
-            Answer     := Start;
-         end if;
+   overriding function Get_Answer (P : P0014_Type) return String;
 
-         exit when Start = 99_999;  --  ! Intuition: Start >= 99_999
-         Start := Start - 1;
-      end loop;
-
-      return To_String (Answer);
-   end Get_Answer;
-
-   overriding function Get_Notes (P : P0014_Type) return String is
-     ("The chain contains" & Max_Length'Image & " numbers.");
-
-end P0014;
+   overriding function Get_Notes (P : P0014_Type) return String;
+end P0014_Longest_Collatz_Sequence;

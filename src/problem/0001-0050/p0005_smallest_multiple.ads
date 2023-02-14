@@ -23,7 +23,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0005 is
+package P0005_Smallest_Multiple is
 
    type P0005_Type is new Problem_Type with null record;
 
@@ -39,4 +39,4 @@ package P0005 is
    overriding function Get_Answer (P : P0005_Type) return String;
 
    overriding function Get_Notes (P : P0005_Type) return String is ("");
-end P0005;
+end P0005_Smallest_Multiple;

@@ -39,7 +39,7 @@
 
 with Euler_Tools; use Euler_Tools;
 
-package body P0012 is
+package body P0012_Highly_Divisible_Triangular_Number is
 
    Divisors : Set_Type;
 
@@ -63,4 +63,4 @@ package body P0012 is
    overriding function Get_Notes (P : P0012_Type) return String is
      ("It has" & Natural'Image (Length (Divisors)) & " divisors.");
 
-end P0012;
+end P0012_Highly_Divisible_Triangular_Number;

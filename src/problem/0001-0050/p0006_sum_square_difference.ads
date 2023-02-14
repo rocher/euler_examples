@@ -31,7 +31,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0006 is
+package P0006_Sum_Square_Difference is
 
    type P0006_Type is new Problem_Type with null record;
 
@@ -47,4 +47,4 @@ package P0006 is
    overriding function Get_Answer (P : P0006_Type) return String;
 
    overriding function Get_Notes (P : P0006_Type) return String is ("");
-end P0006;
+end P0006_Sum_Square_Difference;

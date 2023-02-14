@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0013; use P0013;
+with P0013_Large_Sum;
 with TUI_Runner;
 
 procedure T0013_Large_Sum is
-   P0013 : P0013_Type;
+   P0013 : P0013_Large_Sum.P0013_Type;
 begin
    TUI_Runner.Main (P0013);
 end T0013_Large_Sum;

@@ -23,7 +23,7 @@
 
 with Euler_Tools; use Euler_Tools;
 
-package body P0005 is
+package body P0005_Smallest_Multiple is
 
    overriding function Get_Answer (P : P0005_Type) return String is
       Answer       : Integer_Type := 2 * 3 * 5 * 7 * 11 * 13 * 17 * 19 * 20;
@@ -49,4 +49,4 @@ package body P0005 is
       return To_String (Answer);
    end Get_Answer;
 
-end P0005;
+end P0005_Smallest_Multiple;

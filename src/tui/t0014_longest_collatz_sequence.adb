@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0014; use P0014;
+with P0014_Longest_Collatz_Sequence;
 with TUI_Runner;
 
 procedure T0014_Longest_Collatz_Sequence is
-   P0014 : P0014_Type;
+   P0014 : P0014_Longest_Collatz_Sequence.P0014_Type;
 begin
    TUI_Runner.Main (P0014);
 end T0014_Longest_Collatz_Sequence;

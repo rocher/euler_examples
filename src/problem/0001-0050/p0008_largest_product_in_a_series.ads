@@ -23,7 +23,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0008 is
+package P0008_Largest_Product_In_A_Series is
 
    type P0008_Type is new Problem_Type with null record;
 
@@ -39,4 +39,4 @@ package P0008 is
    overriding function Get_Answer (P : P0008_Type) return String;
 
    overriding function Get_Notes (P : P0008_Type) return String is ("");
-end P0008;
+end P0008_Largest_Product_In_A_Series;

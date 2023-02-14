@@ -23,7 +23,7 @@ use Ada.Numerics.Big_Numbers.Big_Integers;
 
 with Euler_Tools; use Euler_Tools;
 
-package body P0013 is
+package body P0013_Large_Sum is
 
    overriding function Get_Answer (P : P0013_Type) return String is
       Numbers : constant array (1 .. 100) of Big_Natural :=
@@ -137,4 +137,4 @@ package body P0013 is
       return To_String (Answer);
    end Get_Answer;
 
-end P0013;
+end P0013_Large_Sum;

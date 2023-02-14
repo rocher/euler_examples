@@ -22,7 +22,7 @@
 
 with Euler_Tools; use Euler_Tools;
 
-package body P0007 is
+package body P0007_10001st_prime is
 
    overriding function Get_Answer (P : P0007_Type) return String is
       Answer : Integer_Type;
@@ -33,4 +33,4 @@ package body P0007 is
       return To_String (Answer);
    end Get_Answer;
 
-end P0007;
+end P0007_10001st_prime;

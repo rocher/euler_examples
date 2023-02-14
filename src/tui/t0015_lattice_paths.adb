@@ -23,11 +23,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0015; use P0015;
+with P0015_Lattice_Paths;
 with TUI_Runner;
 
 procedure T0015_Lattice_Paths is
-   P0015 : P0015_Type;
+   P0015 : P0015_Lattice_Paths.P0015_Type;
 begin
    TUI_Runner.Main (P0015);
 end T0015_Lattice_Paths;

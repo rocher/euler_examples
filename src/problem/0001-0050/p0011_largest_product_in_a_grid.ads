@@ -47,7 +47,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0011 is
+package P0011_Largest_Product_In_A_Grid is
 
    type P0011_Type is new Problem_Type with null record;
 
@@ -64,4 +64,4 @@ package P0011 is
 
    overriding function Get_Notes (P : P0011_Type) return String is
      ("Grid attached in the problem description.");
-end P0011;
+end P0011_Largest_Product_In_A_Grid;

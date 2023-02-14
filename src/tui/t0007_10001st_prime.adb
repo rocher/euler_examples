@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0007; use P0007;
+with P0007_10001st_prime;
 with TUI_Runner;
 
 procedure T0007_10001st_prime is
-   P0007 : P0007_Type;
+   P0007 : P0007_10001st_prime.P0007_Type;
 begin
    TUI_Runner.Main (P0007);
 end T0007_10001st_prime;

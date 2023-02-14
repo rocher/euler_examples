@@ -27,7 +27,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0009 is
+package P0009_Special_Pythagorean_Triplet is
 
    type P0009_Type is new Problem_Type with null record;
 
@@ -43,4 +43,4 @@ package P0009 is
    overriding function Get_Answer (P : P0009_Type) return String;
 
    overriding function Get_Notes (P : P0009_Type) return String;
-end P0009;
+end P0009_Special_Pythagorean_Triplet;

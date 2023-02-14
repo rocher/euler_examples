@@ -23,7 +23,7 @@
 
 with Euler_Int1_Tools; use Euler_Int1_Tools;
 
-package body P0008 is
+package body P0008_Largest_Product_In_A_Series is
 
    overriding function Get_Answer (P : P0008_Type) return String is
       Series  : constant String :=
@@ -58,4 +58,4 @@ package body P0008 is
       return To_String (Answer);
    end Get_Answer;
 
-end P0008;
+end P0008_Largest_Product_In_A_Series;

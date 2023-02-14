@@ -39,7 +39,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0012 is
+package P0012_Highly_Divisible_Triangular_Number is
 
    type P0012_Type is new Problem_Type with null record;
 
@@ -55,4 +55,4 @@ package P0012 is
    overriding function Get_Answer (P : P0012_Type) return String;
 
    overriding function Get_Notes (P : P0012_Type) return String;
-end P0012;
+end P0012_Highly_Divisible_Triangular_Number;

@@ -21,7 +21,7 @@
 
 with Euler_Int1_Tools; use Euler_Int1_Tools;
 
-package body P0010 is
+package body P0010_Summation_Of_Primes is
 
    overriding function Get_Answer (P : P0010_Type) return String is
       Answer : Integer_Type := 0;
@@ -38,4 +38,4 @@ package body P0010 is
       return To_String (Answer);
    end Get_Answer;
 
-end P0010;
+end P0010_Summation_Of_Primes;

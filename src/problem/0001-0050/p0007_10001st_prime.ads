@@ -22,7 +22,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0007 is
+package P0007_10001st_prime is
 
    type P0007_Type is new Problem_Type with null record;
 
@@ -37,4 +37,4 @@ package P0007 is
    overriding function Get_Answer (P : P0007_Type) return String;
 
    overriding function Get_Notes (P : P0007_Type) return String is ("");
-end P0007;
+end P0007_10001st_prime;

@@ -21,7 +21,7 @@
 
 with Problem_Interface; use Problem_Interface;
 
-package P0010 is
+package P0010_Summation_Of_Primes is
 
    type P0010_Type is new Problem_Type with null record;
 
@@ -36,4 +36,4 @@ package P0010 is
    overriding function Get_Answer (P : P0010_Type) return String;
 
    overriding function Get_Notes (P : P0010_Type) return String is ("");
-end P0010;
+end P0010_Summation_Of_Primes;

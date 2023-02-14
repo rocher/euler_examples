@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0005; use P0005;
+with P0005_Smallest_Multiple;
 with TUI_Runner;
 
 procedure T0005_Smallest_Multiple is
-   P0005 : P0005_Type;
+   P0005 : P0005_Smallest_Multiple.P0005_Type;
 begin
    TUI_Runner.Main (P0005);
 end T0005_Smallest_Multiple;

@@ -19,21 +19,21 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int2_Tools; use Euler_Int2_Tools;
+with Problem_Interface; use Problem_Interface;
 
-package body P0003 is
+package P0003_Largest_Prime_Factor is
 
-   overriding function Get_Answer (P : P0003_Type) return String is
-      Number : constant Integer_Type := 600_851_475_143;
-      Answer : Integer_Type          := Square_Root (Number);
-   begin
+   type P0003_Type is new Problem_Type with null record;
 
-      loop
-         exit when Is_Divisor (Number, Answer) and then Is_Prime (Answer);
-         Answer := @ - 1;
-      end loop;
+   overriding function Get_Number (P : P0003_Type) return Natural is (3);
 
-      return To_String (Answer);
-   end Get_Answer;
+   overriding function Get_Title (P : P0003_Type) return String is
+     ("Largest primer factor");
 
-end P0003;
+   overriding function Get_Brief (P : P0003_Type) return String is
+     ("What is the largest prime factor of the number 600851475143?");
+
+   overriding function Get_Answer (P : P0003_Type) return String;
+
+   overriding function Get_Notes (P : P0003_Type) return String is ("");
+end P0003_Largest_Prime_Factor;

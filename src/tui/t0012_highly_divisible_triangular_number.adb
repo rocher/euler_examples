@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0012; use P0012;
+with P0012_Highly_Divisible_Triangular_Number;
 with TUI_Runner;
 
 procedure T0012_Highly_Divisible_Triangular_Number is
-   P0012 : P0012_Type;
+   P0012 : P0012_Highly_Divisible_Triangular_Number.P0012_Type;
 begin
    TUI_Runner.Main (P0012);
 end T0012_Highly_Divisible_Triangular_Number;
