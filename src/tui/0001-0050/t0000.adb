@@ -6,11 +6,11 @@
 --
 -------------------------------------------------------------------------------
 
-with P0019_Counting_Sundays;
+with P00NUM_DESC;
 with TUI_Runner;
 
-procedure T0019_Counting_Sundays is
-   P0019 : P0019_Counting_Sundays.P0019_Type;
+procedure T00NUM_DESC is
+   P00NUM : P00NUM_DESC.P00NUM_Type;
 begin
-   TUI_Runner.Main (P0019);
-end T0019_Counting_Sundays;
+   TUI_Runner.Main (P00NUM);
+end T00NUM_DESC;
