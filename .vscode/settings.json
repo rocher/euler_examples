@@ -1,8 +1,9 @@
 {
-   "editor.tabSize": 3,
    "ada.defaultCharset": "utf-8",
-   "editor.formatOnSave": true,
+   "ada.projectFile": "euler_examples.gpr",
    "editor.detectIndentation": false,
+   "editor.formatOnSave": true,
+   "editor.tabSize": 3,
    "rewrap.wrappingColumn": 77,
    "workbench.colorCustomizations": {
       "activityBar.activeBackground": "#51533b",
