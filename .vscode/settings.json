@@ -24,5 +24,8 @@
       "titleBar.inactiveBackground": "#34352699",
       "titleBar.inactiveForeground": "#e7e7e799"
    },
-   "peacock.color": "#343526"
+   "peacock.color": "#343526",
+   "cSpell.words": [
+      "Gnoga"
+   ]
 }

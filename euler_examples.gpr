@@ -15,6 +15,7 @@ project Euler_Examples is
    for Exec_Dir use "bin";
    for Main use (
        "t0001_multiples_of_3_or_5"
+      ,"g0002_even_fibonacci_numbers.adb"
       ,"t0002_even_fibonacci_numbers.adb"
       ,"t0003_largest_prime_factor.adb"
       ,"t0004_largest_palindrome_product.adb"
