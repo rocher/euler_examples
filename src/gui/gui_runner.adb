@@ -25,16 +25,16 @@ package body GUI_Runner is
       App_Window : Gnoga.Gui.Window.Window_Type;
       App_View   : Gnoga.Gui.View.Console.Console_View_Type;
    begin
-      Gnoga.Application.Title ("App_Title");
+      Gnoga.Application.Title (UXS (Problem.Get_Title));
       Gnoga.Application.Singleton.Initialize (App_Window);
 
       App_View.Create (App_Window, "app-view");
       App_View.Put_HTML
         (UXS
-           ("<h1>Problem " & Problem.Get_Number'Image &
-            "</h1>"));
+           ("<h2>Problem " & Problem.Get_Number'Image &
+            "</h2>"));
       App_View.Put_HTML
-        (UXS ("<h2>" & Problem.Get_Title & "</h2>"));
+        (UXS ("<h1>" & Problem.Get_Title & "</h1>"));
       App_View.Put_HTML
         (UXS ("<i>" & Problem.Get_Brief & "</i>"));
       App_View.Put_HTML
