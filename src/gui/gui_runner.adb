@@ -14,8 +14,7 @@ with UXStrings;
 package body GUI_Runner is
 
    function UXS
-     (Item : UXStrings.ASCII_Character_Array)
-      return UXStrings.UXString renames
+     (Item : UXStrings.ASCII_Character_Array) return UXStrings.UXString renames
      UXStrings.From_ASCII;
 
    procedure Main (Problem : Graphic_Type'Class) is
@@ -30,16 +29,11 @@ package body GUI_Runner is
 
       App_View.Create (App_Window, "app-view");
       App_View.Put_HTML
-        (UXS
-           ("<h2>Problem " & Problem.Get_Number'Image &
-            "</h2>"));
+        (UXS ("<h2>Problem " & Problem.Get_Number'Image & "</h2>"));
+      App_View.Put_HTML (UXS ("<h1>" & Problem.Get_Title & "</h1>"));
+      App_View.Put_HTML (UXS ("<i>" & Problem.Get_Brief & "</i>"));
       App_View.Put_HTML
-        (UXS ("<h1>" & Problem.Get_Title & "</h1>"));
-      App_View.Put_HTML
-        (UXS ("<i>" & Problem.Get_Brief & "</i>"));
-      App_View.Put_HTML
-        (UXS
-           ("<pre>Answer: " & Problem.Get_Answer & "</pre>"));
+        (UXS ("<pre>Answer: " & Problem.Get_Answer & "</pre>"));
 
       Gnoga.Application.Singleton.End_Application;
    end Main;
