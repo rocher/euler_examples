@@ -23,12 +23,11 @@
 --
 -------------------------------------------------------------------------------
 
---  with Problem_Interface; use Problem_Interface;
 with Graphic_Interface; use Graphic_Interface;
 
 package P0002_Even_Fibonacci_Numbers is
 
-   type P0002_Type is new Graphic_Type with null record;
+   type P0002_Type is new Graphic_IFace with null record;
 
    overriding function Get_Number (P : P0002_Type) return Natural is (2);
 
@@ -41,7 +40,7 @@ package P0002_Even_Fibonacci_Numbers is
 
    overriding function Get_Answer (P : P0002_Type) return String;
 
-   overriding function Get_Notes (P : P0002_Type) return String is ("");
+   overriding function Get_Notes (P : P0002_Type) return String;
 
    overriding function Setup (P : P0002_Type) return Boolean is (True);
 

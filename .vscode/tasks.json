@@ -4,9 +4,9 @@
    "version": "2.0.0",
    "tasks": [
       {
-         "label": "alr: Build current project",
+         "label": "Euler Examples: Build all examples",
          "type": "shell",
-         "command": "alr build",
+         "command": "alr build --development",
          "group": {
             "kind": "build",
             "isDefault": true

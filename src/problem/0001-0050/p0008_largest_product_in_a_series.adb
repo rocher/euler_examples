@@ -21,7 +21,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int1_Tools; use Euler_Int1_Tools;
+with Euler_Tools_Int1; use Euler_Tools_Int1;
 
 package body P0008_Largest_Product_In_A_Series is
 

@@ -34,11 +34,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0026_Reciprocal_Cycles is
 
-   type P0026_Type is new Problem_Type with null record;
+   type P0026_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0026_Type) return Natural is (26);
 

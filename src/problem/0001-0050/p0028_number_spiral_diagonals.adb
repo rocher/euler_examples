@@ -29,7 +29,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int2_Tools; use Euler_Int2_Tools;
+with Euler_Tools_Int2; use Euler_Tools_Int2;
 
 package body P0028_Number_Spiral_Diagonals is
 

@@ -22,7 +22,7 @@
          "name": "Debug",
          "type": "gdb",
          "request": "launch",
-         "target": "${workspaceRoot}/bin/p0029_distinct_powers",
+         "target": "${workspaceRoot}/bin/g0002_even_fibonacci_numbers",
          "cwd": "${workspaceRoot}",
          "valuesFormatting": "parseText",
          "preLaunchTask": "ada: Build current project"

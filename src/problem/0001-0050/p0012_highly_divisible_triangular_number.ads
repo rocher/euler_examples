@@ -37,11 +37,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0012_Highly_Divisible_Triangular_Number is
 
-   type P0012_Type is new Problem_Type with null record;
+   type P0012_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0012_Type) return Natural is (12);
 

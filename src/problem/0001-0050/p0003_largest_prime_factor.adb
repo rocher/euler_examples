@@ -19,7 +19,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int2_Tools; use Euler_Int2_Tools;
+with Euler_Tools_Int2; use Euler_Tools_Int2;
 
 package body P0003_Largest_Prime_Factor is
 

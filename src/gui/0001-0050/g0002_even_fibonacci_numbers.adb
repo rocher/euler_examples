@@ -12,5 +12,5 @@ with GUI_Runner;
 procedure G0002_Even_Fibonacci_Numbers is
    P0002 : P0002_Even_Fibonacci_Numbers.P0002_Type;
 begin
-   GUI_Runner.Main (P0002);
+   GUI_Runner.Main (P0002'Unrestricted_Access);
 end G0002_Even_Fibonacci_Numbers;

@@ -39,7 +39,7 @@ package body TUI_Runner is
       return Text;
    end Fill_Paragraph;
 
-   procedure Main (Problem : Problem_Type'Class) is
+   procedure Main (Problem : Text_IFace'Class) is
    begin
       if Use_Ansi then
          Put_Line

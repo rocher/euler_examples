@@ -25,11 +25,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0009_Special_Pythagorean_Triplet is
 
-   type P0009_Type is new Problem_Type with null record;
+   type P0009_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0009_Type) return Natural is (9);
 

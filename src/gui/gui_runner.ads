@@ -10,6 +10,8 @@ with Graphic_Interface; use Graphic_Interface;
 
 package GUI_Runner is
 
-   procedure Main (Problem : Graphic_Type'Class);
+   type Graphic_Class_Access is access all Graphic_IFace'Class;
+
+   procedure Main (A_Problem : Graphic_Class_Access);
 
 end GUI_Runner;

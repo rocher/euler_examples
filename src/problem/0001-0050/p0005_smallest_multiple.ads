@@ -21,11 +21,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0005_Smallest_Multiple is
 
-   type P0005_Type is new Problem_Type with null record;
+   type P0005_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0005_Type) return Natural is (5);
 

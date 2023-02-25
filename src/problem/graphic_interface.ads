@@ -6,13 +6,13 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package Graphic_Interface is
 
-   type Graphic_Type is interface and Problem_Type;
+   type Graphic_IFace is interface and Text_IFace;
 
-   function Setup (G : Graphic_Type) return Boolean is abstract;
-   function Update (G : Graphic_Type) return Boolean is abstract;
+   function Setup (G : Graphic_IFace) return Boolean is abstract;
+   function Update (G : Graphic_IFace) return Boolean is abstract;
 
 end Graphic_Interface;

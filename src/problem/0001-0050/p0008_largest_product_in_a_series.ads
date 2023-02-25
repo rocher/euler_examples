@@ -21,11 +21,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0008_Largest_Product_In_A_Series is
 
-   type P0008_Type is new Problem_Type with null record;
+   type P0008_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0008_Type) return Natural is (8);
 

@@ -23,7 +23,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int3_Tools; use Euler_Int3_Tools;
+with Euler_Tools_Int3; use Euler_Tools_Int3;
 
 package body P0015_Lattice_Paths is
 

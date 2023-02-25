@@ -27,6 +27,8 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0002_Even_Fibonacci_Numbers is
 
+   Number_Counter : Natural := 0;
+
    overriding function Get_Answer (P : P0002_Type) return String is
       Number : Integer_Type := Fibonacci_Start;
       Answer : Integer_Type := 0;
@@ -34,7 +36,8 @@ package body P0002_Even_Fibonacci_Numbers is
 
       loop
          if Is_Even (Number) then
-            Answer := @ + Number;
+            Answer         := @ + Number;
+            Number_Counter := @ + 1;
          end if;
          Number := Fibonacci_Next;
          exit when Number > 4_000_000;
@@ -42,5 +45,9 @@ package body P0002_Even_Fibonacci_Numbers is
 
       return To_String (Answer);
    end Get_Answer;
+
+   overriding function Get_Notes (P : P0002_Type) return String is
+     ("There are" & Number_Counter'Image &
+      " even Fibonacci numbers < 4000000");
 
 end P0002_Even_Fibonacci_Numbers;

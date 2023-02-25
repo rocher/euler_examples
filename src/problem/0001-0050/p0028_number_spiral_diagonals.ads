@@ -29,11 +29,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0028_Number_Spiral_Diagonals is
 
-   type P0028_Type is new Problem_Type with null record;
+   type P0028_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0028_Type) return Natural is (28);
 

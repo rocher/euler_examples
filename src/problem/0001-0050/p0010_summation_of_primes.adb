@@ -19,7 +19,7 @@
 --
 -------------------------------------------------------------------------------
 
-with Euler_Int1_Tools; use Euler_Int1_Tools;
+with Euler_Tools_Int1; use Euler_Tools_Int1;
 
 package body P0010_Summation_Of_Primes is
 

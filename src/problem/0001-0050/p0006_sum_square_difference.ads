@@ -29,11 +29,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0006_Sum_Square_Difference is
 
-   type P0006_Type is new Problem_Type with null record;
+   type P0006_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0006_Type) return Natural is (6);
 

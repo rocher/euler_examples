@@ -34,11 +34,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Problem_Interface; use Problem_Interface;
+with Text_Interface; use Text_Interface;
 
 package P0023_Non_Abundant_Sums is
 
-   type P0023_Type is new Problem_Type with null record;
+   type P0023_Type is new Text_IFace with null record;
 
    overriding function Get_Number (P : P0023_Type) return Natural is (23);
 
