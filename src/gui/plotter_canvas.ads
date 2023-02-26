@@ -15,7 +15,7 @@ package Plotter_Canvas is
 
    type Plotter_Canvas_Type is limited new Plotter_IFace with private;
 
-   type Canvas_Name is (Back, Draw, Info);
+   type Canvas_Name is (Back, Draw, Top);
 
    function Setup
      (P    : in out Plotter_Canvas_Type;

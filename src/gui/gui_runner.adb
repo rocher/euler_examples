@@ -147,9 +147,9 @@ package body GUI_Runner is
       Context.Move_To (Mouse_Event.X, Mouse_Event.Y);
       --  We set the first point on the path with out drawing.
 
-      App.Plotter.Canvas (Info).On_Mouse_Move_Handler
+      App.Plotter.Canvas (Top).On_Mouse_Move_Handler
         (Mouse_Move'Unrestricted_Access);
-      App.Plotter.Canvas (Info).On_Mouse_Up_Handler
+      App.Plotter.Canvas (Top).On_Mouse_Up_Handler
         (Mouse_Up'Unrestricted_Access);
       --  As you can see it is possible to add or remove event handlers at any
       --  time.
@@ -199,8 +199,8 @@ package body GUI_Runner is
       --  We draw up to the last point and then remove the handlers that
       --  perform drawing.
 
-      App.Plotter.Canvas (Info).On_Mouse_Move_Handler (null);
-      App.Plotter.Canvas (Info).On_Mouse_Up_Handler (null);
+      App.Plotter.Canvas (Top).On_Mouse_Move_Handler (null);
+      App.Plotter.Canvas (Top).On_Mouse_Up_Handler (null);
    end Mouse_Up;
 
    --------------
