@@ -32,7 +32,7 @@ package body P0021_Amicable_Numbers is
 
    Amicable_Counter : Natural := 0;
 
-   overriding function Get_Answer (P : P0021_Type) return String is
+   overriding function Answer (P : P0021_Type) return String is
       Answer : Integer_Type := 0;
    begin
 
@@ -46,9 +46,9 @@ package body P0021_Amicable_Numbers is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0021_Type) return String is
+   overriding function Notes (P : P0021_Type) return String is
      ("There are" & Amicable_Counter'Image & " amicable numbers < 1000.");
 
 end P0021_Amicable_Numbers;

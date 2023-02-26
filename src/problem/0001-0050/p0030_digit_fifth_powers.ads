@@ -35,16 +35,16 @@ package P0030_Digit_Fifth_Powers is
 
    type P0030_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0030_Type) return Natural is (30);
+   overriding function Number (P : P0030_Type) return Natural is (30);
 
-   overriding function Get_Title (P : P0030_Type) return String is
+   overriding function Title (P : P0030_Type) return String is
      ("Digit fifth powers");
 
-   overriding function Get_Brief (P : P0030_Type) return String is
+   overriding function Brief (P : P0030_Type) return String is
      ("Find the sum of all the numbers that can be written as the sum of " &
       "fifth powers of their digits.");
 
-   overriding function Get_Answer (P : P0030_Type) return String;
+   overriding function Answer (P : P0030_Type) return String;
 
-   overriding function Get_Notes (P : P0030_Type) return String;
+   overriding function Notes (P : P0030_Type) return String;
 end P0030_Digit_Fifth_Powers;

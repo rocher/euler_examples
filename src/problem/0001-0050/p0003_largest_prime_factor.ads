@@ -25,15 +25,15 @@ package P0003_Largest_Prime_Factor is
 
    type P0003_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0003_Type) return Natural is (3);
+   overriding function Number (P : P0003_Type) return Natural is (3);
 
-   overriding function Get_Title (P : P0003_Type) return String is
+   overriding function Title (P : P0003_Type) return String is
      ("Largest primer factor");
 
-   overriding function Get_Brief (P : P0003_Type) return String is
+   overriding function Brief (P : P0003_Type) return String is
      ("What is the largest prime factor of the number 600851475143?");
 
-   overriding function Get_Answer (P : P0003_Type) return String;
+   overriding function Answer (P : P0003_Type) return String;
 
-   overriding function Get_Notes (P : P0003_Type) return String is ("");
+   overriding function Notes (P : P0003_Type) return String is ("");
 end P0003_Largest_Prime_Factor;

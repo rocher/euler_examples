@@ -33,7 +33,7 @@ with Euler_Tools_Int1; use Euler_Tools_Int1;
 
 package body P0006_Sum_Square_Difference is
 
-   overriding function Get_Answer (P : P0006_Type) return String is
+   overriding function Answer (P : P0006_Type) return String is
       Σ_Of_Squares : constant Integer_Type := Sum_Squares (100);
       Square_Of_Σ  : constant Integer_Type := Sum_Sequence (100)**2;
       Answer       : Integer_Type;
@@ -42,6 +42,6 @@ package body P0006_Sum_Square_Difference is
       Answer := Square_Of_Σ - Σ_Of_Squares;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0006_Sum_Square_Difference;

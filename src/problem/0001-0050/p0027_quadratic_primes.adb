@@ -45,7 +45,7 @@ package body P0027_Quadratic_Primes is
    Coefficient_A, Coefficient_B : Integer_Type;
    Max_Sequence                 : Natural := 0;
 
-   overriding function Get_Answer (P : P0027_Type) return String is
+   overriding function Answer (P : P0027_Type) return String is
       A, B    : Integer_Type;
       N, Eval : Integer_Type;
       Answer  : Integer_Type;
@@ -90,9 +90,9 @@ package body P0027_Quadratic_Primes is
       end loop Over_B;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0027_Type) return String is
+   overriding function Notes (P : P0027_Type) return String is
      ("Coefficients a =" & Coefficient_A'Image & ", b =" &
       Coefficient_B'Image & " produce a sequence of" & Max_Sequence'Image &
       " primes.");

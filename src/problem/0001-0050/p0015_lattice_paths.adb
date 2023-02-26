@@ -27,12 +27,12 @@ with Euler_Tools_Int3; use Euler_Tools_Int3;
 
 package body P0015_Lattice_Paths is
 
-   overriding function Get_Answer (P : P0015_Type) return String is
+   overriding function Answer (P : P0015_Type) return String is
       Answer : Integer_Type;
    begin
       Answer := Combination (40, 20);
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0015_Lattice_Paths;

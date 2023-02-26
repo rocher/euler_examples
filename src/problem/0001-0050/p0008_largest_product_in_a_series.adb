@@ -25,7 +25,7 @@ with Euler_Tools_Int1; use Euler_Tools_Int1;
 
 package body P0008_Largest_Product_In_A_Series is
 
-   overriding function Get_Answer (P : P0008_Type) return String is
+   overriding function Answer (P : P0008_Type) return String is
       Series  : constant String :=
         "731671765313306249192251196744265747423553491949349698352031277450" &
         "632623957831801698480186947885184385861560789112949495459501737958" &
@@ -56,6 +56,6 @@ package body P0008_Largest_Product_In_A_Series is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0008_Largest_Product_In_A_Series;

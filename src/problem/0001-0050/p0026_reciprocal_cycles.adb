@@ -40,7 +40,7 @@ package body P0026_Reciprocal_Cycles is
 
    Max_Length : Natural := 0;
 
-   overriding function Get_Answer (P : P0026_Type) return String is
+   overriding function Answer (P : P0026_Type) return String is
       DDiv         : Decimal_Division_Type;
       Decimals     : Natural;
       Cycle_Length : Natural;
@@ -64,9 +64,9 @@ package body P0026_Reciprocal_Cycles is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0026_Type) return String is
+   overriding function Notes (P : P0026_Type) return String is
      ("It contains a recurring cycle of" & Max_Length'Image & " digits.");
 
 end P0026_Reciprocal_Cycles;

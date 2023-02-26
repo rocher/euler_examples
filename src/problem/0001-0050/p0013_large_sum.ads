@@ -24,17 +24,17 @@ package P0013_Large_Sum is
 
    type P0013_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0013_Type) return Natural is (13);
+   overriding function Number (P : P0013_Type) return Natural is (13);
 
-   overriding function Get_Title (P : P0013_Type) return String is
+   overriding function Title (P : P0013_Type) return String is
      ("Large sum");
 
-   overriding function Get_Brief (P : P0013_Type) return String is
+   overriding function Brief (P : P0013_Type) return String is
      ("Work out the first ten digits of the sum of the following " &
       "one-hundred 50-digit numbers.");
 
-   overriding function Get_Answer (P : P0013_Type) return String;
+   overriding function Answer (P : P0013_Type) return String;
 
-   overriding function Get_Notes (P : P0013_Type) return String is
+   overriding function Notes (P : P0013_Type) return String is
      ("List of numbers attached in the problem description.");
 end P0013_Large_Sum;

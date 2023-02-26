@@ -35,7 +35,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0029_Distinct_Powers is
 
-   overriding function Get_Answer (P : P0029_Type) return String is
+   overriding function Answer (P : P0029_Type) return String is
       use List_Package;
       Answer : Integer_Type := 99**2;
    begin
@@ -109,6 +109,6 @@ package body P0029_Distinct_Powers is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0029_Distinct_Powers;

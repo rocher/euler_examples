@@ -45,16 +45,16 @@ package P0025_1000_Digit_Fibonacci_Number is
 
    type P0025_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0025_Type) return Natural is (25);
+   overriding function Number (P : P0025_Type) return Natural is (25);
 
-   overriding function Get_Title (P : P0025_Type) return String is
+   overriding function Title (P : P0025_Type) return String is
      ("1000-digit Fibonacci number");
 
-   overriding function Get_Brief (P : P0025_Type) return String is
+   overriding function Brief (P : P0025_Type) return String is
      ("What is the index of the first term in the Fibonacci sequence to " &
       "contain 1000 digits?");
 
-   overriding function Get_Answer (P : P0025_Type) return String;
+   overriding function Answer (P : P0025_Type) return String;
 
-   overriding function Get_Notes (P : P0025_Type) return String is ("");
+   overriding function Notes (P : P0025_Type) return String is ("");
 end P0025_1000_Digit_Fibonacci_Number;

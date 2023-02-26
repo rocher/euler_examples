@@ -51,17 +51,17 @@ package P0011_Largest_Product_In_A_Grid is
 
    type P0011_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0011_Type) return Natural is (11);
+   overriding function Number (P : P0011_Type) return Natural is (11);
 
-   overriding function Get_Title (P : P0011_Type) return String is
+   overriding function Title (P : P0011_Type) return String is
      ("Largest product in a grid");
 
-   overriding function Get_Brief (P : P0011_Type) return String is
+   overriding function Brief (P : P0011_Type) return String is
      ("What is the greatest product of four adjacent numbers in the same " &
       "direction (up, down, left, right, or diagonally) in the 20×20 grid?");
 
-   overriding function Get_Answer (P : P0011_Type) return String;
+   overriding function Answer (P : P0011_Type) return String;
 
-   overriding function Get_Notes (P : P0011_Type) return String is
+   overriding function Notes (P : P0011_Type) return String is
      ("Grid attached in the problem description.");
 end P0011_Largest_Product_In_A_Grid;

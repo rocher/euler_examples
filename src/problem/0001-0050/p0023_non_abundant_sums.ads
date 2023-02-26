@@ -40,16 +40,16 @@ package P0023_Non_Abundant_Sums is
 
    type P0023_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0023_Type) return Natural is (23);
+   overriding function Number (P : P0023_Type) return Natural is (23);
 
-   overriding function Get_Title (P : P0023_Type) return String is
+   overriding function Title (P : P0023_Type) return String is
      ("Non-abundant sums");
 
-   overriding function Get_Brief (P : P0023_Type) return String is
+   overriding function Brief (P : P0023_Type) return String is
      ("Find the sum of all the positive integers which cannot be written " &
       "as the sum of two abundant numbers.");
 
-   overriding function Get_Answer (P : P0023_Type) return String;
+   overriding function Answer (P : P0023_Type) return String;
 
-   overriding function Get_Notes (P : P0023_Type) return String;
+   overriding function Notes (P : P0023_Type) return String;
 end P0023_Non_Abundant_Sums;

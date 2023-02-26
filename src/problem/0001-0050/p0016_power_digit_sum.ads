@@ -25,15 +25,15 @@ package P0016_Power_Digit_Sum is
 
    type P0016_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0016_Type) return Natural is (16);
+   overriding function Number (P : P0016_Type) return Natural is (16);
 
-   overriding function Get_Title (P : P0016_Type) return String is
+   overriding function Title (P : P0016_Type) return String is
      ("Power digit sum");
 
-   overriding function Get_Brief (P : P0016_Type) return String is
+   overriding function Brief (P : P0016_Type) return String is
      ("What is the sum of the digits of the number 2^1000?");
 
-   overriding function Get_Answer (P : P0016_Type) return String;
+   overriding function Answer (P : P0016_Type) return String;
 
-   overriding function Get_Notes (P : P0016_Type) return String is ("");
+   overriding function Notes (P : P0016_Type) return String is ("");
 end P0016_Power_Digit_Sum;

@@ -25,15 +25,15 @@ package P0010_Summation_Of_Primes is
 
    type P0010_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0010_Type) return Natural is (10);
+   overriding function Number (P : P0010_Type) return Natural is (10);
 
-   overriding function Get_Title (P : P0010_Type) return String is
+   overriding function Title (P : P0010_Type) return String is
      ("Sum of primes");
 
-   overriding function Get_Brief (P : P0010_Type) return String is
+   overriding function Brief (P : P0010_Type) return String is
      ("Find the sum of all the primes below two million.");
 
-   overriding function Get_Answer (P : P0010_Type) return String;
+   overriding function Answer (P : P0010_Type) return String;
 
-   overriding function Get_Notes (P : P0010_Type) return String is ("");
+   overriding function Notes (P : P0010_Type) return String is ("");
 end P0010_Summation_Of_Primes;

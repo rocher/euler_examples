@@ -26,15 +26,15 @@ package P0007_10001st_prime is
 
    type P0007_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0007_Type) return Natural is (7);
+   overriding function Number (P : P0007_Type) return Natural is (7);
 
-   overriding function Get_Title (P : P0007_Type) return String is
+   overriding function Title (P : P0007_Type) return String is
      ("10001st prime");
 
-   overriding function Get_Brief (P : P0007_Type) return String is
+   overriding function Brief (P : P0007_Type) return String is
      ("What is the 10001st prime number?");
 
-   overriding function Get_Answer (P : P0007_Type) return String;
+   overriding function Answer (P : P0007_Type) return String;
 
-   overriding function Get_Notes (P : P0007_Type) return String is ("");
+   overriding function Notes (P : P0007_Type) return String is ("");
 end P0007_10001st_prime;

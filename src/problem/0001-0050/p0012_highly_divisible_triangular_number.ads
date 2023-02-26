@@ -43,16 +43,16 @@ package P0012_Highly_Divisible_Triangular_Number is
 
    type P0012_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0012_Type) return Natural is (12);
+   overriding function Number (P : P0012_Type) return Natural is (12);
 
-   overriding function Get_Title (P : P0012_Type) return String is
+   overriding function Title (P : P0012_Type) return String is
      ("Highly divisible triangular number");
 
-   overriding function Get_Brief (P : P0012_Type) return String is
+   overriding function Brief (P : P0012_Type) return String is
      ("What is the value of the first triangle number to have over five " &
       "hundred divisors?");
 
-   overriding function Get_Answer (P : P0012_Type) return String;
+   overriding function Answer (P : P0012_Type) return String;
 
-   overriding function Get_Notes (P : P0012_Type) return String;
+   overriding function Notes (P : P0012_Type) return String;
 end P0012_Highly_Divisible_Triangular_Number;

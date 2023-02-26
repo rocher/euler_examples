@@ -32,15 +32,15 @@ package P0021_Amicable_Numbers is
 
    type P0021_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0021_Type) return Natural is (21);
+   overriding function Number (P : P0021_Type) return Natural is (21);
 
-   overriding function Get_Title (P : P0021_Type) return String is
+   overriding function Title (P : P0021_Type) return String is
      ("Amicable numbers");
 
-   overriding function Get_Brief (P : P0021_Type) return String is
+   overriding function Brief (P : P0021_Type) return String is
      ("Evaluate the sum of all the amicable numbers under 10000.");
 
-   overriding function Get_Answer (P : P0021_Type) return String;
+   overriding function Answer (P : P0021_Type) return String;
 
-   overriding function Get_Notes (P : P0021_Type) return String;
+   overriding function Notes (P : P0021_Type) return String;
 end P0021_Amicable_Numbers;

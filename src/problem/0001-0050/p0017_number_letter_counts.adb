@@ -31,7 +31,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0017_Number_Letter_Counts is
 
-   overriding function Get_Answer (P : P0017_Type) return String is
+   overriding function Answer (P : P0017_Type) return String is
       Answer : Natural := 0;
    begin
 
@@ -48,6 +48,6 @@ package body P0017_Number_Letter_Counts is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0017_Number_Letter_Counts;

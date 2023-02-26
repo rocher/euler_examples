@@ -25,7 +25,7 @@ with Ada.Numerics.Big_Numbers.Big_Integers;
 use Ada.Numerics.Big_Numbers.Big_Integers;
 
 package body P0016_Power_Digit_Sum is
-   overriding function Get_Answer (P : P0016_Type) return String is
+   overriding function Answer (P : P0016_Type) return String is
       Power  : constant Big_Natural := 2**1_000;
       Str    : constant String      := To_String (Power);
       Answer : Natural              := 0;
@@ -36,6 +36,6 @@ package body P0016_Power_Digit_Sum is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0016_Power_Digit_Sum;

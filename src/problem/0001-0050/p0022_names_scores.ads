@@ -33,15 +33,15 @@ package P0022_Names_Scores is
 
    type P0022_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0022_Type) return Natural is (22);
+   overriding function Number (P : P0022_Type) return Natural is (22);
 
-   overriding function Get_Title (P : P0022_Type) return String is
+   overriding function Title (P : P0022_Type) return String is
      ("Names scores");
 
-   overriding function Get_Brief (P : P0022_Type) return String is
+   overriding function Brief (P : P0022_Type) return String is
      ("What is the total of all the name scores in the file?");
 
-   overriding function Get_Answer (P : P0022_Type) return String;
+   overriding function Answer (P : P0022_Type) return String;
 
-   overriding function Get_Notes (P : P0022_Type) return String is ("");
+   overriding function Notes (P : P0022_Type) return String is ("");
 end P0022_Names_Scores;

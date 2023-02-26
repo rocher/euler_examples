@@ -35,16 +35,16 @@ package P0028_Number_Spiral_Diagonals is
 
    type P0028_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0028_Type) return Natural is (28);
+   overriding function Number (P : P0028_Type) return Natural is (28);
 
-   overriding function Get_Title (P : P0028_Type) return String is
+   overriding function Title (P : P0028_Type) return String is
      ("Number spiral diagonals");
 
-   overriding function Get_Brief (P : P0028_Type) return String is
+   overriding function Brief (P : P0028_Type) return String is
      ("What is the sum of the numbers on the diagonals in a 1001 by 1001 " &
       "spiral formed in the same way?");
 
-   overriding function Get_Answer (P : P0028_Type) return String;
+   overriding function Answer (P : P0028_Type) return String;
 
-   overriding function Get_Notes (P : P0028_Type) return String is ("");
+   overriding function Notes (P : P0028_Type) return String is ("");
 end P0028_Number_Spiral_Diagonals;

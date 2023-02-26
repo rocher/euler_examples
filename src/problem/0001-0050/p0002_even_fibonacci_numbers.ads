@@ -29,18 +29,18 @@ package P0002_Even_Fibonacci_Numbers is
 
    type P0002_Type is new Graphic_IFace with null record;
 
-   overriding function Get_Number (P : P0002_Type) return Natural is (2);
+   overriding function Number (P : P0002_Type) return Natural is (2);
 
-   overriding function Get_Title (P : P0002_Type) return String is
+   overriding function Title (P : P0002_Type) return String is
      ("Even Fibonacci numbers");
 
-   overriding function Get_Brief (P : P0002_Type) return String is
+   overriding function Brief (P : P0002_Type) return String is
      ("By considering the terms in the Fibonacci sequence whose values do " &
       "not exceed four million, find the sum of the even-valued terms.");
 
-   overriding function Get_Answer (P : P0002_Type) return String;
+   overriding function Answer (P : P0002_Type) return String;
 
-   overriding function Get_Notes (P : P0002_Type) return String;
+   overriding function Notes (P : P0002_Type) return String;
 
    overriding function Setup (P : P0002_Type) return Boolean is (True);
 

@@ -35,16 +35,16 @@ package P0006_Sum_Square_Difference is
 
    type P0006_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0006_Type) return Natural is (6);
+   overriding function Number (P : P0006_Type) return Natural is (6);
 
-   overriding function Get_Title (P : P0006_Type) return String is
+   overriding function Title (P : P0006_Type) return String is
      ("Sum square difference");
 
-   overriding function Get_Brief (P : P0006_Type) return String is
+   overriding function Brief (P : P0006_Type) return String is
      ("Find the difference between the sum of the squares of the first one " &
       "hundred natural numbers and the square of the sum.");
 
-   overriding function Get_Answer (P : P0006_Type) return String;
+   overriding function Answer (P : P0006_Type) return String;
 
-   overriding function Get_Notes (P : P0006_Type) return String is ("");
+   overriding function Notes (P : P0006_Type) return String is ("");
 end P0006_Sum_Square_Difference;

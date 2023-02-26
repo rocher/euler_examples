@@ -25,7 +25,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0013_Large_Sum is
 
-   overriding function Get_Answer (P : P0013_Type) return String is
+   overriding function Answer (P : P0013_Type) return String is
       Numbers : constant array (1 .. 100) of Big_Natural :=
         [37_107_287_533_902_102_798_797_998_220_837_590_246_510_135_740_250,
         46_376_937_677_490_009_712_648_124_896_970_078_050_417_018_260_538,
@@ -135,6 +135,6 @@ package body P0013_Large_Sum is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0013_Large_Sum;

@@ -52,7 +52,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0018_Maximum_Path_Sum_I is
 
-   overriding function Get_Answer (P : P0018_Type) return String is
+   overriding function Answer (P : P0018_Type) return String is
       subtype Size_Range is Natural range 1 .. 15;
       Triangle : constant array (Size_Range, Size_Range) of Natural :=
         [[75, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00],
@@ -96,6 +96,6 @@ package body P0018_Maximum_Path_Sum_I is
       Answer := Max_Path (Size_Range'First, Size_Range'First);
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0018_Maximum_Path_Sum_I;

@@ -27,7 +27,7 @@ package body P0004_Largest_Palindrome_Product is
    N1 : Integer_Type := 999;
    N2 : Integer_Type := 999;
 
-   overriding function Get_Answer (P : P0004_Type) return String is
+   overriding function Answer (P : P0004_Type) return String is
       Answer : Integer_Type := 0;
    begin
 
@@ -43,9 +43,9 @@ package body P0004_Largest_Palindrome_Product is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0004_Type) return String is
+   overriding function Notes (P : P0004_Type) return String is
      ("The two 3-digit numbers are" & N1'Image & " and" & N2'Image);
 
 end P0004_Largest_Palindrome_Product;

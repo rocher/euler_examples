@@ -49,7 +49,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0011_Largest_Product_In_A_Grid is
 
-   overriding function Get_Answer (P : P0011_Type) return String is
+   overriding function Answer (P : P0011_Type) return String is
       Product : Natural;
       Answer  : Natural := 0;
 
@@ -122,6 +122,6 @@ package body P0011_Largest_Product_In_A_Grid is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0011_Largest_Product_In_A_Grid;

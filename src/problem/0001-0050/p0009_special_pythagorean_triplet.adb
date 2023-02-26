@@ -31,7 +31,7 @@ package body P0009_Special_Pythagorean_Triplet is
 
    A, B : Natural;
 
-   overriding function Get_Answer (P : P0009_Type) return String is
+   overriding function Answer (P : P0009_Type) return String is
       Answer : Natural;
    begin
 
@@ -54,9 +54,9 @@ package body P0009_Special_Pythagorean_Triplet is
       end loop Main_Loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0009_Type) return String is
+   overriding function Notes (P : P0009_Type) return String is
      ("Pythagorean triplet: a =" & A'Image & ", b =" & B'Image & ", c =" &
       Natural'Image (1_000 - A - B));
 

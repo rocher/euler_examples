@@ -50,7 +50,7 @@ use Euler_Tools;
 
 package body P0025_1000_Digit_Fibonacci_Number is
 
-   overriding function Get_Answer (P : P0025_Type) return String is
+   overriding function Answer (P : P0025_Type) return String is
       F1     : Big_Natural := 1;
       F2     : Big_Natural := 1;
       Fn     : Big_Natural;
@@ -67,6 +67,6 @@ package body P0025_1000_Digit_Fibonacci_Number is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0025_1000_Digit_Fibonacci_Number;

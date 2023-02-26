@@ -264,7 +264,7 @@ package body GUI_Runner is
       --  Gnoga.Application.Singleton.Initialize
       --    (Main_Window => App.Window, Boot => "boot_bootstrap3.html");
 
-      --  App_Init (Problem.Get_Title);
+      --  App_Init (Problem.Title);
 
       Main_Window.Connection_Data (App);
       App.Grid.Create
@@ -281,10 +281,10 @@ package body GUI_Runner is
       App.Panel_Title.Padding ("10px", "10px", "10px", "10px");
       App.Panel_Title.Height (50);
       App.Panel_Title.Put_HTML
-        (UXS ("<h2>Problem " & Problem.Get_Number'Image & "</h2>"));
-      App.Panel_Title.Put_HTML (UXS ("<h1>" & Problem.Get_Title & "</h1>"));
+        (UXS ("<h2>Problem " & Problem.Number'Image & "</h2>"));
+      App.Panel_Title.Put_HTML (UXS ("<h1>" & Problem.Title & "</h1>"));
       App.Panel_Title.Put_HTML
-        (UXS ("<p class='fs-4'>" & Problem.Get_Brief & "</p>"));
+        (UXS ("<p class='fs-4'>" & Problem.Brief & "</p>"));
       App.Panel_Title.Horizontal_Rule;
 
       App.Button_Bar.Panel := App.Grid.Panel (3, 1);
@@ -380,7 +380,7 @@ package body GUI_Runner is
    procedure Main (A_Problem : Graphic_Class_Access) is
    begin
       Problem := A_Problem;
-      Gnoga.Application.Title (UXS (Problem.Get_Title));
+      Gnoga.Application.Title (UXS (Problem.Title));
       Gnoga.Application.HTML_On_Close
         ("<h3 style='margin:50px;'>Application closed.<h3>");
       Gnoga.Application.Multi_Connect.Initialize

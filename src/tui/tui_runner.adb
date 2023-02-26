@@ -45,26 +45,26 @@ package body TUI_Runner is
          Put_Line
            (Color_Wrap
               (Text       =>
-                 " Problem" & Problem.Get_Number'Image & " - " &
-                 Problem.Get_Title & " ",
+                 " Problem" & Problem.Number'Image & " - " &
+                 Problem.Title & " ",
                Foreground => Foreground (Black),
                Background => Background (Light_Grey)));
       else
          Put_Line
-           ("Problem" & Problem.Get_Number'Image & " - " & Problem.Get_Title);
+           ("Problem" & Problem.Number'Image & " - " & Problem.Title);
       end if;
 
       Put (Indent);
       if Use_Ansi then
-         Put_Line (Style_Wrap (Fill_Paragraph (Problem.Get_Brief), Underline));
+         Put_Line (Style_Wrap (Fill_Paragraph (Problem.Brief), Underline));
       else
-         Put_Line (Fill_Paragraph (Problem.Get_Brief));
+         Put_Line (Fill_Paragraph (Problem.Brief));
       end if;
 
-      Put_Line (Indent & "Answer: " & Problem.Get_Answer);
+      Put_Line (Indent & "Answer: " & Problem.Answer);
 
       declare
-         Notes : constant String := Problem.Get_Notes;
+         Notes : constant String := Problem.Notes;
       begin
          if Notes'Length > 0 then
             Put_Line (Indent & "Note: " & Notes);

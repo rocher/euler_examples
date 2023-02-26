@@ -35,7 +35,7 @@ package body P0030_Digit_Fifth_Powers is
 
    Number_Counter : Natural := 0;
 
-   overriding function Get_Answer (P : P0030_Type) return String is
+   overriding function Answer (P : P0030_Type) return String is
       P5     : array (0 .. 9) of Integer_Type;
       Powers : Integer_Type;
       Answer : Integer_Type := 0;
@@ -58,9 +58,9 @@ package body P0030_Digit_Fifth_Powers is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0030_Type) return String is
+   overriding function Notes (P : P0030_Type) return String is
      ("There are" & Number_Counter'Image & " numbers.");
 
 end P0030_Digit_Fifth_Powers;

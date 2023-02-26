@@ -28,15 +28,15 @@ package P0020_Factorial_Digit_Sum is
 
    type P0020_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0020_Type) return Natural is (20);
+   overriding function Number (P : P0020_Type) return Natural is (20);
 
-   overriding function Get_Title (P : P0020_Type) return String is
+   overriding function Title (P : P0020_Type) return String is
      ("Factorial digit sum");
 
-   overriding function Get_Brief (P : P0020_Type) return String is
+   overriding function Brief (P : P0020_Type) return String is
      ("Find the sum of the digits in the number 100!");
 
-   overriding function Get_Answer (P : P0020_Type) return String;
+   overriding function Answer (P : P0020_Type) return String;
 
-   overriding function Get_Notes (P : P0020_Type) return String is ("");
+   overriding function Notes (P : P0020_Type) return String is ("");
 end P0020_Factorial_Digit_Sum;

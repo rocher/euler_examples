@@ -23,7 +23,7 @@ with Euler_Tools_Int2; use Euler_Tools_Int2;
 
 package body P0003_Largest_Prime_Factor is
 
-   overriding function Get_Answer (P : P0003_Type) return String is
+   overriding function Answer (P : P0003_Type) return String is
       Number : constant Integer_Type := 600_851_475_143;
       Answer : Integer_Type          := Square_Root (Number);
    begin
@@ -34,6 +34,6 @@ package body P0003_Largest_Prime_Factor is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0003_Largest_Prime_Factor;

@@ -29,7 +29,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0024_Lexicographic_Permutations is
 
-   overriding function Get_Answer (P : P0024_Type) return String is
+   overriding function Answer (P : P0024_Type) return String is
       Digit_Set : Set_Type;
       --  set of digits to permute
 
@@ -80,6 +80,6 @@ package body P0024_Lexicographic_Permutations is
       end loop;
 
       return Answer;
-   end Get_Answer;
+   end Answer;
 
 end P0024_Lexicographic_Permutations;

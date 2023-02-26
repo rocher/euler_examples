@@ -31,16 +31,16 @@ package P0024_Lexicographic_Permutations is
 
    type P0024_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0024_Type) return Natural is (24);
+   overriding function Number (P : P0024_Type) return Natural is (24);
 
-   overriding function Get_Title (P : P0024_Type) return String is
+   overriding function Title (P : P0024_Type) return String is
      ("Lexicographic permutations");
 
-   overriding function Get_Brief (P : P0024_Type) return String is
+   overriding function Brief (P : P0024_Type) return String is
      ("What is the millionth lexicographic permutation of the digits 0, 1, " &
       "2, 3, 4, 5, 6, 7, 8 and 9?");
 
-   overriding function Get_Answer (P : P0024_Type) return String;
+   overriding function Answer (P : P0024_Type) return String;
 
-   overriding function Get_Notes (P : P0024_Type) return String is ("");
+   overriding function Notes (P : P0024_Type) return String is ("");
 end P0024_Lexicographic_Permutations;

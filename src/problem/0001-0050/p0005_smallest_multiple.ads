@@ -27,16 +27,16 @@ package P0005_Smallest_Multiple is
 
    type P0005_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0005_Type) return Natural is (5);
+   overriding function Number (P : P0005_Type) return Natural is (5);
 
-   overriding function Get_Title (P : P0005_Type) return String is
+   overriding function Title (P : P0005_Type) return String is
      ("Smallest multiple");
 
-   overriding function Get_Brief (P : P0005_Type) return String is
+   overriding function Brief (P : P0005_Type) return String is
      ("What is the smallest positive number that is evenly divisible by " &
       "all of the numbers from 1 to 20?");
 
-   overriding function Get_Answer (P : P0005_Type) return String;
+   overriding function Answer (P : P0005_Type) return String;
 
-   overriding function Get_Notes (P : P0005_Type) return String is ("");
+   overriding function Notes (P : P0005_Type) return String is ("");
 end P0005_Smallest_Multiple;

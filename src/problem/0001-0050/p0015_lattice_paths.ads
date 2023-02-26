@@ -29,17 +29,17 @@ package P0015_Lattice_Paths is
 
    type P0015_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0015_Type) return Natural is (15);
+   overriding function Number (P : P0015_Type) return Natural is (15);
 
-   overriding function Get_Title (P : P0015_Type) return String is
+   overriding function Title (P : P0015_Type) return String is
      ("Lattice paths");
 
-   overriding function Get_Brief (P : P0015_Type) return String is
+   overriding function Brief (P : P0015_Type) return String is
      ("How many such routes (starting in the top left corner, and only " &
       "being able to move to the right and down) are there through a " &
       "20×20 grid?");
 
-   overriding function Get_Answer (P : P0015_Type) return String;
+   overriding function Answer (P : P0015_Type) return String;
 
-   overriding function Get_Notes (P : P0015_Type) return String is ("");
+   overriding function Notes (P : P0015_Type) return String is ("");
 end P0015_Lattice_Paths;

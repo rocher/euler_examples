@@ -40,16 +40,16 @@ package P0026_Reciprocal_Cycles is
 
    type P0026_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0026_Type) return Natural is (26);
+   overriding function Number (P : P0026_Type) return Natural is (26);
 
-   overriding function Get_Title (P : P0026_Type) return String is
+   overriding function Title (P : P0026_Type) return String is
      ("Reciprocal cycles");
 
-   overriding function Get_Brief (P : P0026_Type) return String is
+   overriding function Brief (P : P0026_Type) return String is
      ("Find the value of d < 1000 for which 1/d contains the longest " &
       "recurring cycle in its decimal fraction part.");
 
-   overriding function Get_Answer (P : P0026_Type) return String;
+   overriding function Answer (P : P0026_Type) return String;
 
-   overriding function Get_Notes (P : P0026_Type) return String;
+   overriding function Notes (P : P0026_Type) return String;
 end P0026_Reciprocal_Cycles;

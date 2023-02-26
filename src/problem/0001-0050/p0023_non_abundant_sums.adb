@@ -40,7 +40,7 @@ package body P0023_Non_Abundant_Sums is
 
    Non_Abundant_Counter : Natural := 0;
 
-   overriding function Get_Answer (P : P0023_Type) return String is
+   overriding function Answer (P : P0023_Type) return String is
       Is_Sum_Of_Abundant_Numbers : Boolean;
       Answer                     : Integer_Type := 1 + 2;
    begin
@@ -69,9 +69,9 @@ package body P0023_Non_Abundant_Sums is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0023_Type) return String is
+   overriding function Notes (P : P0023_Type) return String is
      ("There are" & Non_Abundant_Counter'Image & " numbers like that.");
 
 end P0023_Non_Abundant_Sums;

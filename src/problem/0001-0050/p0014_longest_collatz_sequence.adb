@@ -41,7 +41,7 @@ package body P0014_Longest_Collatz_Sequence is
 
    Max_Length : Integer_Type := 0;
 
-   overriding function Get_Answer (P : P0014_Type) return String is
+   overriding function Answer (P : P0014_Type) return String is
       Start  : Integer_Type := 999_999;
       Number : Integer_Type := 0;
       Length : Integer_Type := 0;
@@ -68,9 +68,9 @@ package body P0014_Longest_Collatz_Sequence is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0014_Type) return String is
+   overriding function Notes (P : P0014_Type) return String is
      ("The chain contains" & Max_Length'Image & " numbers.");
 
 end P0014_Longest_Collatz_Sequence;

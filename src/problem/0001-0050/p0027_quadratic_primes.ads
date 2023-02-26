@@ -44,17 +44,17 @@ package P0027_Quadratic_Primes is
 
    type P0027_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0027_Type) return Natural is (27);
+   overriding function Number (P : P0027_Type) return Natural is (27);
 
-   overriding function Get_Title (P : P0027_Type) return String is
+   overriding function Title (P : P0027_Type) return String is
      ("Quadratic primes");
 
-   overriding function Get_Brief (P : P0027_Type) return String is
+   overriding function Brief (P : P0027_Type) return String is
      ("Find the product of the coefficients, a and b, for the quadratic " &
       "expression that produces the maximum number of primes for " &
       "consecutive values of n, starting with n=0.");
 
-   overriding function Get_Answer (P : P0027_Type) return String;
+   overriding function Answer (P : P0027_Type) return String;
 
-   overriding function Get_Notes (P : P0027_Type) return String;
+   overriding function Notes (P : P0027_Type) return String;
 end P0027_Quadratic_Primes;

@@ -26,15 +26,15 @@ package P0001_Multiples_Of_3_Or_5 is
 
    type P0001_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0001_Type) return Natural is (1);
+   overriding function Number (P : P0001_Type) return Natural is (1);
 
-   overriding function Get_Title (P : P0001_Type) return String is
+   overriding function Title (P : P0001_Type) return String is
      ("Multiples of 3 or 5");
 
-   overriding function Get_Brief (P : P0001_Type) return String is
+   overriding function Brief (P : P0001_Type) return String is
      ("Find the sum of all the multiples of 3 or 5 below 1000.");
 
-   overriding function Get_Answer (P : P0001_Type) return String;
+   overriding function Answer (P : P0001_Type) return String;
 
-   overriding function Get_Notes (P : P0001_Type) return String is ("");
+   overriding function Notes (P : P0001_Type) return String is ("");
 end P0001_Multiples_Of_3_Or_5;

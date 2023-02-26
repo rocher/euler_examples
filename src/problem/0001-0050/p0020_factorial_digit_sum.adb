@@ -28,7 +28,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0020_Factorial_Digit_Sum is
 
-   overriding function Get_Answer (P : P0020_Type) return String is
+   overriding function Answer (P : P0020_Type) return String is
       Factorial : Big_Natural := 1;
       Answer    : Natural     := 0;
    begin
@@ -46,6 +46,6 @@ package body P0020_Factorial_Digit_Sum is
       end;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0020_Factorial_Digit_Sum;

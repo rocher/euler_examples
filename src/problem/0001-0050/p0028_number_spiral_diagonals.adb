@@ -33,7 +33,7 @@ with Euler_Tools_Int2; use Euler_Tools_Int2;
 
 package body P0028_Number_Spiral_Diagonals is
 
-   overriding function Get_Answer (P : P0028_Type) return String is
+   overriding function Answer (P : P0028_Type) return String is
 
       --  Σ_Diagonal:
       --     1 : 1, 3, 13, 31 -> right-down
@@ -61,6 +61,6 @@ package body P0028_Number_Spiral_Diagonals is
       Answer := 4 * (4 * Sum_Squares (500) + Sum_Sequence (500) + 500) + 1;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0028_Number_Spiral_Diagonals;

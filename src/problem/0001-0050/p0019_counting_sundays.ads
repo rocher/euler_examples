@@ -37,16 +37,16 @@ package P0019_Counting_Sundays is
 
    type P0019_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0019_Type) return Natural is (19);
+   overriding function Number (P : P0019_Type) return Natural is (19);
 
-   overriding function Get_Title (P : P0019_Type) return String is
+   overriding function Title (P : P0019_Type) return String is
      ("Counting Sundays");
 
-   overriding function Get_Brief (P : P0019_Type) return String is
+   overriding function Brief (P : P0019_Type) return String is
      ("How many Sundays fell on the first of the month during the " &
       "twentieth century (1 Jan 1901 to 31 Dec 2000)?");
 
-   overriding function Get_Answer (P : P0019_Type) return String;
+   overriding function Answer (P : P0019_Type) return String;
 
-   overriding function Get_Notes (P : P0019_Type) return String is ("");
+   overriding function Notes (P : P0019_Type) return String is ("");
 end P0019_Counting_Sundays;

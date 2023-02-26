@@ -43,7 +43,7 @@ package body P0012_Highly_Divisible_Triangular_Number is
 
    Divisors : Set_Type;
 
-   overriding function Get_Answer (P : P0012_Type) return String is
+   overriding function Answer (P : P0012_Type) return String is
       Number : Integer_Type := 8;
       Answer : Integer_Type;
    begin
@@ -58,9 +58,9 @@ package body P0012_Highly_Divisible_Triangular_Number is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0012_Type) return String is
+   overriding function Notes (P : P0012_Type) return String is
      ("It has" & Natural'Image (Length (Divisors)) & " divisors.");
 
 end P0012_Highly_Divisible_Triangular_Number;

@@ -26,16 +26,16 @@ package P0004_Largest_Palindrome_Product is
 
    type P0004_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0004_Type) return Natural is (4);
+   overriding function Number (P : P0004_Type) return Natural is (4);
 
-   overriding function Get_Title (P : P0004_Type) return String is
+   overriding function Title (P : P0004_Type) return String is
      ("Largest palindrome product");
 
-   overriding function Get_Brief (P : P0004_Type) return String is
+   overriding function Brief (P : P0004_Type) return String is
      ("Find the largest palindrome made from the product of two " &
       "3-digit numbers.");
 
-   overriding function Get_Answer (P : P0004_Type) return String;
+   overriding function Answer (P : P0004_Type) return String;
 
-   overriding function Get_Notes (P : P0004_Type) return String;
+   overriding function Notes (P : P0004_Type) return String;
 end P0004_Largest_Palindrome_Product;

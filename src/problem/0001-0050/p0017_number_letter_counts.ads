@@ -32,16 +32,16 @@ package P0017_Number_Letter_Counts is
 
    type P0017_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0017_Type) return Natural is (17);
+   overriding function Number (P : P0017_Type) return Natural is (17);
 
-   overriding function Get_Title (P : P0017_Type) return String is
+   overriding function Title (P : P0017_Type) return String is
      ("Number letter counts");
 
-   overriding function Get_Brief (P : P0017_Type) return String is
+   overriding function Brief (P : P0017_Type) return String is
      ("If all the numbers from 1 to 1000 (one thousand) inclusive were " &
       "written out in words, how many letters would be used?");
 
-   overriding function Get_Answer (P : P0017_Type) return String;
+   overriding function Answer (P : P0017_Type) return String;
 
-   overriding function Get_Notes (P : P0017_Type) return String is ("");
+   overriding function Notes (P : P0017_Type) return String is ("");
 end P0017_Number_Letter_Counts;

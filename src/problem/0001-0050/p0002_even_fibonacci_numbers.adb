@@ -29,7 +29,7 @@ package body P0002_Even_Fibonacci_Numbers is
 
    Number_Counter : Natural := 0;
 
-   overriding function Get_Answer (P : P0002_Type) return String is
+   overriding function Answer (P : P0002_Type) return String is
       Number : Integer_Type := Fibonacci_Start;
       Answer : Integer_Type := 0;
    begin
@@ -44,9 +44,9 @@ package body P0002_Even_Fibonacci_Numbers is
       end loop;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
-   overriding function Get_Notes (P : P0002_Type) return String is
+   overriding function Notes (P : P0002_Type) return String is
      ("There are" & Number_Counter'Image &
       " even Fibonacci numbers < 4000000");
 

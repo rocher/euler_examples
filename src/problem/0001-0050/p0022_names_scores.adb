@@ -35,7 +35,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0022_Names_Scores is
 
-   overriding function Get_Answer (P : P0022_Type) return String is
+   overriding function Answer (P : P0022_Type) return String is
       subtype Name_Type is Ada.Strings.Unbounded.Unbounded_String;
 
       package Name_Package is new Doubly_Linked_Lists (Name_Type);
@@ -100,6 +100,6 @@ package body P0022_Names_Scores is
       end;
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0022_Names_Scores;

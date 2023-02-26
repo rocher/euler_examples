@@ -41,16 +41,16 @@ package P0014_Longest_Collatz_Sequence is
 
    type P0014_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0014_Type) return Natural is (14);
+   overriding function Number (P : P0014_Type) return Natural is (14);
 
-   overriding function Get_Title (P : P0014_Type) return String is
+   overriding function Title (P : P0014_Type) return String is
      ("Longest Collatz sequence");
 
-   overriding function Get_Brief (P : P0014_Type) return String is
+   overriding function Brief (P : P0014_Type) return String is
      ("Which starting number, under one million, produces the longest " &
       "[Collatz] chain?");
 
-   overriding function Get_Answer (P : P0014_Type) return String;
+   overriding function Answer (P : P0014_Type) return String;
 
-   overriding function Get_Notes (P : P0014_Type) return String;
+   overriding function Notes (P : P0014_Type) return String;
 end P0014_Longest_Collatz_Sequence;

@@ -24,7 +24,7 @@ with Euler_Tools; use Euler_Tools;
 
 package body P0001_Multiples_Of_3_Or_5 is
 
-   overriding function Get_Answer (P : P0001_Type) return String is
+   overriding function Answer (P : P0001_Type) return String is
       Answer : Integer_Type;
    begin
       Answer :=
@@ -32,6 +32,6 @@ package body P0001_Multiples_Of_3_Or_5 is
         Sum_Multiples (15, 1_000);
 
       return To_String (Answer);
-   end Get_Answer;
+   end Answer;
 
 end P0001_Multiples_Of_3_Or_5;

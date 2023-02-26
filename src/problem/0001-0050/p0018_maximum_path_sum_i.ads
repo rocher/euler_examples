@@ -54,16 +54,16 @@ package P0018_Maximum_Path_Sum_I is
 
    type P0018_Type is new Text_IFace with null record;
 
-   overriding function Get_Number (P : P0018_Type) return Natural is (18);
+   overriding function Number (P : P0018_Type) return Natural is (18);
 
-   overriding function Get_Title (P : P0018_Type) return String is
+   overriding function Title (P : P0018_Type) return String is
      ("Maximum path sum I");
 
-   overriding function Get_Brief (P : P0018_Type) return String is
+   overriding function Brief (P : P0018_Type) return String is
      ("Find the maximum total from top to bottom of the triangle below " &
       "(see problem description)");
 
-   overriding function Get_Answer (P : P0018_Type) return String;
+   overriding function Answer (P : P0018_Type) return String;
 
-   overriding function Get_Notes (P : P0018_Type) return String is ("");
+   overriding function Notes (P : P0018_Type) return String is ("");
 end P0018_Maximum_Path_Sum_I;
