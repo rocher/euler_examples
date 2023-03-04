@@ -29,6 +29,10 @@ package body P0002_Even_Fibonacci_Numbers is
 
    Number_Counter : Natural := 0;
 
+   ------------
+   -- Answer --
+   ------------
+
    overriding function Answer (P : P0002_Type) return String is
       Number : Integer_Type := Fibonacci_Start;
       Answer : Integer_Type := 0;
@@ -46,16 +50,53 @@ package body P0002_Even_Fibonacci_Numbers is
       return To_String (Answer);
    end Answer;
 
+   -----------
+   -- Notes --
+   -----------
+
    overriding function Notes (P : P0002_Type) return String is
      ("There are" & Number_Counter'Image &
       " even Fibonacci numbers < 4000000");
 
-   overriding function Setup
-     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean
+   -------------------
+   -- Plotter_Setup --
+   -------------------
+
+   overriding procedure Plotter_Setup
+     (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
    begin
       --  Plotter.Initialize;
-      return True; -- Plotter.Draw_Axes_Square;
-   end Setup;
+      -- Plotter.Draw_Axes_Square;
+      null;
+   end Plotter_Setup;
+
+   overriding procedure Draw_Start
+     (P : P0002_Type; Plotter : Plotter_IFace_Access)
+   is
+   begin
+      null;
+   end Draw_Start;
+
+   overriding procedure Draw_Step
+     (P : P0002_Type; Plotter : Plotter_IFace_Access)
+   is
+   begin
+      null;
+   end Draw_Step;
+
+   overriding procedure Draw_Continue
+     (P : P0002_Type; Plotter : Plotter_IFace_Access)
+   is
+   begin
+      null;
+   end Draw_Continue;
+
+   overriding procedure Draw_Stop
+     (P : P0002_Type; Plotter : Plotter_IFace_Access)
+   is
+   begin
+      null;
+   end Draw_Stop;
 
 end P0002_Even_Fibonacci_Numbers;

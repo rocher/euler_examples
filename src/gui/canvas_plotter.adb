@@ -39,9 +39,8 @@ package body Canvas_Plotter is
          else P.Info'Unrestricted_Access);
    end Canvas;
 
-   function Setup
+   procedure Create
      (P : in out Canvas_Type; View : Gnoga.Gui.View.Pointer_To_View_Base_Class)
-      return Boolean
    is
       Context : Context_2D_Type;
    begin
@@ -71,9 +70,7 @@ package body Canvas_Plotter is
       P.Info.Style ("left", 0);
       P.Info.Style ("top", 0);
       --  P.Info.On_Mouse_Down_Handler (Mouse_Down'Unrestricted_Access);
-
-      return True;
-   end Setup;
+   end Create;
 
    overriding function Initialize
      (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer;

@@ -46,7 +46,6 @@ package body Gnoga_Runner is
       Panel_Title  : Gnoga.Gui.View.Pointer_To_View_Base_Class;
       Button_Bar   : Button_Bar_Type;
       Plotter      : aliased Canvas_Type;
-      --  Canvas       : App_Canvas_Type;
    end record;
    type App_Access is access all App_Data_Type;
 
@@ -302,17 +301,16 @@ package body Gnoga_Runner is
       App.Grid.Panel (2, 1).Margin ("10px", "10px", "10px", "10px");
       App.Grid.Style ("position", "relative");
 
-      if not App.Plotter.Setup (App.Grid.Panel (2, 1)) then
-         raise Program_Error;
-      end if;
+      App.Plotter.Create (App.Grid.Panel (2, 1));
 
-      Context.Translate
-        (Integer (0.05 * App.Plotter.Canvas (Back).Width),
-         Integer (0.90 * App.Plotter.Canvas (Back).Height));
-      Context.Scale
-        (0.9 * Float (App.Plotter.Canvas (Back).Width) / 5_000.0,
-         -0.8 * Float (App.Plotter.Canvas (Back).Height) / 5_000.0);
+      --  Context.Translate
+      --    (Integer (0.05 * App.Plotter.Canvas (Back).Width),
+      --     Integer (0.90 * App.Plotter.Canvas (Back).Height));
+      --  Context.Scale
+      --    (0.9 * Float (App.Plotter.Canvas (Back).Width) / 5_000.0,
+      --     -0.8 * Float (App.Plotter.Canvas (Back).Height) / 5_000.0);
 
+      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
       Context.Begin_Path;
       Context.Stroke_Color ("#999");
       Context.Line_Width (1);
@@ -323,9 +321,7 @@ package body Gnoga_Runner is
       end loop;
       Context.Stroke;
 
-      if not Problem.Setup (App.Plotter'Access) then
-         raise Program_Error;
-      end if;
+      Problem.Plotter_Setup (App.Plotter'Access);
 
       --  App.View.Put_HTML
       --    (UXS

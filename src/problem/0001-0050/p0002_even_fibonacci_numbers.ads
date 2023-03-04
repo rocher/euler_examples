@@ -43,23 +43,19 @@ package P0002_Even_Fibonacci_Numbers is
 
    overriding function Notes (P : P0002_Type) return String;
 
-   overriding function Setup
-     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean;
+   overriding procedure Plotter_Setup
+     (P : P0002_Type; Plotter : Plotter_IFace_Access);
 
-   overriding function Start
-     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
-     (True);
+   overriding procedure Draw_Start
+     (P : P0002_Type; Plotter : Plotter_IFace_Access);
 
-   overriding function Step
-     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
-     (True);
+   overriding procedure Draw_Step
+     (P : P0002_Type; Plotter : Plotter_IFace_Access);
 
-   overriding function Continue
-     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
-     (True);
+   overriding procedure Draw_Continue
+     (P : P0002_Type; Plotter : Plotter_IFace_Access);
 
-   overriding function Stop
-     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
-     (True);
+   overriding procedure Draw_Stop
+     (P : P0002_Type; Plotter : Plotter_IFace_Access);
 
 end P0002_Even_Fibonacci_Numbers;

@@ -17,9 +17,9 @@ package Canvas_Plotter is
 
    type Canvas_Name is (Back, Draw, Top);
 
-   function Setup
-     (P : in out Canvas_Type; View : Gnoga.Gui.View.Pointer_To_View_Base_Class)
-      return Boolean;
+   procedure Create
+     (P    : in out Canvas_Type;
+      View :        Gnoga.Gui.View.Pointer_To_View_Base_Class);
 
    function Canvas
      (P : Canvas_Type; Name : Canvas_Name)

@@ -14,24 +14,19 @@ package GUI_Interface is
    type GUI_IFace is interface and TUI_IFace;
    type GUI_IFace_Access is access all GUI_IFace'Class;
 
-   function Setup
-     (G : GUI_IFace; Plotter : Plotter_IFace_Access)
-      return Boolean is abstract;
+   procedure Plotter_Setup
+     (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   function Start
-     (G : GUI_IFace; Plotter : Plotter_IFace_Access)
-      return Boolean is abstract;
+   procedure Draw_Start
+     (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   function Step
-     (G : GUI_IFace; Plotter : Plotter_IFace_Access)
-      return Boolean is abstract;
+   procedure Draw_Step
+     (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   function Continue
-     (G : GUI_IFace; Plotter : Plotter_IFace_Access)
-      return Boolean is abstract;
+   procedure Draw_Continue
+     (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   function Stop
-     (G : GUI_IFace; Plotter : Plotter_IFace_Access)
-      return Boolean is abstract;
+   procedure Draw_Stop
+     (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
 end GUI_Interface;
