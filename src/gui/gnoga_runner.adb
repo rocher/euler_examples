@@ -22,7 +22,7 @@ with Plotter_Canvas; use Plotter_Canvas;
 
 use all type Gnoga.String;
 
-package body GUI_Runner is
+package body Gnoga_Runner is
    COL : Gnoga.Gui.View.Grid.Grid_Element_Type renames Gnoga.Gui.View.Grid.COL;
    SPN : Gnoga.Gui.View.Grid.Grid_Element_Type renames Gnoga.Gui.View.Grid.SPN;
 
@@ -45,12 +45,12 @@ package body GUI_Runner is
       Panel_Margin : Gnoga.Gui.View.Pointer_To_View_Base_Class;
       Panel_Title  : Gnoga.Gui.View.Pointer_To_View_Base_Class;
       Button_Bar   : Button_Bar_Type;
-      Plotter      : Plotter_Canvas_Type;
+      Plotter      : aliased Canvas_Type;
       --  Canvas       : App_Canvas_Type;
    end record;
    type App_Access is access all App_Data_Type;
 
-   Problem : Graphic_Class_Access := null;
+   Problem : GUI_IFace_Access := null;
 
    procedure Button_Start_On_Click
      (Object : in out Gnoga.Gui.Base.Base_Type'Class);
@@ -305,37 +305,6 @@ package body GUI_Runner is
       if not App.Plotter.Setup (App.Grid.Panel (2, 1)) then
          raise Program_Error;
       end if;
-      --  App.Canvas.Back.Create
-      --    (Parent => App.Grid.Panel (2, 1).all,
-      --     Width  => App.Grid.Panel (2, 1).Width,
-      --     Height => App.Grid.Panel (2, 1).Height, ID => "App.Canvas.Back");
-      --  App.Canvas.Back.Style ("position", "absolute");
-      --  App.Canvas.Back.Style ("left", 0);
-      --  App.Canvas.Back.Style ("top", 0);
-      --  App.Canvas.Back.Border;
-
-      --  App.Canvas.Graph.Create
-      --    (Parent => App.Grid.Panel (2, 1).all,
-      --     Width  => App.Grid.Panel (2, 1).Width,
-      --     Height => App.Grid.Panel (2, 1).Height, ID => "App.Canvas.Graph");
-      --  App.Canvas.Graph.Style ("position", "absolute");
-      --  App.Canvas.Graph.Style ("left", 0);
-      --  App.Canvas.Graph.Style ("top", 0);
-
-      --  App.Canvas.Info.Create
-      --    (Parent => App.Grid.Panel (2, 1).all,
-      --     Width  => App.Grid.Panel (2, 1).Width,
-      --     Height => App.Grid.Panel (2, 1).Height, ID => "App.Canvas.Info");
-      --  App.Canvas.Info.Style ("position", "absolute");
-      --  App.Canvas.Info.Style ("left", 0);
-      --  App.Canvas.Info.Style ("top", 0);
-      --  App.Canvas.Info.On_Mouse_Down_Handler (Mouse_Down'Unrestricted_Access);
-
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Back).all);
-      Context.Fill_Color ("#eee");
-      Context.Fill_Rectangle
-        ((0, 0, App.Plotter.Canvas (Back).Width,
-          App.Plotter.Canvas (Back).Height));
 
       Context.Translate
         (Integer (0.05 * App.Plotter.Canvas (Back).Width),
@@ -343,15 +312,6 @@ package body GUI_Runner is
       Context.Scale
         (0.9 * Float (App.Plotter.Canvas (Back).Width) / 5_000.0,
          -0.8 * Float (App.Plotter.Canvas (Back).Height) / 5_000.0);
-
-      Context.Stroke_Color ("#111");
-      Context.Line_Width (2);
-      Context.Move_To (0, 0);
-      Context.Line_To (5_000, 0);
-      Context.Line_To (5_000, 5_000);
-      Context.Line_To (0, 5_000);
-      Context.Line_To (0, 0);
-      Context.Stroke;
 
       Context.Begin_Path;
       Context.Stroke_Color ("#999");
@@ -362,6 +322,10 @@ package body GUI_Runner is
          Context.Line_To (45 * X, 400 + 10 * X);
       end loop;
       Context.Stroke;
+
+      if not Problem.Setup (App.Plotter'Access) then
+         raise Program_Error;
+      end if;
 
       --  App.View.Put_HTML
       --    (UXS
@@ -377,16 +341,21 @@ package body GUI_Runner is
    -- Main --
    ----------
 
-   procedure Main (A_Problem : Graphic_Class_Access) is
+   procedure Main (A_Problem : GUI_IFace_Access) is
    begin
       Problem := A_Problem;
+
       Gnoga.Application.Title (UXS (Problem.Title));
+
       Gnoga.Application.HTML_On_Close
         ("<h3 style='margin:50px;'>Application closed.<h3>");
+
       Gnoga.Application.Multi_Connect.Initialize
         (Event => On_App_Connect'Unrestricted_Access,
          Boot  => "boot_bootstrap3.html");
+
       Gnoga.Application.Multi_Connect.Message_Loop;
+
    end Main;
 
-end GUI_Runner;
+end Gnoga_Runner;

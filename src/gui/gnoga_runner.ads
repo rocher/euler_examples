@@ -6,12 +6,10 @@
 --
 -------------------------------------------------------------------------------
 
-with Graphic_Interface; use Graphic_Interface;
+with GUI_Interface; use GUI_Interface;
 
-package GUI_Runner is
+package Gnoga_Runner is
 
-   type Graphic_Class_Access is access all Graphic_IFace'Class;
+   procedure Main (A_Problem : GUI_IFace_Access);
 
-   procedure Main (A_Problem : Graphic_Class_Access);
-
-end GUI_Runner;
+end Gnoga_Runner;
