@@ -18,7 +18,7 @@ with Gnoga.Gui.Window;
 with Gnoga.Types;
 with UXStrings;
 
-with Plotter_Canvas; use Plotter_Canvas;
+with Canvas_Plotter; use Canvas_Plotter;
 
 use all type Gnoga.String;
 

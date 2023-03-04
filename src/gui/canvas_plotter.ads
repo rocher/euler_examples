@@ -11,7 +11,7 @@ with Gnoga.Gui.View;
 
 with Plotter_Interface; use Plotter_Interface;
 
-package Plotter_Canvas is
+package Canvas_Plotter is
 
    type Canvas_Type is limited new Plotter_IFace with private;
 
@@ -49,4 +49,4 @@ private
       Info : Gnoga.Gui.Element.Canvas.Canvas_Type;
    end record;
 
-end Plotter_Canvas;
+end Canvas_Plotter;

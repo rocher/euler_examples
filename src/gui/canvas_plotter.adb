@@ -11,7 +11,7 @@ with Gnoga.Gui.Element.Canvas.Context_2D;
 use Gnoga.Gui.Element.Canvas.Context_2D;
 use Gnoga.Gui.Element.Canvas;
 
-package body Plotter_Canvas is
+package body Canvas_Plotter is
 
    subtype Pixel is Natural;
 
@@ -114,4 +114,4 @@ package body Plotter_Canvas is
    overriding function Clear_Plot (P : in out Canvas_Type) return Boolean is
      (True);
 
-end Plotter_Canvas;
+end Canvas_Plotter;
