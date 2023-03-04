@@ -6,14 +6,13 @@
 --
 -------------------------------------------------------------------------------
 
-with GUI_Interface;    use GUI_Interface;
-with Runner_Interface; use Runner_Interface;
+with GUI_Interface;     use GUI_Interface;
+with Plotter_Interface; use Plotter_Interface;
 
-package Gnoga_Runner is
+package Runner_Interface is
 
-   type Gnoga_Runner_Type is new Runner_IFace with null record;
+   type Runner_IFace is interface;
 
-   overriding procedure Main
-     (Runner : Gnoga_Runner_Type; Problem : GUI_IFace_Access);
+   procedure Main (Runner : Runner_IFace; GUI : GUI_IFace_Access) is abstract;
 
-end Gnoga_Runner;
+end Runner_Interface;

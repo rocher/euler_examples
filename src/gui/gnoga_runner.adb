@@ -341,9 +341,11 @@ package body Gnoga_Runner is
    -- Main --
    ----------
 
-   procedure Main (A_Problem : GUI_IFace_Access) is
+   overriding procedure Main
+     (Runner : Gnoga_Runner_Type; Problem : GUI_IFace_Access)
+   is
    begin
-      Problem := A_Problem;
+      Gnoga_Runner.Problem := Problem;
 
       Gnoga.Application.Title (UXS (Problem.Title));
 
