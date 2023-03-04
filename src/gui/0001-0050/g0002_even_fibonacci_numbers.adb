@@ -7,10 +7,10 @@
 -------------------------------------------------------------------------------
 
 with P0002_Even_Fibonacci_Numbers;
-with GUI_Runner;
+with Gnoga_Runner;
 
 procedure G0002_Even_Fibonacci_Numbers is
    P0002 : P0002_Even_Fibonacci_Numbers.P0002_Type;
 begin
-   GUI_Runner.Main (P0002'Unrestricted_Access);
+   Gnoga_Runner.Main (P0002'Unrestricted_Access);
 end G0002_Even_Fibonacci_Numbers;

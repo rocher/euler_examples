@@ -13,39 +13,37 @@ with Plotter_Interface; use Plotter_Interface;
 
 package Plotter_Canvas is
 
-   type Plotter_Canvas_Type is limited new Plotter_IFace with private;
+   type Canvas_Type is limited new Plotter_IFace with private;
 
    type Canvas_Name is (Back, Draw, Top);
 
    function Setup
-     (P    : in out Plotter_Canvas_Type;
-      View :        Gnoga.Gui.View.Pointer_To_View_Base_Class) return Boolean;
+     (P : in out Canvas_Type; View : Gnoga.Gui.View.Pointer_To_View_Base_Class)
+      return Boolean;
 
    function Canvas
-     (P : Plotter_Canvas_Type; Name : Canvas_Name)
+     (P : Canvas_Type; Name : Canvas_Name)
       return Gnoga.Gui.Element.Canvas.Canvas_Access;
 
    overriding function Initialize
-     (P : in out Plotter_Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer)
-      return Boolean;
+     (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer;
+      X0, Y0, Width, Height :        Natural) return Boolean;
 
    overriding function Draw_Grid
-     (P                                  : in out Plotter_Canvas_Type;
-      X_Major, X_Minor, Y_Major, Y_Minor :        Natural) return Boolean;
-
-   overriding function Draw_Axes
-     (P : in out Plotter_Canvas_Type; X_Label, Y_Label : String)
+     (P : in out Canvas_Type; X_Major, X_Minor, Y_Major, Y_Minor : Natural)
       return Boolean;
 
-   overriding function Draw_Axes_Square
-     (P : in out Plotter_Canvas_Type) return Boolean;
+   overriding function Draw_Axes
+     (P : in out Canvas_Type; X_Label, Y_Label : String) return Boolean;
 
-   overriding function Clear_Plot
-     (P : in out Plotter_Canvas_Type) return Boolean;
+   overriding function Draw_Axes_Square
+     (P : in out Canvas_Type) return Boolean;
+
+   overriding function Clear_Plot (P : in out Canvas_Type) return Boolean;
 
 private
 
-   type Plotter_Canvas_Type is limited new Plotter_IFace with record
+   type Canvas_Type is limited new Plotter_IFace with record
       Back : Gnoga.Gui.Element.Canvas.Canvas_Type;
       Draw : Gnoga.Gui.Element.Canvas.Canvas_Type;
       Info : Gnoga.Gui.Element.Canvas.Canvas_Type;
