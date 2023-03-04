@@ -31,11 +31,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0019_Counting_Sundays is
 
-   type P0019_Type is new Text_IFace with null record;
+   type P0019_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0019_Type) return Natural is (19);
 

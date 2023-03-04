@@ -35,11 +35,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0014_Longest_Collatz_Sequence is
 
-   type P0014_Type is new Text_IFace with null record;
+   type P0014_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0014_Type) return Natural is (14);
 

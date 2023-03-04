@@ -21,11 +21,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0008_Largest_Product_In_A_Series is
 
-   type P0008_Type is new Text_IFace with null record;
+   type P0008_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0008_Type) return Natural is (8);
 

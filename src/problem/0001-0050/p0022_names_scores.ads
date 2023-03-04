@@ -27,11 +27,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0022_Names_Scores is
 
-   type P0022_Type is new Text_IFace with null record;
+   type P0022_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0022_Type) return Natural is (22);
 

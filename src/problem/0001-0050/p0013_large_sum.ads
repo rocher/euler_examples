@@ -18,16 +18,15 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0013_Large_Sum is
 
-   type P0013_Type is new Text_IFace with null record;
+   type P0013_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0013_Type) return Natural is (13);
 
-   overriding function Title (P : P0013_Type) return String is
-     ("Large sum");
+   overriding function Title (P : P0013_Type) return String is ("Large sum");
 
    overriding function Brief (P : P0013_Type) return String is
      ("Work out the first ten digits of the sum of the following " &

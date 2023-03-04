@@ -50,4 +50,12 @@ package body P0002_Even_Fibonacci_Numbers is
      ("There are" & Number_Counter'Image &
       " even Fibonacci numbers < 4000000");
 
+   overriding function Setup
+     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean
+   is
+   begin
+      --  Plotter.Initialize;
+      return True; -- Plotter.Draw_Axes_Square;
+   end Setup;
+
 end P0002_Even_Fibonacci_Numbers;

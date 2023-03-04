@@ -34,11 +34,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0023_Non_Abundant_Sums is
 
-   type P0023_Type is new Text_IFace with null record;
+   type P0023_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0023_Type) return Natural is (23);
 

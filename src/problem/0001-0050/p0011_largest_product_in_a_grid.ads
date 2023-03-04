@@ -45,11 +45,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0011_Largest_Product_In_A_Grid is
 
-   type P0011_Type is new Text_IFace with null record;
+   type P0011_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0011_Type) return Natural is (11);
 

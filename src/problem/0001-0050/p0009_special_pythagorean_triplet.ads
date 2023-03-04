@@ -25,11 +25,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0009_Special_Pythagorean_Triplet is
 
-   type P0009_Type is new Text_IFace with null record;
+   type P0009_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0009_Type) return Natural is (9);
 

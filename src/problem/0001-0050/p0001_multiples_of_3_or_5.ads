@@ -20,11 +20,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0001_Multiples_Of_3_Or_5 is
 
-   type P0001_Type is new Text_IFace with null record;
+   type P0001_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0001_Type) return Natural is (1);
 

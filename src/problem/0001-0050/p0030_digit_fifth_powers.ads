@@ -29,11 +29,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0030_Digit_Fifth_Powers is
 
-   type P0030_Type is new Text_IFace with null record;
+   type P0030_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0030_Type) return Natural is (30);
 

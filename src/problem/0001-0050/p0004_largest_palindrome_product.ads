@@ -20,11 +20,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0004_Largest_Palindrome_Product is
 
-   type P0004_Type is new Text_IFace with null record;
+   type P0004_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0004_Type) return Natural is (4);
 

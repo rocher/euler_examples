@@ -38,11 +38,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0027_Quadratic_Primes is
 
-   type P0027_Type is new Text_IFace with null record;
+   type P0027_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0027_Type) return Natural is (27);
 

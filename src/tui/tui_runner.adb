@@ -39,19 +39,18 @@ package body TUI_Runner is
       return Text;
    end Fill_Paragraph;
 
-   procedure Main (Problem : Text_IFace'Class) is
+   procedure Main (Problem : TUI_IFace'Class) is
    begin
       if Use_Ansi then
          Put_Line
            (Color_Wrap
               (Text       =>
-                 " Problem" & Problem.Number'Image & " - " &
-                 Problem.Title & " ",
+                 " Problem" & Problem.Number'Image & " - " & Problem.Title &
+                 " ",
                Foreground => Foreground (Black),
                Background => Background (Light_Grey)));
       else
-         Put_Line
-           ("Problem" & Problem.Number'Image & " - " & Problem.Title);
+         Put_Line ("Problem" & Problem.Number'Image & " - " & Problem.Title);
       end if;
 
       Put (Indent);

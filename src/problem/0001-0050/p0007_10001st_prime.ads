@@ -20,11 +20,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0007_10001st_prime is
 
-   type P0007_Type is new Text_IFace with null record;
+   type P0007_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0007_Type) return Natural is (7);
 

@@ -26,11 +26,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0017_Number_Letter_Counts is
 
-   type P0017_Type is new Text_IFace with null record;
+   type P0017_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0017_Type) return Natural is (17);
 

@@ -1,8 +1,8 @@
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P00NUM_DESC is
 
-   type P00NUM_Type is new Text_IFace with null record;
+   type P00NUM_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P00NUM_Type) return Natural is (NUM);
 

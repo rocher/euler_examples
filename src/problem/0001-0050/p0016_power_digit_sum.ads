@@ -19,11 +19,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0016_Power_Digit_Sum is
 
-   type P0016_Type is new Text_IFace with null record;
+   type P0016_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0016_Type) return Natural is (16);
 

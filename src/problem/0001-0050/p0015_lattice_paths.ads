@@ -23,11 +23,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0015_Lattice_Paths is
 
-   type P0015_Type is new Text_IFace with null record;
+   type P0015_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0015_Type) return Natural is (15);
 

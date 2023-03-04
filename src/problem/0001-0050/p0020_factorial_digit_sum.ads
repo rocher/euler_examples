@@ -22,11 +22,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0020_Factorial_Digit_Sum is
 
-   type P0020_Type is new Text_IFace with null record;
+   type P0020_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0020_Type) return Natural is (20);
 

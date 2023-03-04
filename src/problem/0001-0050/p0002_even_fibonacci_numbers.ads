@@ -23,11 +23,12 @@
 --
 -------------------------------------------------------------------------------
 
-with Graphic_Interface; use Graphic_Interface;
+with GUI_Interface;     use GUI_Interface;
+with Plotter_Interface; use Plotter_Interface;
 
 package P0002_Even_Fibonacci_Numbers is
 
-   type P0002_Type is new Graphic_IFace with null record;
+   type P0002_Type is new GUI_IFace with null record;
 
    overriding function Number (P : P0002_Type) return Natural is (2);
 
@@ -42,7 +43,23 @@ package P0002_Even_Fibonacci_Numbers is
 
    overriding function Notes (P : P0002_Type) return String;
 
-   overriding function Setup (P : P0002_Type) return Boolean is (True);
+   overriding function Setup
+     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean;
 
-   overriding function Update (P : P0002_Type) return Boolean is (True);
+   overriding function Start
+     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
+     (True);
+
+   overriding function Step
+     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
+     (True);
+
+   overriding function Continue
+     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
+     (True);
+
+   overriding function Stop
+     (P : P0002_Type; Plotter : Plotter_IFace_Access) return Boolean is
+     (True);
+
 end P0002_Even_Fibonacci_Numbers;

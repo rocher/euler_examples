@@ -34,11 +34,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0026_Reciprocal_Cycles is
 
-   type P0026_Type is new Text_IFace with null record;
+   type P0026_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0026_Type) return Natural is (26);
 

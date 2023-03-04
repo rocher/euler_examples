@@ -39,11 +39,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0025_1000_Digit_Fibonacci_Number is
 
-   type P0025_Type is new Text_IFace with null record;
+   type P0025_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0025_Type) return Natural is (25);
 

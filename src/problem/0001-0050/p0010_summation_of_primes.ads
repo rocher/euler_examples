@@ -19,11 +19,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0010_Summation_Of_Primes is
 
-   type P0010_Type is new Text_IFace with null record;
+   type P0010_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0010_Type) return Natural is (10);
 

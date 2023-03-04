@@ -21,11 +21,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0005_Smallest_Multiple is
 
-   type P0005_Type is new Text_IFace with null record;
+   type P0005_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0005_Type) return Natural is (5);
 

@@ -6,10 +6,10 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package TUI_Runner is
 
-   procedure Main (Problem : Text_IFace'Class);
+   procedure Main (Problem : TUI_IFace'Class);
 
 end TUI_Runner;

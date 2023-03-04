@@ -26,11 +26,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0021_Amicable_Numbers is
 
-   type P0021_Type is new Text_IFace with null record;
+   type P0021_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0021_Type) return Natural is (21);
 

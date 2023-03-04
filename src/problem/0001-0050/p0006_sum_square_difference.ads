@@ -29,11 +29,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0006_Sum_Square_Difference is
 
-   type P0006_Type is new Text_IFace with null record;
+   type P0006_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0006_Type) return Natural is (6);
 

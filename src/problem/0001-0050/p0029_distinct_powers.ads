@@ -31,11 +31,11 @@
 --
 -------------------------------------------------------------------------------
 
-with Text_Interface; use Text_Interface;
+with TUI_Interface; use TUI_Interface;
 
 package P0029_Distinct_Powers is
 
-   type P0029_Type is new Text_IFace with null record;
+   type P0029_Type is new TUI_IFace with null record;
 
    overriding function Number (P : P0029_Type) return Natural is (29);
 
