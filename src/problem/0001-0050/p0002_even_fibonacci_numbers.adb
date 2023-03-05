@@ -25,6 +25,8 @@
 
 with Euler_Tools; use Euler_Tools;
 
+with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
+
 package body P0002_Even_Fibonacci_Numbers is
 
    Number_Counter : Natural := 0;
@@ -65,11 +67,35 @@ package body P0002_Even_Fibonacci_Numbers is
    overriding procedure Plotter_Setup
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
+      Q          : Math_Point;
+      Points_Sin : Point_List;
+      Points_Cos : Point_List;
+      Color      : constant String := "#666699";
    begin
-      Plotter.Set_Axes (-10, 100, -10, 100);
-      --  Plotter.Draw_Axes_Square;
-      Plotter.Draw_Grid (0, 10, 0, 10);
+      Plotter.Set_Axes (-10.0, 100.0, -10.0, 10.0);
+      Plotter.Draw_Grid (10.0, 5.0, 2.0, 0.0);
+      Plotter.Draw_Axes_Square;
       Plotter.Draw_Axes ("Number", "Decimals");
+
+      for X in 0 .. 62 loop
+         for Δx in 0 .. 25 loop
+            Q.X := Float (X) + Float (Δx) * (1.0 / 25.0);
+            Q.Y := 5.0 * Sin (Q.X / 5.0);
+            Points_Sin.Append (Q);
+            Q.Y := 5.0 * Cos (Q.X / 5.0);
+            Points_Cos.Append (Q);
+         end loop;
+      end loop;
+      Plotter.Plot (Points_Sin, "#933");
+      Plotter.Plot (Points_Cos, "#339");
+
+      Plotter.Set_Axes (-10.0, 10.0, -20.0, 20.0);
+      Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
+      Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
+      Plotter.Rectangle (2.0, 0.0, 0.0, -2.0, Color);
+      Plotter.Rectangle (0.0, -2.0, -3.0, 1.0, Color);
+      Plotter.Rectangle (-3.0, 1.0, 2.0, 6.0, Color);
+
    end Plotter_Setup;
 
    ----------------

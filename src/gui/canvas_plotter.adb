@@ -23,13 +23,11 @@ package body Canvas_Plotter is
    Font_Size_Medium   : constant Natural := 12;
    Font_Size_Small    : constant Natural := 10;
 
-   subtype Pixel is Natural;
-
    type Axis_Type is record
-      Min       : Integer; -- math x min
-      Max       : Integer; -- math x max
-      Width     : Pixel;   -- screen width, pixels
-      Margin    : Pixel;   -- screen margin, pixels
+      Min       : Float;   -- math x min
+      Max       : Float;   -- math x max
+      Width     : Natural; -- screen width, pixels
+      Margin    : Natural; -- screen margin, pixels
       Has_Ticks : Boolean := False;
    end record;
 
@@ -39,27 +37,56 @@ package body Canvas_Plotter is
    -- Screen_X --
    --------------
 
-   function Screen_X (Px : Integer) return Natural is
-      Sx : constant Float := Float (Px - X.Min) / Float (X.Max - X.Min);
+   function Screen_X (Px : Float) return Natural is
+      Sx : constant Float := (Px - X.Min) / (X.Max - X.Min);
    begin
-      return Natural (Float (X.Margin) + Float (X.Width - 2 * X.Margin) * Sx);
+      return
+        Natural
+          (Float (X.Margin) + (Float (X.Width) - 2.0 * Float (X.Margin)) * Sx);
    end Screen_X;
+
+   function Sx (Px : Float) return Natural renames Screen_X;
 
    --------------
    -- Screen_Y --
    --------------
 
-   function Screen_Y (Py : Integer) return Natural is
-      Sy : constant Float := Float (Py - Y.Min) / Float (Y.Max - Y.Min);
+   function Screen_Y (Py : Float) return Natural is
+      Sy : constant Float := (Py - Y.Min) / (Y.Max - Y.Min);
    begin
       return
         Natural
-          (Float (Y.Width - Y.Margin) - Float (Y.Width - 2 * Y.Margin) * Sy);
+          (Float (Y.Width - Y.Margin) -
+           (Float (Y.Width) - 2.0 * Float (Y.Margin)) * Sy);
    end Screen_Y;
 
-   --  abbreviated Screen_* functions
-   function Sx (Px : Integer) return Natural renames Screen_X;
-   function Sy (Py : Integer) return Natural renames Screen_Y;
+   function Sy (Py : Float) return Natural renames Screen_Y;
+
+   ------------
+   -- Math_X --
+   ------------
+
+   function Math_X (Sx : Natural) return Float is
+      Dx : constant Float :=
+        Float (Sx - X.Margin) / Float (X.Width - 2 * X.Margin);
+   begin
+      return Dx * (X.Max - X.Min) + X.Min;
+   end Math_X;
+
+   function Mx (Sx : Natural) return Float renames Math_X;
+
+   ------------
+   -- Math_X --
+   ------------
+
+   function Math_Y (Sy : Natural) return Float is
+      Dy : constant Float :=
+        Float (Sy - Y.Width + Y.Margin) / Float (Y.Width - 2 * Y.Margin);
+   begin
+      return Dy * (Y.Max - Y.Min) + Y.Min;
+   end Math_Y;
+
+   function My (Sy : Natural) return Float renames Math_Y;
 
    ---------
    -- UXS --
@@ -99,7 +126,6 @@ package body Canvas_Plotter is
       P.Back.Style ("position", "absolute");
       P.Back.Style ("left", 0);
       P.Back.Style ("top", 0);
-      P.Back.Border;
 
       Context.Get_Drawing_Context_2D (P.Back);
       Context.Fill_Color ("#eee");
@@ -118,15 +144,27 @@ package body Canvas_Plotter is
       P.Info.Style ("position", "absolute");
       P.Info.Style ("left", 0);
       P.Info.Style ("top", 0);
+
       --  P.Info.On_Mouse_Down_Handler (Mouse_Down'Unrestricted_Access);
    end Create;
 
    --------------
-   -- Set_Axis --
+   -- Set_Axes --
+   --------------
+
+   overriding procedure Set_Axes (P : in out Canvas_Type; Min, Max : Float) is
+      Margin : constant Natural :=
+        Natural'Max (P.Back.Width, P.Back.Height) * 3 / 100;
+   begin
+      null;
+   end Set_Axes;
+
+   --------------
+   -- Set_Axes --
    --------------
 
    overriding procedure Set_Axes
-     (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer)
+     (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Float)
    is
       Margin : constant Natural :=
         Natural'Max (P.Back.Width, P.Back.Height) * 3 / 100;
@@ -147,17 +185,17 @@ package body Canvas_Plotter is
    ---------------
 
    overriding procedure Draw_Grid
-     (P : in out Canvas_Type; X_Major, X_Minor, Y_Major, Y_Minor : Natural)
+     (P : in out Canvas_Type; X_Major, X_Minor, Y_Major, Y_Minor : Float)
    is
       Context : Context_2D_Type;
-      Px, Py  : Integer;
+      Px, Py  : Float;
       Length  : Natural;
       Count   : Natural;
 
       --  #region Internal procedures
-      procedure Draw_X (Δx : Natural; Is_Major : Boolean) is
+      procedure Draw_X (Δx : Float; Is_Major : Boolean) is
       begin
-         if Δx = 0 then
+         if Δx = 0.0 then
             return;
          end if;
 
@@ -165,7 +203,7 @@ package body Canvas_Plotter is
             X.Has_Ticks := True;
          end if;
 
-         Px    := 0;
+         Px    := 0.0;
          Count := 0;
          loop
             Context.Move_To (Sx (Px), Sy (Y.Min));
@@ -174,12 +212,12 @@ package body Canvas_Plotter is
             Count := @ + 1;
             exit when Px < X.Min;
          end loop;
-         if Is_Major and then (Count = 0 or else Px - X.Min < Δx / 3) then
+         if Is_Major and then (Count = 0 or else Px - X.Min < Δx / 3.0) then
             Context.Move_To (Sx (X.Min), Sy (Y.Min));
             Context.Line_To (Sx (X.Min), Sy (Y.Max));
          end if;
 
-         Px    := 0;
+         Px    := 0.0;
          Count := 0;
          loop
             Context.Move_To (Sx (Px), Sy (Y.Min));
@@ -188,15 +226,15 @@ package body Canvas_Plotter is
             Count := @ + 1;
             exit when Px > X.Max;
          end loop;
-         if Is_Major and then (Count = 0 or else X.Max - Px < Δx / 3) then
+         if Is_Major and then (Count = 0 or else X.Max - Px < Δx / 3.0) then
             Context.Move_To (Sx (X.Max), Sy (Y.Min));
             Context.Line_To (Sx (X.Max), Sy (Y.Max));
          end if;
       end Draw_X;
 
-      procedure Draw_Y (Δy : Natural; Is_Major : Boolean) is
+      procedure Draw_Y (Δy : Float; Is_Major : Boolean) is
       begin
-         if Δy = 0 then
+         if Δy = 0.0 then
             return;
          end if;
 
@@ -204,7 +242,7 @@ package body Canvas_Plotter is
             Y.Has_Ticks := True;
          end if;
 
-         Py    := 0;
+         Py    := 0.0;
          Count := 0;
          loop
             Context.Move_To (Sx (X.Min), Sy (Py));
@@ -213,12 +251,12 @@ package body Canvas_Plotter is
             Count := @ + 1;
             exit when Py < Y.Min;
          end loop;
-         if Is_Major and then (Count = 0 or else Py - Y.Min < Δy / 3) then
+         if Is_Major and then (Count = 0 or else Py - Y.Min < Δy / 3.0) then
             Context.Move_To (Sx (X.Min), Sy (Y.Min));
             Context.Line_To (Sx (X.Max), Sy (Y.Min));
          end if;
 
-         Py    := 0;
+         Py    := 0.0;
          Count := 0;
          loop
             Context.Move_To (Sx (X.Min), Sy (Py));
@@ -227,7 +265,7 @@ package body Canvas_Plotter is
             Count := @ + 1;
             exit when Py > Y.Max;
          end loop;
-         if Is_Major and then (Count = 0 or else Y.Max - Py < Δy / 3) then
+         if Is_Major and then (Count = 0 or else Y.Max - Py < Δy / 3.0) then
             Context.Move_To (Sx (X.Min), Sy (Y.Max));
             Context.Line_To (Sx (X.Max), Sy (Y.Max));
          end if;
@@ -258,10 +296,11 @@ package body Canvas_Plotter is
       Context.Stroke;
 
       --  labels
-      --  Context.Font (Family => Font_Family_Axis, Height => Font_Height_Small);
+      Context.Font
+        (Family => UXS (Font_Family_Axis), Height => UXS (Font_Height_Small));
       Context.Fill_Color ("#000");
 
-      if X_Major > 0 then
+      if X_Major > 0.0 then
          Context.Text_Baseline (Top);
          Context.Text_Alignment (Center);
          Px    := -X_Major;
@@ -271,7 +310,7 @@ package body Canvas_Plotter is
             Length := Font_Size_Small / 2 * UXStrings.Length (UXS (Px'Image));
             Context.Fill_Text
               (UXS (Px'Image), Sx (Px) - Length / 2,
-               Sy (0) + Font_Size_Small + 2, Length);
+               Sy (0.0) + Font_Size_Small + 2, Length);
             Px := @ - X_Major;
          end loop;
 
@@ -282,12 +321,12 @@ package body Canvas_Plotter is
             Length := Font_Size_Small / 2 * UXStrings.Length (UXS (Px'Image));
             Context.Fill_Text
               (UXS (Px'Image), Sx (Px) - Length / 2,
-               Sy (0) + Font_Size_Small + 2, Length);
+               Sy (0.0) + Font_Size_Small + 2, Length);
             Px := @ + X_Major;
          end loop;
       end if;
 
-      if Y_Major > 0 then
+      if Y_Major > 0.0 then
          Context.Text_Baseline (Bottom);
          Context.Text_Alignment (Right);
          Py    := -Y_Major;
@@ -296,7 +335,7 @@ package body Canvas_Plotter is
             exit when Py < Y.Min;
             Length := Font_Size_Small / 2 * UXStrings.Length (UXS (Py'Image));
             Context.Fill_Text
-              (UXS (Py'Image), Sx (0) - Length - 3, Sy (Py) - 2, Length);
+              (UXS (Py'Image), Sx (0.0) - Length - 3, Sy (Py) - 2, Length);
             Py := @ - Y_Major;
          end loop;
 
@@ -306,7 +345,7 @@ package body Canvas_Plotter is
             exit when Py > Y.Max;
             Length := Font_Size_Small / 2 * UXStrings.Length (UXS (Py'Image));
             Context.Fill_Text
-              (UXS (Py'Image), Sx (0) - Length - 3, Sy (Py) - 2, Length);
+              (UXS (Py'Image), Sx (0.0) - Length - 3, Sy (Py) - 2, Length);
             Py := @ + Y_Major;
          end loop;
       end if;
@@ -328,13 +367,13 @@ package body Canvas_Plotter is
       Context.Line_Width (2);
       Context.Begin_Path;
 
-      Context.Move_To (Sx (X.Min), Sy (0));
-      Context.Line_To (Sx (X.Max), Sy (0));
+      Context.Move_To (Sx (X.Min), Sy (0.0));
+      Context.Line_To (Sx (X.Max), Sy (0.0));
 
-      Context.Move_To (Sx (0), Sy (Y.Min));
-      Context.Line_To (Sx (0), Sy (Y.Max));
+      Context.Move_To (Sx (0.0), Sy (Y.Min));
+      Context.Line_To (Sx (0.0), Sy (Y.Max));
 
-      --  Context.Font (Font_Family_Axis, Font_Height_Medium);
+      Context.Font (UXS (Font_Family_Axis), UXS (Font_Height_Medium));
       Context.Fill_Color ("#000");
 
       Context.Text_Alignment (Left);
@@ -342,7 +381,7 @@ package body Canvas_Plotter is
       Length := 6 * UXStrings.Length (UXS (X_Label));
       Context.Fill_Text
         (UXS (X_Label), Sx (X.Max) - Length / 2,
-         Sy (0) + 2 +
+         Sy (0.0) + 2 +
          (if X.Has_Ticks then Font_Size_Medium * 2 else Font_Size_Medium),
          Length);
 
@@ -350,7 +389,7 @@ package body Canvas_Plotter is
       Context.Text_Baseline (Bottom);
       Length := 6 * UXStrings.Length (UXS (Y_Label));
       Context.Fill_Text
-        (UXS (Y_Label), Sx (0) - Length / 2,
+        (UXS (Y_Label), Sx (0.0) - Length / 2,
          Sy (Y.Max) -
          (if Y.Has_Ticks then Font_Size_Medium * 2 else Font_Size_Medium / 2),
          Length);
@@ -368,13 +407,12 @@ package body Canvas_Plotter is
       Context.Get_Drawing_Context_2D (P.Back);
 
       Context.Begin_Path;
-      Context.Stroke_Color ("#111");
+      Context.Stroke_Color ("#000000");
       Context.Line_Width (2);
-      Context.Move_To (Screen_X (X.Min), Screen_Y (Y.Min));
-      Context.Line_To (Screen_X (X.Max), Screen_Y (Y.Min));
-      Context.Line_To (Screen_X (X.Max), Screen_Y (Y.Max));
-      Context.Line_To (Screen_X (X.Min), Screen_Y (Y.Max));
-      Context.Line_To (Screen_X (X.Min), Screen_Y (Y.Min));
+      Context.Line_Join (Value => Round);
+      Context.Rectangle
+        ([Sx (X.Min), Sy (Y.Min), Sx (X.Max) - Sx (X.Min),
+         Sy (Y.Max) - Sy (Y.Min)]);
       Context.Stroke;
    end Draw_Axes_Square;
 
@@ -383,8 +421,64 @@ package body Canvas_Plotter is
    ----------------
 
    overriding procedure Clear_Plot (P : in out Canvas_Type) is
+      Context : Context_2D_Type;
    begin
-      null;
+      Context.Get_Drawing_Context_2D (P.Draw);
+
+      Context.Save;
+      Context.Set_Transform
+        (Scale_Horizontal => 1.0, Skew_Horizontal => 0.0,
+         Scale_Vertical   => 1.0, Skew_Vertical => 0.0, Move_Horizontal => 0.0,
+         Move_Vertical    => 0.0);
+      Context.Clear_Rectangle ([0, 0, P.Draw.Width, P.Draw.Height]);
+      Context.Restore;
    end Clear_Plot;
+
+   ----------
+   -- Plot --
+   ----------
+
+   overriding procedure Plot
+     (P : in out Canvas_Type; Points : Point_List; Color : String)
+   is
+      Context : Context_2D_Type;
+      Point   : Math_Point;
+   begin
+      Context.Get_Drawing_Context_2D (P.Draw);
+
+      Context.Begin_Path;
+      Context.Stroke_Color (UXS (Color));
+      Context.Line_Width (2);
+      Context.Line_Join (Value => Miter);
+
+      Point := Points.First_Element;
+      Context.Move_To (Sx (Point.X), Sy (Point.Y));
+      for P of Points loop
+         Context.Line_To (Sx (P.X), Sy (P.Y));
+      end loop;
+      Context.Stroke;
+   end Plot;
+
+   ---------------
+   -- Rectangle --
+   ---------------
+
+   overriding procedure Rectangle
+     (P : in out Canvas_Type; X0, Y0, X1, Y1 : Float; color : String)
+   is
+      Context : Context_2D_Type;
+      X       : constant Natural := Natural'Min (Sx (X0), Sx (X1));
+      Y       : constant Natural := Natural'Min (Sy (Y0), Sy (Y1));
+      Width   : constant Natural := Natural (abs (Sx (X1) - Sx (X0)));
+      Height  : constant Natural := Natural (abs (Sy (Y1) - Sy (Y0)));
+   begin
+      Context.Get_Drawing_Context_2D (P.Draw);
+
+      Context.Begin_Path;
+      Context.Stroke_Color (UXS (color));
+      Context.Line_Width (1);
+      Context.Rectangle (Rectangle => [X, Y, Width, Height]);
+      Context.Stroke;
+   end Rectangle;
 
 end Canvas_Plotter;

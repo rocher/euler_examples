@@ -6,8 +6,7 @@
 --
 -------------------------------------------------------------------------------
 
-with GUI_Interface;     use GUI_Interface;
-with Plotter_Interface; use Plotter_Interface;
+with GUI_Interface; use GUI_Interface;
 
 package Runner_Interface is
 
