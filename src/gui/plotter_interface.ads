@@ -14,7 +14,7 @@ package Plotter_Interface is
       X, Y : Float;
    end record;
 
-   function "=" (A, B : Point_Type) return Boolean is
+   overriding function "=" (A, B : Point_Type) return Boolean is
      (A.X = B.X and then A.Y = B.Y);
 
    package Point_Package is new Doubly_Linked_Lists (Point_Type);
@@ -23,22 +23,24 @@ package Plotter_Interface is
    type Plotter_IFace is limited interface;
    type Plotter_IFace_Access is access all Plotter_IFace'Class;
 
-   function Initialize
-     (P : in out Plotter_IFace; X_Min, X_Max, Y_Min, Y_Max : Integer;
-      X0, Y0, Width, Height :        Natural) return Boolean is abstract;
+   --  procedure Initialize
+   --    (P : in out Plotter_IFace; X_Min, X_Max, Y_Min, Y_Max : Integer;
+   --     X0, Y0, Width, Height :        Natural) is abstract;
 
-   function Draw_Grid
-     (P : in out Plotter_IFace; X_Major, X_Minor, Y_Major, Y_Minor : Natural)
-      return Boolean is abstract;
+   procedure Set_Axes
+     (P                          : in out Plotter_IFace;
+      X_Min, X_Max, Y_Min, Y_Max :        Integer) is abstract;
 
-   function Draw_Axes
-     (P : in out Plotter_IFace; X_Label, Y_Label : String)
-      return Boolean is abstract;
+   procedure Draw_Grid
+     (P                                  : in out Plotter_IFace;
+      X_Major, X_Minor, Y_Major, Y_Minor :        Natural) is abstract;
 
-   function Draw_Axes_Square
-     (P : in out Plotter_IFace) return Boolean is abstract;
+   procedure Draw_Axes
+     (P : in out Plotter_IFace; X_Label, Y_Label : String) is abstract;
 
-   function Clear_Plot (P : in out Plotter_IFace) return Boolean is abstract;
+   procedure Draw_Axes_Square (P : in out Plotter_IFace) is abstract;
+
+   procedure Clear_Plot (P : in out Plotter_IFace) is abstract;
 
    --  function Plot (Points : array of Float) return Boolean;
 

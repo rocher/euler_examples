@@ -25,21 +25,22 @@ package Canvas_Plotter is
      (P : Canvas_Type; Name : Canvas_Name)
       return Gnoga.Gui.Element.Canvas.Canvas_Access;
 
-   overriding function Initialize
-     (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer;
-      X0, Y0, Width, Height :        Natural) return Boolean;
+   --  overriding procedure Initialize
+   --    (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer;
+   --     X0, Y0, Width, Height :        Natural);
 
-   overriding function Draw_Grid
-     (P : in out Canvas_Type; X_Major, X_Minor, Y_Major, Y_Minor : Natural)
-      return Boolean;
+   overriding procedure Set_Axes
+     (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer);
 
-   overriding function Draw_Axes
-     (P : in out Canvas_Type; X_Label, Y_Label : String) return Boolean;
+   overriding procedure Draw_Grid
+     (P : in out Canvas_Type; X_Major, X_Minor, Y_Major, Y_Minor : Natural);
 
-   overriding function Draw_Axes_Square
-     (P : in out Canvas_Type) return Boolean;
+   overriding procedure Draw_Axes
+     (P : in out Canvas_Type; X_Label, Y_Label : String);
 
-   overriding function Clear_Plot (P : in out Canvas_Type) return Boolean;
+   overriding procedure Draw_Axes_Square (P : in out Canvas_Type);
+
+   overriding procedure Clear_Plot (P : in out Canvas_Type);
 
 private
 

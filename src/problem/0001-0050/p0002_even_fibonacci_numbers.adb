@@ -66,10 +66,15 @@ package body P0002_Even_Fibonacci_Numbers is
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
    begin
-      --  Plotter.Initialize;
-      -- Plotter.Draw_Axes_Square;
-      null;
+      Plotter.Set_Axes (-10, 100, -10, 100);
+      --  Plotter.Draw_Axes_Square;
+      Plotter.Draw_Grid (0, 10, 0, 10);
+      Plotter.Draw_Axes ("Number", "Decimals");
    end Plotter_Setup;
+
+   ----------------
+   -- Draw_Start --
+   ----------------
 
    overriding procedure Draw_Start
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
@@ -78,6 +83,10 @@ package body P0002_Even_Fibonacci_Numbers is
       null;
    end Draw_Start;
 
+   ---------------
+   -- Draw_Step --
+   ---------------
+
    overriding procedure Draw_Step
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
@@ -85,12 +94,20 @@ package body P0002_Even_Fibonacci_Numbers is
       null;
    end Draw_Step;
 
+   -------------------
+   -- Draw_Continue --
+   -------------------
+
    overriding procedure Draw_Continue
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
    begin
       null;
    end Draw_Continue;
+
+   ---------------
+   -- Draw_Stop --
+   ---------------
 
    overriding procedure Draw_Stop
      (P : P0002_Type; Plotter : Plotter_IFace_Access)

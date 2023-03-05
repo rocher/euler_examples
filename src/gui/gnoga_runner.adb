@@ -310,16 +310,16 @@ package body Gnoga_Runner is
       --    (0.9 * Float (App.Plotter.Canvas (Back).Width) / 5_000.0,
       --     -0.8 * Float (App.Plotter.Canvas (Back).Height) / 5_000.0);
 
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
-      Context.Begin_Path;
-      Context.Stroke_Color ("#999");
-      Context.Line_Width (1);
-      Context.Set_Line_Dash (Dotted_Dash_List);
-      for X in 1 .. 25 loop
-         Context.Move_To (45 * X, 0);
-         Context.Line_To (45 * X, 400 + 10 * X);
-      end loop;
-      Context.Stroke;
+      --  Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
+      --  Context.Begin_Path;
+      --  Context.Stroke_Color ("#999");
+      --  Context.Line_Width (1);
+      --  Context.Set_Line_Dash (Dotted_Dash_List);
+      --  for X in 1 .. 25 loop
+      --     Context.Move_To (45 * X, 0);
+      --     Context.Line_To (45 * X, 400 + 10 * X);
+      --  end loop;
+      --  Context.Stroke;
 
       Problem.Plotter_Setup (App.Plotter'Access);
 
