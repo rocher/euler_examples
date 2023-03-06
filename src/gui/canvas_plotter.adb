@@ -42,7 +42,8 @@ package body Canvas_Plotter is
    begin
       return
         Natural
-          (Float (X.Margin) + (Float (X.Width) - 2.0 * Float (X.Margin)) * Sx);
+          (Float (X.Margin) +
+           Float'Rounding ((Float (X.Width) - 2.0 * Float (X.Margin)) * Sx));
    end Screen_X;
 
    function Sx (Px : Float) return Natural renames Screen_X;
@@ -57,7 +58,7 @@ package body Canvas_Plotter is
       return
         Natural
           (Float (Y.Width - Y.Margin) -
-           (Float (Y.Width) - 2.0 * Float (Y.Margin)) * Sy);
+           Float'Rounding ((Float (Y.Width) - 2.0 * Float (Y.Margin)) * Sy));
    end Screen_Y;
 
    function Sy (Py : Float) return Natural renames Screen_Y;

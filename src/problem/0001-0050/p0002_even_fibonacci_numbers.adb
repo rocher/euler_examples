@@ -72,43 +72,44 @@ package body P0002_Even_Fibonacci_Numbers is
       Points_Cos : Point_List;
       Color      : constant String := "#999";
    begin
-      Plotter.Set_Axes (-10.0, 70.0, -6.0, 10.0);
-      Plotter.Draw_Grid (0.0, 10.0, 0.0, 2.0);
+      --  Plotter.Set_Axes (-10.0, 70.0, -6.0, 10.0);
+      --  Plotter.Draw_Grid (0.0, 10.0, 0.0, 2.0);
       --  Plotter.Draw_Axes_Square;
-      Plotter.Draw_Axes ("Number", "Decimals");
+      --  Plotter.Draw_Axes ("Number", "Decimals");
 
-      for X in 0 .. 62 loop
-         for Δx in 0 .. 25 loop
-            Q.X := Float (X) + Float (Δx) * (1.0 / 25.0);
-            Q.Y := 5.0 * Sin (Q.X / 5.0);
-            Points_Sin.Append (Q);
-            Q.Y := 5.0 * Cos (Q.X / 5.0);
-            Points_Cos.Append (Q);
-         end loop;
-      end loop;
-      Plotter.Plot (Points_Sin, "#933");
-      Plotter.Plot (Points_Cos, "#339");
+      --  for X in 0 .. 62 loop
+      --     for Δx in 0 .. 25 loop
+      --        Q.X := Float (X) + Float (Δx) * (1.0 / 25.0);
+      --        Q.Y := 5.0 * Sin (Q.X / 5.0);
+      --        Points_Sin.Append (Q);
+      --        Q.Y := 5.0 * Cos (Q.X / 5.0);
+      --        Points_Cos.Append (Q);
+      --     end loop;
+      --  end loop;
+      --  Plotter.Plot (Points_Sin, "#933");
+      --  Plotter.Plot (Points_Cos, "#339");
 
       Plotter.Set_Axes (-10.0, 10.0);
-      Plotter.Draw_Axes ("X", "Y");
+      --  Plotter.Draw_Axes ("X", "Y");
+      Plotter.Draw_Grid (0.0, 1.0, 0.0, 1.0);
 
       Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
-      Plotter.Arc (1.0, 0.0, 1.0, 180.0, 90.0, "#f00");
+      Plotter.Arc (1.0, 0.0, 0.99, 180.0, 90.0, "#f00");
 
       Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
-      Plotter.Arc (1.0, 0.0, 1.0, 90.0, 0.0, "#f00");
+      Plotter.Arc (1.0, 0.0, 0.99, 90.0, 0.0, "#f00");
 
       Plotter.Rectangle (2.0, 0.0, 0.0, -2.0, Color);
-      Plotter.Arc (0.0, 0.0, 2.0, 0.0, 270.0, "#f00");
+      Plotter.Arc (0.0, 0.0, 1.99, 0.0, 270.0, "#f00");
 
       Plotter.Rectangle (0.0, -2.0, -3.0, 1.0, Color);
-      Plotter.Arc (0.0, 1.0, 3.0, 270.0, 180.0, "#f00");
+      Plotter.Arc (0.0, 1.0, 2.99, 270.0, 180.0, "#f00");
 
       Plotter.Rectangle (-3.0, 1.0, 2.0, 6.0, Color);
-      Plotter.Arc (2.0, 1.0, 5.0, 180.0, 90.0, "#f00");
+      Plotter.Arc (2.0, 1.0, 4.99, 180.0, 90.0, "#f00");
 
       Plotter.Rectangle (2.0, 6.0, 10.0, -2.0, Color);
-      Plotter.Arc (2.0, -2.0, 8.0, 90.0, 0.0, "#f00");
+      Plotter.Arc (2.0, -2.0, 7.99, 90.0, 0.0, "#f00");
    end Plotter_Setup;
 
    ----------------
