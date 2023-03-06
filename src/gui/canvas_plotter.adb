@@ -155,8 +155,31 @@ package body Canvas_Plotter is
    overriding procedure Set_Axes (P : in out Canvas_Type; Min, Max : Float) is
       Margin : constant Natural :=
         Natural'Max (P.Back.Width, P.Back.Height) * 3 / 100;
+      Length : Float;
    begin
-      null;
+      X.Width  := P.Back.Width;
+      X.Margin := Margin;
+
+      Y.Width  := P.Back.Height;
+      Y.Margin := Margin;
+
+      if X.Width <= Y.Width then
+         X.Min  := Min;
+         X.Max  := Max;
+         Length :=
+           (Max - Min) * Float (Y.Width - 2 * Y.Margin) /
+           Float (X.Width - 2 * X.Margin);
+         Y.Min  := -Length / 2.0;
+         Y.Max  := Length / 2.0;
+      else
+         Y.Min  := Min;
+         Y.Max  := Max;
+         Length :=
+           (Max - Min) * Float (X.Width - 2 * X.Margin) /
+           Float (Y.Width - 2 * Y.Margin);
+         X.Min  := -Length / 2.0;
+         X.Max  := Length / 2.0;
+      end if;
    end Set_Axes;
 
    --------------
@@ -480,5 +503,23 @@ package body Canvas_Plotter is
       Context.Rectangle (Rectangle => [X, Y, Width, Height]);
       Context.Stroke;
    end Rectangle;
+
+   overriding procedure Arc
+     (P : in out Canvas_Type; X0, Y0, Radius, Start_Angle, End_Angle : Float;
+      Color :        String)
+   is
+      Context : Context_2D_Type;
+   begin
+      Context.Get_Drawing_Context_2D (P.Draw);
+
+      Context.Begin_Path;
+      Context.Stroke_Color (UXS (Color));
+      Context.Line_Width (1);
+      --  Context.Move_To (Sx (X0), Sy (Y0));
+      Context.Arc_Degrees
+        (Sx (X0), Sy (Y0), Sx (Radius) - Sx (0.0), 360.0 - Start_Angle,
+         360.0 - End_Angle);
+      Context.Stroke;
+   end Arc;
 
 end Canvas_Plotter;

@@ -70,11 +70,11 @@ package body P0002_Even_Fibonacci_Numbers is
       Q          : Math_Point;
       Points_Sin : Point_List;
       Points_Cos : Point_List;
-      Color      : constant String := "#666699";
+      Color      : constant String := "#999";
    begin
-      Plotter.Set_Axes (-10.0, 100.0, -10.0, 10.0);
-      Plotter.Draw_Grid (10.0, 5.0, 2.0, 0.0);
-      Plotter.Draw_Axes_Square;
+      Plotter.Set_Axes (-10.0, 70.0, -6.0, 10.0);
+      Plotter.Draw_Grid (0.0, 10.0, 0.0, 2.0);
+      --  Plotter.Draw_Axes_Square;
       Plotter.Draw_Axes ("Number", "Decimals");
 
       for X in 0 .. 62 loop
@@ -89,13 +89,26 @@ package body P0002_Even_Fibonacci_Numbers is
       Plotter.Plot (Points_Sin, "#933");
       Plotter.Plot (Points_Cos, "#339");
 
-      Plotter.Set_Axes (-10.0, 10.0, -20.0, 20.0);
-      Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
-      Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
-      Plotter.Rectangle (2.0, 0.0, 0.0, -2.0, Color);
-      Plotter.Rectangle (0.0, -2.0, -3.0, 1.0, Color);
-      Plotter.Rectangle (-3.0, 1.0, 2.0, 6.0, Color);
+      Plotter.Set_Axes (-10.0, 10.0);
+      Plotter.Draw_Axes ("X", "Y");
 
+      Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
+      Plotter.Arc (1.0, 0.0, 1.0, 180.0, 90.0, "#f00");
+
+      Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
+      Plotter.Arc (1.0, 0.0, 1.0, 90.0, 0.0, "#f00");
+
+      Plotter.Rectangle (2.0, 0.0, 0.0, -2.0, Color);
+      Plotter.Arc (0.0, 0.0, 2.0, 0.0, 270.0, "#f00");
+
+      Plotter.Rectangle (0.0, -2.0, -3.0, 1.0, Color);
+      Plotter.Arc (0.0, 1.0, 3.0, 270.0, 180.0, "#f00");
+
+      Plotter.Rectangle (-3.0, 1.0, 2.0, 6.0, Color);
+      Plotter.Arc (2.0, 1.0, 5.0, 180.0, 90.0, "#f00");
+
+      Plotter.Rectangle (2.0, 6.0, 10.0, -2.0, Color);
+      Plotter.Arc (2.0, -2.0, 8.0, 90.0, 0.0, "#f00");
    end Plotter_Setup;
 
    ----------------

@@ -50,6 +50,10 @@ package Canvas_Plotter is
    overriding procedure Rectangle
      (P : in out Canvas_Type; X0, Y0, X1, Y1 : Float; color : String);
 
+   overriding procedure Arc
+     (P : in out Canvas_Type; X0, Y0, Radius, Start_Angle, End_Angle : Float;
+      color :        String);
+
 private
 
    type Canvas_Type is limited new Plotter_IFace with record

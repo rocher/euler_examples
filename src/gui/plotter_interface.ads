@@ -52,4 +52,8 @@ package Plotter_Interface is
      (P     : in out Plotter_IFace; X0, Y0, X1, Y1 : Float;
       color :        String) is abstract;
 
+   procedure Arc
+     (P : in out Plotter_IFace; X0, Y0, Radius, Start_Angle, End_Angle : Float;
+      color :        String) is abstract;
+
 end Plotter_Interface;
