@@ -17,16 +17,16 @@ package GUI_Interface is
    procedure Plotter_Setup
      (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   procedure Draw_Start
+   procedure On_Start
      (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   procedure Draw_Step
+   procedure On_Step
      (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   procedure Draw_Continue
+   procedure On_Continue
      (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
-   procedure Draw_Stop
+   procedure On_Stop
      (G : GUI_IFace; Plotter : Plotter_IFace_Access) is abstract;
 
 end GUI_Interface;

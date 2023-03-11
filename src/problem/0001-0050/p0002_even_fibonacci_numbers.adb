@@ -25,11 +25,18 @@
 
 with Euler_Tools; use Euler_Tools;
 
+with Ada.Text_IO;                       use Ada.Text_IO;
 with Ada.Numerics.Elementary_Functions; use Ada.Numerics.Elementary_Functions;
 
 package body P0002_Even_Fibonacci_Numbers is
 
+   --  Action  : Action_IFace_Access;
+   --  Plotter : Plotter_IFace_Access;
+
    Number_Counter : Natural := 0;
+
+   type Status_Type is (Stop, Run, Pause, Step);
+   Status : Status_Type := Stop;
 
    ------------
    -- Answer --
@@ -72,6 +79,7 @@ package body P0002_Even_Fibonacci_Numbers is
       Points_Cos : Point_List;
       Color      : constant String := "#999";
    begin
+      --  P0002_Even_Fibonacci_Numbers.Plotter := Plotter;
       --  Plotter.Set_Axes (-10.0, 70.0, -6.0, 10.0);
       --  Plotter.Draw_Grid (0.0, 10.0, 0.0, 2.0);
       --  Plotter.Draw_Axes_Square;
@@ -89,71 +97,139 @@ package body P0002_Even_Fibonacci_Numbers is
       --  Plotter.Plot (Points_Sin, "#933");
       --  Plotter.Plot (Points_Cos, "#339");
 
-      Plotter.Set_Axes (-10.0, 10.0);
+      Plotter.Set_Axes (-18.0, 18.0);
       --  Plotter.Draw_Axes ("X", "Y");
       Plotter.Draw_Grid (0.0, 1.0, 0.0, 1.0);
-
-      Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
-      Plotter.Arc (1.0, 0.0, 0.99, 180.0, 90.0, "#f00");
-
-      Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
-      Plotter.Arc (1.0, 0.0, 0.99, 90.0, 0.0, "#f00");
-
-      Plotter.Rectangle (2.0, 0.0, 0.0, -2.0, Color);
-      Plotter.Arc (0.0, 0.0, 1.99, 0.0, 270.0, "#f00");
-
-      Plotter.Rectangle (0.0, -2.0, -3.0, 1.0, Color);
-      Plotter.Arc (0.0, 1.0, 2.99, 270.0, 180.0, "#f00");
-
-      Plotter.Rectangle (-3.0, 1.0, 2.0, 6.0, Color);
-      Plotter.Arc (2.0, 1.0, 4.99, 180.0, 90.0, "#f00");
-
-      Plotter.Rectangle (2.0, 6.0, 10.0, -2.0, Color);
-      Plotter.Arc (2.0, -2.0, 7.99, 90.0, 0.0, "#f00");
    end Plotter_Setup;
 
-   ----------------
-   -- Draw_Start --
-   ----------------
+   --------------
+   -- On_Start --
+   --------------
 
-   overriding procedure Draw_Start
+   overriding procedure On_Start
+     (P : P0002_Type; Plotter : Plotter_IFace_Access)
+   is
+      X, Y : Float;
+   begin
+      if Status /= Stop then
+         return;
+      end if;
+
+      Put_Line ("On_Start!!");
+
+      Status := Run;
+      for X in -18 .. 17 loop
+         for Y in -18 .. 17 loop
+            Plotter.Rectangle
+              (X0 => Float (X), Y0 => Float (Y), X1 => Float (X) + 1.0,
+               Y1 => Float (Y) + 1.0, color => "#333");
+            delay (0.05);
+            while Status = Pause loop
+               delay (0.1);
+            end loop;
+            if Status = Stop then
+               Plotter.Clear_Plot;
+               Put_Line ("Stop computation");
+               return;
+            end if;
+            if Status = Step then
+               Status := Pause;
+            end if;
+         end loop;
+      end loop;
+
+      Put_Line ("On_Start end!");
+   end On_Start;
+
+   --  overriding procedure On_Start
+   --    (P : P0002_Type; Plotter : Plotter_IFace_Access)
+   --  is
+   --     Color : String := "#ccc";
+   --  begin
+   --     Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (1.0, 0.0, 0.99, 180.0, 90.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Set_Axes (-18.0 * 1.1, 18.0 * 1.1);
+   --     Plotter.Clear_Plot;
+
+   --     Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
+   --     Plotter.Arc (1.0, 0.0, 0.99, 180.0, 90.0, "#f00");
+   --     Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (1.0, 0.0, 0.99, 90.0, 0.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Set_Axes (-18.0 * 1.2 * 1.1, 18.0 * 1.2 * 1.1);
+   --     Plotter.Clear_Plot;
+
+   --     Plotter.Rectangle (2.0, 0.0, 0.0, -2.0, Color);
+   --     Plotter.Rectangle (0.0, 0.0, 1.0, 1.0, Color);
+   --     Plotter.Arc (1.0, 0.0, 0.99, 180.0, 90.0, "#f00");
+   --     Plotter.Rectangle (1.0, 1.0, 2.0, 0.0, Color);
+   --     Plotter.Arc (1.0, 0.0, 0.99, 90.0, 0.0, "#f00");
+   --     delay (Duration (1));
+   --     Plotter.Arc (0.0, 0.0, 1.99, 0.0, 270.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Rectangle (0.0, -2.0, -3.0, 1.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (0.0, 1.0, 2.99, 270.0, 180.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Rectangle (-3.0, 1.0, 2.0, 6.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (2.0, 1.0, 4.99, 180.0, 90.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Rectangle (2.0, 6.0, 10.0, -2.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (2.0, -2.0, 7.99, 90.0, 0.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Rectangle (10.0, -2.0, -3.0, -15.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (-3.0, -2.0, 12.99, 0.0, 270.0, "#f00");
+   --     delay (Duration (1));
+
+   --     Plotter.Rectangle (-3.0, -15.0, -24.0, 6.0, Color);
+   --     delay (Duration (1));
+   --     Plotter.Arc (-3.0, 6.0, 20.99, 270.0, 180.0, "#f00");
+   --     delay (Duration (1));
+   --  end On_Start;
+
+   -------------
+   -- On_Step --
+   -------------
+
+   overriding procedure On_Step
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
    begin
-      null;
-   end Draw_Start;
+      Status := Step;
+   end On_Step;
 
-   ---------------
-   -- Draw_Step --
-   ---------------
+   -----------------
+   -- On_Continue --
+   -----------------
 
-   overriding procedure Draw_Step
+   overriding procedure On_Continue
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
    begin
-      null;
-   end Draw_Step;
+      Status := Run;
+   end On_Continue;
 
-   -------------------
-   -- Draw_Continue --
-   -------------------
+   -------------
+   -- On_Stop --
+   -------------
 
-   overriding procedure Draw_Continue
+   overriding procedure On_Stop
      (P : P0002_Type; Plotter : Plotter_IFace_Access)
    is
    begin
-      null;
-   end Draw_Continue;
-
-   ---------------
-   -- Draw_Stop --
-   ---------------
-
-   overriding procedure Draw_Stop
-     (P : P0002_Type; Plotter : Plotter_IFace_Access)
-   is
-   begin
-      null;
-   end Draw_Stop;
+      Status := Stop;
+   end On_Stop;
 
 end P0002_Even_Fibonacci_Numbers;

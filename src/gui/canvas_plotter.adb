@@ -449,13 +449,8 @@ package body Canvas_Plotter is
    begin
       Context.Get_Drawing_Context_2D (P.Draw);
 
-      Context.Save;
-      Context.Set_Transform
-        (Scale_Horizontal => 1.0, Skew_Horizontal => 0.0,
-         Scale_Vertical   => 1.0, Skew_Vertical => 0.0, Move_Horizontal => 0.0,
-         Move_Vertical    => 0.0);
+      Context.Begin_Path;
       Context.Clear_Rectangle ([0, 0, P.Draw.Width, P.Draw.Height]);
-      Context.Restore;
    end Clear_Plot;
 
    ----------
@@ -504,6 +499,10 @@ package body Canvas_Plotter is
       Context.Rectangle (Rectangle => [X, Y, Width, Height]);
       Context.Stroke;
    end Rectangle;
+
+   ---------
+   -- Arc --
+   ---------
 
    overriding procedure Arc
      (P : in out Canvas_Type; X0, Y0, Radius, Start_Angle, End_Angle : Float;

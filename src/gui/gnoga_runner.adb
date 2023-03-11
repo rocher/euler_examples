@@ -29,15 +29,12 @@ package body Gnoga_Runner is
    Window_Layout : constant Gnoga.Gui.View.Grid.Grid_Rows_Type :=
      [[COL, COL, COL], [COL, COL, SPN], [COL, COL, SPN]];
 
-   --  type App_Canvas_Type is record
-   --     Back  : Gnoga.Gui.Element.Canvas.Canvas_Type;
-   --     Graph : Gnoga.Gui.Element.Canvas.Canvas_Type;
-   --     Info  : Gnoga.Gui.Element.Canvas.Canvas_Type;
-   --  end record;
-
    type Button_Bar_Type is record
-      Panel : Gnoga.Gui.View.Pointer_To_View_Base_Class;
-      Start : Gnoga.Gui.Element.Common.Button_Type;
+      Panel    : Gnoga.Gui.View.Pointer_To_View_Base_Class;
+      Start    : Gnoga.Gui.Element.Common.Button_Type;
+      Step     : Gnoga.Gui.Element.Common.Button_Type;
+      Continue : Gnoga.Gui.Element.Common.Button_Type;
+      Stop     : Gnoga.Gui.Element.Common.Button_Type;
    end record;
 
    type App_Data_Type is new Gnoga.Types.Connection_Data_Type with record
@@ -53,18 +50,12 @@ package body Gnoga_Runner is
 
    procedure Button_Start_On_Click
      (Object : in out Gnoga.Gui.Base.Base_Type'Class);
-
-   procedure On_Click (Object : in out Gnoga.Gui.Base.Base_Type'Class);
-   procedure On_Exit (Object : in out Gnoga.Gui.Base.Base_Type'Class);
-   procedure Mouse_Down
-     (Object      : in out Gnoga.Gui.Base.Base_Type'Class;
-      Mouse_Event :        Gnoga.Gui.Base.Mouse_Event_Record);
-   procedure Mouse_Move
-     (Object      : in out Gnoga.Gui.Base.Base_Type'Class;
-      Mouse_Event :        Gnoga.Gui.Base.Mouse_Event_Record);
-   procedure Mouse_Up
-     (Object      : in out Gnoga.Gui.Base.Base_Type'Class;
-      Mouse_Event :        Gnoga.Gui.Base.Mouse_Event_Record);
+   procedure Button_Step_On_Click
+     (Object : in out Gnoga.Gui.Base.Base_Type'Class);
+   procedure Button_Continue_On_Click
+     (Object : in out Gnoga.Gui.Base.Base_Type'Class);
+   procedure Button_Stop_On_Click
+     (Object : in out Gnoga.Gui.Base.Base_Type'Class);
 
    ---------
    -- UXS --
@@ -74,14 +65,6 @@ package body Gnoga_Runner is
      (Item : UXStrings.ASCII_Character_Array) return UXStrings.UXString renames
      UXStrings.From_ASCII;
 
-   --  procedure Clear_Canvas
-   --    (Context       : in out Gnoga.Gui.Element.Canvas.Context_2D;
-   --     Width, Height :        Natural)
-   --  is
-   --  begin
-   --     Context.Clear_Rectangle ((0, 0, Width, Height));
-   --  end Clear_Canvas;
-
    ---------------------------
    -- Button_Start_On_Click --
    ---------------------------
@@ -89,145 +72,65 @@ package body Gnoga_Runner is
    procedure Button_Start_On_Click
      (Object : in out Gnoga.Gui.Base.Base_Type'Class)
    is
-      use Gnoga.Gui.Element.Canvas.Context_2D;
-
-      App     : constant App_Access := App_Access (Object.Connection_Data);
-      Context : Context_2D_Type;
-      --  pragma Unreferenced (Object);
+      App : constant App_Access := App_Access (Object.Connection_Data);
    begin
-      Gnoga.Log ("On_Click");
-      App.Panel_Margin.New_Line;
-      App.Panel_Margin.Put_Line ("I've been clicked!");
-
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
-      --  Context.Save;
-      --  Context.Begin_Path;
-      --  Context.Stroke_Color ("white");
-      --  Context.Move_To (0, 0);
-      --  Context.Line_To (900, 900);
-      --  Context.Stroke;
-      --  Context.Restore;
-      Context.Clear_Rectangle
-        ((0, 0, App.Plotter.Canvas (Draw).Width,
-          App.Plotter.Canvas (Draw).Height));
+      App.Button_Bar.Start.Class_Name ("btn btn-outline-primary");
+      App.Button_Bar.Start.Disabled (True);
+      App.Button_Bar.Step.Class_Name ("btn btn-info");
+      App.Button_Bar.Step.Disabled (False);
+      App.Button_Bar.Stop.Class_Name ("btn btn-danger");
+      App.Button_Bar.Stop.Disabled (False);
+      Gnoga_Runner.Problem.On_Start (App.Plotter'Access);
    end Button_Start_On_Click;
 
-   ----------------
-   -- Mouse_Down --
-   ----------------
+   --------------------------
+   -- Button_Step_On_Click --
+   --------------------------
 
-   procedure Mouse_Down
-     (Object      : in out Gnoga.Gui.Base.Base_Type'Class;
-      Mouse_Event :        Gnoga.Gui.Base.Mouse_Event_Record)
+   procedure Button_Step_On_Click
+     (Object : in out Gnoga.Gui.Base.Base_Type'Class)
+   is
+      App : constant App_Access := App_Access (Object.Connection_Data);
+   begin
+      App.Button_Bar.Continue.Class_Name ("btn btn-light");
+      App.Button_Bar.Continue.Disabled (False);
+      Gnoga_Runner.Problem.On_Step (App.Plotter'Access);
+   end Button_Step_On_Click;
+
+   ------------------------------
+   -- Button_Continue_On_Click --
+   ------------------------------
+
+   procedure Button_Continue_On_Click
+     (Object : in out Gnoga.Gui.Base.Base_Type'Class)
    is
       use Gnoga.Gui.Element.Canvas.Context_2D;
-
-      App     : constant App_Access := App_Access (Object.Connection_Data);
-      Context : Context_2D_Type;
+      App : constant App_Access := App_Access (Object.Connection_Data);
    begin
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
-      --  Before we can draw we need to get the 2D Drawing context from the
-      --  canvas.
+      App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
+      App.Button_Bar.Continue.Disabled;
+      Gnoga_Runner.Problem.On_Continue (App.Plotter'Access);
+   end Button_Continue_On_Click;
 
-      Context.Begin_Path;
-      --  This clears any previous setting of points on a path and readies the
-      --  context to receive new path points.
+   --------------------------
+   -- Button_Stop_On_Click --
+   --------------------------
 
-      Context.Line_Width (3);
-      Context.Line_Join (Round);
-      Context.Stroke_Color ("red");
-      Context.Shadow_Color ("#999");
-      Context.Shadow_Blur (1);
-      Context.Shadow_Offset_X (1);
-      Context.Shadow_Offset_Y (2);
-      --  Settings in the context remain between one call to
-      --  Get_Drawing_Context_2D and the next.
-
-      Context.Move_To (Mouse_Event.X, Mouse_Event.Y);
-      --  We set the first point on the path with out drawing.
-
-      App.Plotter.Canvas (Top).On_Mouse_Move_Handler
-        (Mouse_Move'Unrestricted_Access);
-      App.Plotter.Canvas (Top).On_Mouse_Up_Handler
-        (Mouse_Up'Unrestricted_Access);
-      --  As you can see it is possible to add or remove event handlers at any
-      --  time.
-   end Mouse_Down;
-
-   ----------------
-   -- Mouse_Move --
-   ----------------
-
-   procedure Mouse_Move
-     (Object      : in out Gnoga.Gui.Base.Base_Type'Class;
-      Mouse_Event :        Gnoga.Gui.Base.Mouse_Event_Record)
+   procedure Button_Stop_On_Click
+     (Object : in out Gnoga.Gui.Base.Base_Type'Class)
    is
-      use Gnoga.Gui.Element.Canvas.Context_2D;
-
-      App     : constant App_Access := App_Access (Object.Connection_Data);
-      Context : Context_2D_Type;
+      App : constant App_Access := App_Access (Object.Connection_Data);
    begin
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
-
-      Context.Line_To (Mouse_Event.X, Mouse_Event.Y);
-      --  This adds a line on the path from the last point to this one.
-
-      Context.Stroke;
-      --  Stroke the point using the stroke style set. In this case the Color
-      --  Black form Mouse_Down
-   end Mouse_Move;
-
-   --------------
-   -- Mouse_Up --
-   --------------
-
-   procedure Mouse_Up
-     (Object      : in out Gnoga.Gui.Base.Base_Type'Class;
-      Mouse_Event :        Gnoga.Gui.Base.Mouse_Event_Record)
-   is
-      use Gnoga.Gui.Element.Canvas.Context_2D;
-
-      App     : constant App_Access := App_Access (Object.Connection_Data);
-      Context : Context_2D_Type;
-   begin
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
-
-      Context.Line_To (Mouse_Event.X, Mouse_Event.Y);
-      Context.Stroke;
-      Context.Close_Path;
-      --  We draw up to the last point and then remove the handlers that
-      --  perform drawing.
-
-      App.Plotter.Canvas (Top).On_Mouse_Move_Handler (null);
-      App.Plotter.Canvas (Top).On_Mouse_Up_Handler (null);
-   end Mouse_Up;
-
-   --------------
-   -- On_Click --
-   --------------
-
-   procedure On_Click (Object : in out Gnoga.Gui.Base.Base_Type'Class) is
-      use Gnoga.Gui.Element.Canvas.Context_2D;
-
-      App     : constant App_Access := App_Access (Object.Connection_Data);
-      Context : Context_2D_Type;
-   begin
-      Context.Get_Drawing_Context_2D (App.Plotter.Canvas (Draw).all);
-      Context.Save;
-      --  This will push the state of the context on to the "stack",
-      --  this way changes we make now can be discarded later by restoring
-      --  from the stack what the state of the context was before we made
-      --  changes.
-
-      Context.Fill_Color ("white");
-      Context.Stroke_Color ("white");
-      Context.Fill_Rectangle
-        ((0, 0, App.Plotter.Canvas (Draw).Width,
-          App.Plotter.Canvas (Draw).Height));
-
-      Context.Restore;
-      --  Restore the state of the context.
-   end On_Click;
+      App.Button_Bar.Start.Class_Name ("btn btn-primary");
+      App.Button_Bar.Start.Disabled (False);
+      App.Button_Bar.Step.Class_Name ("btn btn-outline-info");
+      App.Button_Bar.Step.Disabled;
+      App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
+      App.Button_Bar.Continue.Disabled;
+      App.Button_Bar.Stop.Class_Name ("btn btn-outline-danger");
+      App.Button_Bar.Stop.Disabled;
+      Gnoga_Runner.Problem.On_Stop (App.Plotter'Access);
+   end Button_Stop_On_Click;
 
    -------------
    -- On_Exit --
@@ -259,11 +162,6 @@ package body Gnoga_Runner is
       Context : Context_2D_Type;
    begin
       pragma Unreferenced (Connection);
-      --  Gnoga.Application.Title (UXS (Title));
-      --  Gnoga.Application.Singleton.Initialize
-      --    (Main_Window => App.Window, Boot => "boot_bootstrap3.html");
-
-      --  App_Init (Problem.Title);
 
       Main_Window.Connection_Data (App);
       App.Grid.Create
@@ -287,15 +185,35 @@ package body Gnoga_Runner is
       App.Panel_Title.Horizontal_Rule;
 
       App.Button_Bar.Panel := App.Grid.Panel (3, 1);
-      App.Button_Bar.Panel.Padding ("10px", "10px", "10px", "10px");
+      App.Button_Bar.Panel.Class_Name ("button_bar");
       App.Button_Bar.Panel.Height (100);
-      --  App.Panel_Button_Bar.Horizontal_Rule;
 
       App.Button_Bar.Start.Create
-        (App.Button_Bar.Panel.all, "&nbsp;Start&nbsp;", "button2");
-      App.Button_Bar.Start.Class_Name ("btn btn-success");
+        (App.Button_Bar.Panel.all, "&nbsp;Start&nbsp;", "button_start");
+      App.Button_Bar.Start.Class_Name ("btn btn-primary");
       App.Button_Bar.Start.On_Click_Handler
         (Button_Start_On_Click'Unrestricted_Access);
+
+      App.Button_Bar.Step.Create
+        (App.Button_Bar.Panel.all, "&nbsp;Step&nbsp;", "button_step");
+      App.Button_Bar.Step.Class_Name ("btn btn-outline-info");
+      App.Button_Bar.Step.Disabled;
+      App.Button_Bar.Step.On_Click_Handler
+        (Button_Step_On_Click'Unrestricted_Access);
+
+      App.Button_Bar.Continue.Create
+        (App.Button_Bar.Panel.all, "&nbsp;Continue&nbsp;", "button_continue");
+      App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
+      App.Button_Bar.Continue.Disabled;
+      App.Button_Bar.Continue.On_Click_Handler
+        (Button_Continue_On_Click'Unrestricted_Access);
+
+      App.Button_Bar.Stop.Create
+        (App.Button_Bar.Panel.all, "&nbsp;Stop&nbsp;", "button_stop");
+      App.Button_Bar.Stop.Class_Name ("btn btn-outline-danger");
+      App.Button_Bar.Stop.Disabled;
+      App.Button_Bar.Stop.On_Click_Handler
+        (Button_Stop_On_Click'Unrestricted_Access);
 
       App.Grid.Panel (2, 1).Padding ("10px", "10px", "10px", "10px");
       App.Grid.Panel (2, 1).Margin ("10px", "10px", "10px", "10px");
