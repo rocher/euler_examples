@@ -47,15 +47,6 @@ package P0002_Even_Fibonacci_Numbers is
      (P : P0002_Type; Plotter : Plotter_IFace_Access);
 
    overriding procedure On_Start
-     (P : P0002_Type; Plotter : Plotter_IFace_Access);
-
-   overriding procedure On_Step
-     (P : P0002_Type; Plotter : Plotter_IFace_Access);
-
-   overriding procedure On_Continue
-     (P : P0002_Type; Plotter : Plotter_IFace_Access);
-
-   overriding procedure On_Stop
-     (P : P0002_Type; Plotter : Plotter_IFace_Access);
+     (P : in out P0002_Type; Plotter : Plotter_IFace_Access);
 
 end P0002_Even_Fibonacci_Numbers;

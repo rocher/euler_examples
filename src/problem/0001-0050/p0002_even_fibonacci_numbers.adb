@@ -107,37 +107,34 @@ package body P0002_Even_Fibonacci_Numbers is
    --------------
 
    overriding procedure On_Start
-     (P : P0002_Type; Plotter : Plotter_IFace_Access)
+     (P : in out P0002_Type; Plotter : Plotter_IFace_Access)
    is
       X, Y : Float;
    begin
-      if Status /= Stop then
+      if P.Is_Started then
          return;
       end if;
 
+      P.Start;
+      Plotter.Clear_Plot;
       Put_Line ("On_Start!!");
 
-      Status := Run;
       for X in -18 .. 17 loop
          for Y in -18 .. 17 loop
             Plotter.Rectangle
               (X0 => Float (X), Y0 => Float (Y), X1 => Float (X) + 1.0,
                Y1 => Float (Y) + 1.0, color => "#333");
             delay (0.05);
-            while Status = Pause loop
-               delay (0.1);
-            end loop;
-            if Status = Stop then
+            P.Wait_To_Continue;
+            if P.Is_Stopped then
                Plotter.Clear_Plot;
                Put_Line ("Stop computation");
                return;
             end if;
-            if Status = Step then
-               Status := Pause;
-            end if;
          end loop;
       end loop;
 
+      P.Stop;
       Put_Line ("On_Start end!");
    end On_Start;
 
@@ -198,38 +195,5 @@ package body P0002_Even_Fibonacci_Numbers is
    --     Plotter.Arc (-3.0, 6.0, 20.99, 270.0, 180.0, "#f00");
    --     delay (Duration (1));
    --  end On_Start;
-
-   -------------
-   -- On_Step --
-   -------------
-
-   overriding procedure On_Step
-     (P : P0002_Type; Plotter : Plotter_IFace_Access)
-   is
-   begin
-      Status := Step;
-   end On_Step;
-
-   -----------------
-   -- On_Continue --
-   -----------------
-
-   overriding procedure On_Continue
-     (P : P0002_Type; Plotter : Plotter_IFace_Access)
-   is
-   begin
-      Status := Run;
-   end On_Continue;
-
-   -------------
-   -- On_Stop --
-   -------------
-
-   overriding procedure On_Stop
-     (P : P0002_Type; Plotter : Plotter_IFace_Access)
-   is
-   begin
-      Status := Stop;
-   end On_Stop;
 
 end P0002_Even_Fibonacci_Numbers;

@@ -94,7 +94,7 @@ package body Gnoga_Runner is
    begin
       App.Button_Bar.Continue.Class_Name ("btn btn-light");
       App.Button_Bar.Continue.Disabled (False);
-      Gnoga_Runner.Problem.On_Step (App.Plotter'Access);
+      Gnoga_Runner.Problem.On_Step;
    end Button_Step_On_Click;
 
    ------------------------------
@@ -109,7 +109,7 @@ package body Gnoga_Runner is
    begin
       App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
       App.Button_Bar.Continue.Disabled;
-      Gnoga_Runner.Problem.On_Continue (App.Plotter'Access);
+      Gnoga_Runner.Problem.On_Continue;
    end Button_Continue_On_Click;
 
    --------------------------
@@ -129,7 +129,7 @@ package body Gnoga_Runner is
       App.Button_Bar.Continue.Disabled;
       App.Button_Bar.Stop.Class_Name ("btn btn-outline-danger");
       App.Button_Bar.Stop.Disabled;
-      Gnoga_Runner.Problem.On_Stop (App.Plotter'Access);
+      Gnoga_Runner.Problem.On_Stop;
    end Button_Stop_On_Click;
 
    -------------
