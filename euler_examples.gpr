@@ -29,6 +29,7 @@ project Euler_Examples is
       ,"t0012_highly_divisible_triangular_number.adb"
       ,"t0013_large_sum.adb"
       ,"t0014_longest_collatz_sequence.adb"
+      ,"g0014_longest_collatz_sequence.adb"
       ,"t0015_lattice_paths.adb"
       ,"t0016_power_digit_sum.adb"
       ,"t0017_number_letter_counts.adb"

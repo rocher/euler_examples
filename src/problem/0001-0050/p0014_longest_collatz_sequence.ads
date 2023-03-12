@@ -35,11 +35,12 @@
 --
 -------------------------------------------------------------------------------
 
-with TUI_Interface; use TUI_Interface;
+with GUI_Interface;     use GUI_Interface;
+with Plotter_Interface; use Plotter_Interface;
 
 package P0014_Longest_Collatz_Sequence is
 
-   type P0014_Type is new TUI_IFace with null record;
+   type P0014_Type is new GUI_IFace with null record;
 
    overriding function Number (P : P0014_Type) return Natural is (14);
 
@@ -53,4 +54,11 @@ package P0014_Longest_Collatz_Sequence is
    overriding function Answer (P : P0014_Type) return String;
 
    overriding function Notes (P : P0014_Type) return String;
+
+   overriding procedure Plotter_Setup
+     (P : P0014_Type; Plotter : Plotter_IFace_Access);
+
+   overriding procedure On_Start
+     (P : in out P0014_Type; Plotter : Plotter_IFace_Access);
+
 end P0014_Longest_Collatz_Sequence;

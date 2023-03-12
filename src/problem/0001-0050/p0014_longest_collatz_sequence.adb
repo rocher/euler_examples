@@ -41,6 +41,10 @@ package body P0014_Longest_Collatz_Sequence is
 
    Max_Length : Integer_Type := 0;
 
+   ------------
+   -- Answer --
+   ------------
+
    overriding function Answer (P : P0014_Type) return String is
       Start  : Integer_Type := 999_999;
       Number : Integer_Type := 0;
@@ -70,7 +74,84 @@ package body P0014_Longest_Collatz_Sequence is
       return To_String (Answer);
    end Answer;
 
+   -----------
+   -- Notes --
+   -----------
+
    overriding function Notes (P : P0014_Type) return String is
      ("The chain contains" & Max_Length'Image & " numbers.");
+
+   -------------------
+   -- Plotter_Setup --
+   -------------------
+
+   overriding procedure Plotter_Setup
+     (P : P0014_Type; Plotter : Plotter_IFace_Access)
+   is
+   begin
+      Plotter.Set_Axes
+        (X_Min => 0.0, X_Max => 1_000_000.0, Y_Min => 0.0, Y_Max => 600.0);
+      Plotter.Draw_Grid
+        (X_Major => 100_000.0, X_Minor => 50_000.0, Y_Major => 100.0,
+         Y_Minor => 50.0);
+      Plotter.Draw_Axes ("Number", "Length");
+   end Plotter_Setup;
+
+   overriding procedure On_Start
+     (P : in out P0014_Type; Plotter : Plotter_IFace_Access)
+   is
+      Start  : Integer_Type;
+      Number : Integer_Type;
+      Length : Integer_Type;
+      Answer : Integer_Type;
+   begin
+      if P.Is_Started then
+         return;
+      end if;
+
+      P.Start;
+      Plotter.Start_Plotter;
+
+      Start  := 999_999;
+      Number := 0;
+      Length := 0;
+      Answer := 0;
+      Max_Length := 0;
+
+      loop
+         Number := Collatz_First (Start);
+         Length := 1;
+
+         loop
+            Number := Collatz_Next;
+            Length := @ + 1;
+            exit when Number = 1;
+         end loop;
+
+         if Length > Max_Length then
+            Max_Length := Length;
+            Answer     := Start;
+            Plotter.Rectangle
+              (Float (Start), 0.0, Float (Start) + 1.0, Float (Length),
+               "#f33");
+         else
+            Plotter.Rectangle
+              (Float (Start), 0.0, Float (Start) + 1.0, Float (Length),
+               "#ccc");
+         end if;
+
+         exit when Start = 99_999;  --  ! Intuition: Start >= 99_999
+         Start := Start - 1;
+
+         delay (0.001);
+         P.Wait_To_Continue;
+         if P.Is_Stopped then
+            return;
+         end if;
+      end loop;
+
+      P.Stop;
+      Plotter.Stop_Plotter;
+   end On_Start;
 
 end P0014_Longest_Collatz_Sequence;
