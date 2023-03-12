@@ -27,6 +27,12 @@ package Plotter_Interface is
    type Plotter_IFace is limited interface;
    type Plotter_IFace_Access is access all Plotter_IFace'Class;
 
+   procedure Start_Plotter (Plotter : in out Plotter_IFace) is abstract;
+
+   procedure Stop_Plotter (Plotter : in out Plotter_IFace) is abstract;
+
+   procedure Clear_Plot (Plotter : in out Plotter_IFace) is abstract;
+
    procedure Set_Axes
      (Plotter : in out Plotter_IFace; Min, Max : Float) is abstract;
 
@@ -42,8 +48,6 @@ package Plotter_Interface is
      (Plotter : in out Plotter_IFace; X_Label, Y_Label : String) is abstract;
 
    procedure Draw_Axes_Square (Plotter : in out Plotter_IFace) is abstract;
-
-   procedure Clear_Plot (Plotter : in out Plotter_IFace) is abstract;
 
    procedure Plot
      (Plotter : in out Plotter_IFace; Points : Point_List;

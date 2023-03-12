@@ -46,7 +46,8 @@ package body Gnoga_Runner is
    end record;
    type App_Access is access all App_Data_Type;
 
-   Problem : GUI_IFace_Access := null;
+   App_Data_Access : App_Access       := null;
+   Problem         : GUI_IFace_Access := null;
 
    procedure Button_Start_On_Click
      (Object : in out Gnoga.Gui.Base.Base_Type'Class);
@@ -104,7 +105,6 @@ package body Gnoga_Runner is
    procedure Button_Continue_On_Click
      (Object : in out Gnoga.Gui.Base.Base_Type'Class)
    is
-      use Gnoga.Gui.Element.Canvas.Context_2D;
       App : constant App_Access := App_Access (Object.Connection_Data);
    begin
       App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
@@ -116,19 +116,33 @@ package body Gnoga_Runner is
    -- Button_Stop_On_Click --
    --------------------------
 
+   procedure Stop_Callbcak is
+   begin
+      App_Data_Access.Button_Bar.Start.Class_Name ("btn btn-primary");
+      App_Data_Access.Button_Bar.Start.Disabled (False);
+      App_Data_Access.Button_Bar.Step.Class_Name ("btn btn-outline-info");
+      App_Data_Access.Button_Bar.Step.Disabled;
+      App_Data_Access.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
+      App_Data_Access.Button_Bar.Continue.Disabled;
+      App_Data_Access.Button_Bar.Stop.Class_Name ("btn btn-outline-danger");
+      App_Data_Access.Button_Bar.Stop.Disabled;
+   end Stop_Callbcak;
+
    procedure Button_Stop_On_Click
      (Object : in out Gnoga.Gui.Base.Base_Type'Class)
    is
-      App : constant App_Access := App_Access (Object.Connection_Data);
+   --  App : constant App_Access := App_Access (Object.Connection_Data);
    begin
-      App.Button_Bar.Start.Class_Name ("btn btn-primary");
-      App.Button_Bar.Start.Disabled (False);
-      App.Button_Bar.Step.Class_Name ("btn btn-outline-info");
-      App.Button_Bar.Step.Disabled;
-      App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
-      App.Button_Bar.Continue.Disabled;
-      App.Button_Bar.Stop.Class_Name ("btn btn-outline-danger");
-      App.Button_Bar.Stop.Disabled;
+      pragma Unreferenced (Object);
+      Stop_Callbcak;
+      --  App.Button_Bar.Start.Class_Name ("btn btn-primary");
+      --  App.Button_Bar.Start.Disabled (False);
+      --  App.Button_Bar.Step.Class_Name ("btn btn-outline-info");
+      --  App.Button_Bar.Step.Disabled;
+      --  App.Button_Bar.Continue.Class_Name ("btn btn-outline-light");
+      --  App.Button_Bar.Continue.Disabled;
+      --  App.Button_Bar.Stop.Class_Name ("btn btn-outline-danger");
+      --  App.Button_Bar.Stop.Disabled;
       Gnoga_Runner.Problem.On_Stop;
    end Button_Stop_On_Click;
 
@@ -162,6 +176,8 @@ package body Gnoga_Runner is
       Context : Context_2D_Type;
    begin
       pragma Unreferenced (Connection);
+
+      App_Data_Access := App;
 
       Main_Window.Connection_Data (App);
       App.Grid.Create
@@ -219,7 +235,7 @@ package body Gnoga_Runner is
       App.Grid.Panel (2, 1).Margin ("10px", "10px", "10px", "10px");
       App.Grid.Style ("position", "relative");
 
-      App.Plotter.Create (App.Grid.Panel (2, 1));
+      App.Plotter.Create (App.Grid.Panel (2, 1), Stop_Callbcak'Access);
 
       --  Context.Translate
       --    (Integer (0.05 * App.Plotter.Canvas (Back).Width),

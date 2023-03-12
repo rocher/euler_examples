@@ -17,17 +17,21 @@ package Canvas_Plotter is
 
    type Canvas_Name is (Back, Draw, Top);
 
-   procedure Create
-     (P    : in out Canvas_Type;
-      View :        Gnoga.Gui.View.Pointer_To_View_Base_Class);
+   type Runner_Callback is access procedure;
 
    function Canvas
      (P : Canvas_Type; Name : Canvas_Name)
       return Gnoga.Gui.Element.Canvas.Canvas_Access;
 
-   --  overriding procedure Initialize
-   --    (P : in out Canvas_Type; X_Min, X_Max, Y_Min, Y_Max : Integer;
-   --     X0, Y0, Width, Height :        Natural);
+   procedure Create
+     (P : in out Canvas_Type; View : Gnoga.Gui.View.Pointer_To_View_Base_Class;
+      Stop_Callback :        Runner_Callback);
+
+   overriding procedure Start_Plotter (P : in out Canvas_Type);
+
+   overriding procedure Stop_Plotter (P : in out Canvas_Type);
+
+   overriding procedure Clear_Plot (P : in out Canvas_Type);
 
    overriding procedure Set_Axes (P : in out Canvas_Type; Min, Max : Float);
 
@@ -41,8 +45,6 @@ package Canvas_Plotter is
      (P : in out Canvas_Type; X_Label, Y_Label : String);
 
    overriding procedure Draw_Axes_Square (P : in out Canvas_Type);
-
-   overriding procedure Clear_Plot (P : in out Canvas_Type);
 
    overriding procedure Plot
      (P : in out Canvas_Type; Points : Point_List; Color : String);

@@ -17,6 +17,8 @@ with Text_IO; use Text_IO;
 
 package body Canvas_Plotter is
 
+   Stop_Callback : Runner_Callback := null;
+
    Font_Family_Axis   : constant String  := "Arial";
    Font_Height_Medium : constant String  := "12px";
    Font_Height_Small  : constant String  := "10px";
@@ -117,10 +119,13 @@ package body Canvas_Plotter is
    ------------
 
    procedure Create
-     (P : in out Canvas_Type; View : Gnoga.Gui.View.Pointer_To_View_Base_Class)
+     (P : in out Canvas_Type; View : Gnoga.Gui.View.Pointer_To_View_Base_Class;
+      Stop_Callback :        Runner_Callback)
    is
       Context : Context_2D_Type;
    begin
+      Canvas_Plotter.Stop_Callback := Stop_Callback;
+
       P.Back.Create
         (Parent => View.all, Width => View.Width, Height => View.Height,
          ID     => "Canvas.Back");
@@ -145,9 +150,38 @@ package body Canvas_Plotter is
       P.Info.Style ("position", "absolute");
       P.Info.Style ("left", 0);
       P.Info.Style ("top", 0);
-
-      --  P.Info.On_Mouse_Down_Handler (Mouse_Down'Unrestricted_Access);
    end Create;
+
+   -------------------
+   -- Start_Plotter --
+   -------------------
+
+   procedure Start_Plotter (P : in out Canvas_Type) is
+   begin
+      P.Clear_Plot;
+   end Start_Plotter;
+
+   ------------------
+   -- Stop_Plotter --
+   ------------------
+
+   procedure Stop_Plotter (P : in out Canvas_Type) is
+   begin
+      Stop_Callback.all;
+   end Stop_Plotter;
+
+   ----------------
+   -- Clear_Plot --
+   ----------------
+
+   overriding procedure Clear_Plot (P : in out Canvas_Type) is
+      Context : Context_2D_Type;
+   begin
+      Context.Get_Drawing_Context_2D (P.Draw);
+
+      Context.Begin_Path;
+      Context.Clear_Rectangle ([0, 0, P.Draw.Width, P.Draw.Height]);
+   end Clear_Plot;
 
    --------------
    -- Set_Axes --
@@ -439,19 +473,6 @@ package body Canvas_Plotter is
          Sy (Y.Max) - Sy (Y.Min)]);
       Context.Stroke;
    end Draw_Axes_Square;
-
-   ----------------
-   -- Clear_Plot --
-   ----------------
-
-   overriding procedure Clear_Plot (P : in out Canvas_Type) is
-      Context : Context_2D_Type;
-   begin
-      Context.Get_Drawing_Context_2D (P.Draw);
-
-      Context.Begin_Path;
-      Context.Clear_Rectangle ([0, 0, P.Draw.Width, P.Draw.Height]);
-   end Clear_Plot;
 
    ----------
    -- Plot --

@@ -116,7 +116,7 @@ package body P0002_Even_Fibonacci_Numbers is
       end if;
 
       P.Start;
-      Plotter.Clear_Plot;
+      Plotter.Start_Plotter;
       Put_Line ("On_Start!!");
 
       for X in -18 .. 17 loop
@@ -124,10 +124,10 @@ package body P0002_Even_Fibonacci_Numbers is
             Plotter.Rectangle
               (X0 => Float (X), Y0 => Float (Y), X1 => Float (X) + 1.0,
                Y1 => Float (Y) + 1.0, color => "#333");
-            delay (0.05);
+            delay (0.015);
             P.Wait_To_Continue;
             if P.Is_Stopped then
-               Plotter.Clear_Plot;
+               --  Plotter.Clear_Plot;
                Put_Line ("Stop computation");
                return;
             end if;
@@ -135,6 +135,7 @@ package body P0002_Even_Fibonacci_Numbers is
       end loop;
 
       P.Stop;
+      Plotter.Stop_Plotter;
       Put_Line ("On_Start end!");
    end On_Start;
 
